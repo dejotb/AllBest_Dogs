@@ -1,0 +1,13 @@
+body {
+  background-color: #667e49;
+}
+
+.image {
+  aspect-ratio: 1/2;
+  max-width: 500px;
+
+  & img {
+    width: 100%;
+    border-radius: 5px;
+  }
+}
