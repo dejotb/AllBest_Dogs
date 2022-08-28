@@ -1,1 +1,0 @@
-{"mappings":"AAAA;;;;AAIA;;;;;AAIE","sources":["src/style.scss"],"sourcesContent":["body {\r\n  background-color: #667e49;\r\n}\r\n\r\n.image {\r\n  aspect-ratio: 1/2;\r\n  max-width: 500px;\r\n\r\n  & img {\r\n    width: 100%;\r\n    border-radius: 5px;\r\n  }\r\n}\r\n"],"names":[],"version":3,"file":"index.b2d9cf43.css.map","sourceRoot":"/__parcel_source_root/"}
