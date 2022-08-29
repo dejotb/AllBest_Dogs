@@ -19,6 +19,8 @@ async function getData(value) {
     });
     const result = await data.json();
 
+    console.log(result);
+
     const dog = result[0];
 
     state.dog = {
@@ -61,16 +63,21 @@ async function showDog(breed) {
   console.log(dog);
 
   const markup = `
-  <p>Name: ${dog.name}</p>
-  <p>life span: ${dog.life_span}</p>
-  <p>${dog.temperament}</p>
+  <li class="dog__item">
+    <p>Name: ${dog.name}</p>
+    <p>life span: ${dog.life_span}</p>
+    <p>${dog.temperament}</p>
+  </li>
+
 `;
   const image = `
   <img src='${imageUrl}' alt=''>
   `;
 
-  document.querySelector('.image').insertAdjacentHTML('afterbegin', markup);
-  document.querySelector('.image').insertAdjacentHTML('afterbegin', image);
+  document
+    .querySelector('.dogs__list')
+    .insertAdjacentHTML('afterbegin', markup);
+  document.querySelector('.dog__item').insertAdjacentHTML('afterbegin', image);
 }
 
-showDog('bor');
+showDog('retr');
