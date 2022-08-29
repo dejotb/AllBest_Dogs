@@ -74,10 +74,8 @@ async function showDog(breed) {
   <img src='${imageUrl}' alt=''>
   `;
 
-  document
-    .querySelector('.dogs__list')
-    .insertAdjacentHTML('afterbegin', markup);
+  document.querySelector('.dog__list').insertAdjacentHTML('afterbegin', markup);
   document.querySelector('.dog__item').insertAdjacentHTML('afterbegin', image);
 }
 
-showDog('retr');
+showDog('bern');
