@@ -3,8 +3,7 @@ require('dotenv').config();
 const URL = 'https://api.thedogapi.com/v1';
 
 const state = {
-  dog: {},
-  imageUrl: {},
+  dogs: [],
 };
 
 async function getData(value) {
@@ -21,22 +20,36 @@ async function getData(value) {
 
     console.log(result);
 
-    const dog = result[0];
-
-    state.dog = {
+    state.dogs = result.map((dog) => ({
       name: dog.name,
       bred_for: dog.bred_for,
       breed_group: dog.breed_group,
       life_span: dog.life_span,
-      imgID: dog.reference_image_id,
+      imgId: dog.reference_image_id,
       temperament: dog.temperament,
-    };
+      height: dog.height.metric,
+      weight: dog.weight.metric,
+      id: dog.id,
+    }));
   } catch (err) {
     console.log(err);
   }
 }
 
-async function getImage(imageID) {
+async function generateMarkup(dog) {
+  const markup = `
+    <li class="dog__item">
+    <img src=${dog.imgUrl} alt='${dog.name}'>
+    <p>Name: ${dog.name}</p>
+    <p>life span: ${dog.life_span}</p>
+    <p>${dog.temperament}</p>
+    </li>
+
+    `;
+  document.querySelector('.dog__list').insertAdjacentHTML('afterbegin', markup);
+}
+
+async function getImage(dog, imageID = '9BXwUeCc2') {
   try {
     if (!process.env.DOGS_API_KEY) {
       throw new Error('You forgot to set DOGS_API_KEY ');
@@ -46,36 +59,29 @@ async function getImage(imageID) {
         'X-Api-Key': process.env.DOGS_API_KEY,
       },
     });
-    const result = await data.json();
-    state.imageUrl = result.url;
 
-    console.log(state.imageUrl);
+    const result = await data.json();
+    dog.imgUrl = result.url;
+
+    console.log(dog);
+
+    await generateMarkup(dog);
   } catch (err) {
     console.log(err);
   }
 }
 
+async function getUrl(dogs) {
+  dogs.map((dog, index) => {
+    getImage(dog, dog.imgId, index);
+  });
+  state.dogs = dogs;
+}
+
 async function showDog(breed) {
+  const { dogs } = state;
   await getData(breed);
-  const { dog } = state;
-  await getImage(dog.imgID);
-  const { imageUrl } = state;
-  console.log(dog);
-
-  const markup = `
-  <li class="dog__item">
-    <p>Name: ${dog.name}</p>
-    <p>life span: ${dog.life_span}</p>
-    <p>${dog.temperament}</p>
-  </li>
-
-`;
-  const image = `
-  <img src='${imageUrl}' alt=''>
-  `;
-
-  document.querySelector('.dog__list').insertAdjacentHTML('afterbegin', markup);
-  document.querySelector('.dog__item').insertAdjacentHTML('afterbegin', image);
+  await getUrl(state.dogs);
 }
 
 showDog('bern');

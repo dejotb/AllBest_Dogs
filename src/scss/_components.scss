@@ -6,14 +6,18 @@
 
 .dog {
   &__list {
-    display: grid;
-    width: 400px;
-    height: 100px;
+    display: flex;
+    // justify-content: start;
+    justify-content: start;
+    flex-wrap: wrap;
+    grid-gap: 1rem;
   }
   &__item {
     display: grid;
     background-color: pink;
     border-radius: 5px;
+    width: 400px;
+    min-height: 100px;
     // grid-gap: 1rem;
 
     & img {
