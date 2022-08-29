@@ -5,7 +5,7 @@
   "default": "index.html",
   "scripts": {
     "start": "parcel src/index.html",
-    "build": "parcel build src/index.html --dist-dir ./dir"
+    "build": "parcel build src/index.html --dist-dir ./dist"
   },
   "author": "",
   "license": "ISC",
