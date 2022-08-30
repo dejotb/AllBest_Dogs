@@ -26,6 +26,7 @@ html {
 
 body {
   display: grid;
+  margin: 0 auto;
   justify-items: center;
   font-size: calc(15px + 0.2vw);
   font-family: var(--ff-primary);
