@@ -1,5 +1,7 @@
 require('dotenv').config();
 
+const dogList = document.querySelector('.dog__list');
+
 const URL = 'https://api.thedogapi.com/v1';
 
 const state = {
@@ -37,25 +39,32 @@ async function getData(value) {
   }
 }
 
-async function generateMarkup(dog) {
+async function createMarkup(dog) {
   const markup = `
-    <li class="dog__item">
-    <img src=${dog.imgUrl} alt='${dog.name}'>
+    <li class="dog__item" data-id="${dog.id}">
+    <img src='' alt='${dog.name}'>
     <p>Name: ${dog.name}</p>
     <p>life span: ${dog.life_span}</p>
     <p>${dog.temperament}</p>
     </li>
 
     `;
-  document.querySelector('.dog__list').insertAdjacentHTML('afterbegin', markup);
+  dogList.insertAdjacentHTML('afterbegin', markup);
 }
 
-async function getImage(dog, imageID = '9BXwUeCc2') {
+async function addImageUrlToMarkup(dogItems, dogId, dogImgUrl) {
+  const addImage = dogItems.find(
+    (item) => +item.getAttribute('data-id') === dogId
+  );
+  addImage.querySelector('img').src = dogImgUrl;
+}
+
+async function addImgUrl(dog, imgId = '9BXwUeCc2') {
   try {
     if (!process.env.DOGS_API_KEY) {
       throw new Error('You forgot to set DOGS_API_KEY ');
     }
-    const data = await fetch(`${URL}/images/${imageID}`, {
+    const data = await fetch(`${URL}/images/${imgId}`, {
       headers: {
         'X-Api-Key': process.env.DOGS_API_KEY,
       },
@@ -64,25 +73,29 @@ async function getImage(dog, imageID = '9BXwUeCc2') {
     const result = await data.json();
     dog.imgUrl = result.url;
 
-    console.log(dog);
+    const dogId = dog.id;
 
-    await generateMarkup(dog);
+    const dogItems = [...document.querySelectorAll('.dog__item')];
+
+    await addImageUrlToMarkup(dogItems, dogId, dog.imgUrl);
   } catch (err) {
     console.log(err);
   }
 }
 
-async function getUrl(dogs) {
-  dogs.map((dog, index) => {
-    getImage(dog, dog.imgId, index);
-  });
-  state.dogs = dogs;
+async function getImgUrl(dogs) {
+  await dogs.map((dog) => addImgUrl(dog, dog.imgId));
+}
+
+async function generateMarkup(dogs) {
+  dogs.map((dog) => createMarkup(dog));
 }
 
 async function showDog(breed) {
-  const { dogs } = state;
   await getData(breed);
-  await getUrl(state.dogs);
+  await generateMarkup(state.dogs);
+
+  await getImgUrl(state.dogs);
 }
 
-showDog('german');
+showDog('corg');
