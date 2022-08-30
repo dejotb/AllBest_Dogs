@@ -30,6 +30,7 @@ async function getData(value) {
       height: dog.height.metric,
       weight: dog.weight.metric,
       id: dog.id,
+      origin: dog.origin,
     }));
   } catch (err) {
     console.log(err);
@@ -84,4 +85,4 @@ async function showDog(breed) {
   await getUrl(state.dogs);
 }
 
-showDog('bern');
+showDog('german');
