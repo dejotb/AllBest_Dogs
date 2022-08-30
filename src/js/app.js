@@ -10,4 +10,4 @@ async function showDog(breed) {
   await getImgUrl(model.state.dogs);
 }
 
-showDog('Belgian');
+showDog('samo');

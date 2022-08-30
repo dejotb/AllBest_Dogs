@@ -1,3 +1,5 @@
+import { IMAGE_PLACEHOLDER } from './config.js';
+
 const dogList = document.querySelector('.dog__list');
 
 export async function createMarkup(dog) {
@@ -17,5 +19,7 @@ export async function addImageUrlToMarkup(dogListItems, dogId, dogImgUrl) {
   const addImage = dogListItems.find(
     (listItem) => +listItem.getAttribute('data-id') === dogId
   );
-  addImage.querySelector('img').src = dogImgUrl;
+  if (dogImgUrl === undefined || !dogImgUrl) {
+    addImage.querySelector('img').src = IMAGE_PLACEHOLDER;
+  } else addImage.querySelector('img').src = dogImgUrl;
 }

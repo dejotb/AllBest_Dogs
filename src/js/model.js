@@ -11,7 +11,7 @@ export function createDogsObjects(dogs) {
     bred_for: dog.bred_for,
     breed_group: dog.breed_group,
     life_span: dog.life_span,
-    imgId: dog.reference_image_id,
+    imgId: !dog.reference_image_id ? '' : dog.reference_image_id,
     temperament: dog.temperament,
     height: dog.height.metric,
     weight: dog.weight.metric,
@@ -45,7 +45,7 @@ export async function addImgUrl(dog, imgId) {
     if (!process.env.DOGS_API_KEY) {
       throw new Error('You forgot to set DOGS_API_KEY ');
     }
-    if (imgId === '' || imgId === undefined) imgId = '9BXwUeCc2';
+
     const data = await fetch(`${API_URL_IMAGES}${imgId}`, {
       headers: {
         'X-Api-Key': process.env.DOGS_API_KEY,
