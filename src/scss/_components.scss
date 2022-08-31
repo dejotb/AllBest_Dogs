@@ -37,7 +37,6 @@
     }
 
     & img {
-      background-color: green;
       border-radius: 5px;
       //   aspect-ratio: 1/1;
       width: 100%;
@@ -50,5 +49,27 @@
         height: 300px;
       }
     }
+  }
+}
+
+// ==========================================================================
+// Search bar component
+// ==========================================================================
+
+.form {
+  &__wrapper {
+    height: 4rem;
+  }
+
+  &__search {
+    height: 100%;
+    // width: clamp(30rem, 2vw, 50rem);
+    width: min(80vw, 32rem);
+    background-color: pink;
+    padding: 1rem;
+  }
+
+  &__button {
+    // width: 2rem;
   }
 }

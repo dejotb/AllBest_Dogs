@@ -27,6 +27,9 @@ export async function loadData(value) {
     if (!process.env.DOGS_API_KEY) {
       throw new Error('You forgot to set DOGS_API_KEY ');
     }
+    if (value === '' || value === undefined)
+      console.log(`search for dog's breed`);
+
     const data = await fetch(`${API_URL_BREEDS}${value}`, {
       headers: {
         'X-Api-Key': process.env.DOGS_API_KEY,
