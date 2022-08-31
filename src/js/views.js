@@ -15,6 +15,9 @@ export async function createMarkup(dog) {
   dogList.insertAdjacentHTML('afterbegin', markup);
 }
 
+// ? text blueprint
+// <p>The ${dog.name} is a ${dog.breed_group} dog, bred for ${dog.bred_for}</p>
+
 export async function addImageUrlToMarkup(dogListItems, dogId, dogImgUrl) {
   const addImage = dogListItems.find(
     (listItem) => +listItem.getAttribute('data-id') === dogId
