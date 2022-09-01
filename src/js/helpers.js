@@ -12,11 +12,3 @@ export function tempDisableEvents(e) {
     e.target.onkeydown = () => true;
   }, TIMEOUT_SEC * 1000);
 }
-
-export function renderloader(parentElement) {
-  const markup = `
-        <span class="loader"></span>
-    `;
-  //   this._clear();
-  parentElement.insertAdjacentHTML('afterbegin', markup);
-}

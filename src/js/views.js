@@ -6,8 +6,10 @@ const dogList = document.querySelector('.dog__list');
 export async function createMarkup(dog) {
   const markup = `
       <li class="dog__item" data-id="${dog.id}" tabindex="0">
-
-      <img class="dog__image" src='' alt='${dog.name}'>
+      <div class="dog__image">
+          <span class="loader hidden"></span>
+          <img src='' alt='${dog.name}'>
+      </div>
       <p>Name: ${dog.name}</p>
       <p>life span: ${dog.life_span}</p>
       <p>${dog.temperament}</p>
@@ -30,4 +32,12 @@ export async function addImageUrlToMarkup(dogListItems, dogId, dogImgUrl) {
   );
 
   addImage.querySelector('img').src = dogImgUrl;
+}
+
+export function renderloader(parentElement) {
+  const markup = `
+        <span class="loader"></span>
+    `;
+  //   this._clear();
+  parentElement.insertAdjacentHTML('afterbegin', markup);
 }

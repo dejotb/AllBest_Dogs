@@ -1,6 +1,6 @@
 import IMAGE from 'url:../imgs/dog-unknown.webp';
 import { API_URL_BREEDS, API_URL_IMAGES, DOG_LIST } from './config.js';
-import { addImageUrlToMarkup } from './views.js';
+import { addImageUrlToMarkup, renderloader } from './views.js';
 
 export const state = {
   dogs: [],
@@ -42,8 +42,15 @@ export async function fetchData(value) {
   }
 }
 
-export async function fetchImgUrl(dog, imgId) {
+export async function fetchImgUrl(dog) {
+  const { imgId, id } = dog;
+
   try {
+    const dogListItems = [...document.querySelectorAll('.dog__item')];
+    const listItem = dogListItems.find(
+      (item) => +item.getAttribute('data-id') === id
+    );
+
     if (imgId.length === 0) {
       dog.imgUrl = IMAGE;
     } else {
@@ -51,19 +58,18 @@ export async function fetchImgUrl(dog, imgId) {
         throw new Error('You forgot to set DOGS_API_KEY ');
       }
 
+      listItem.querySelector('.loader').classList.remove('hidden');
+
       const data = await fetch(`${API_URL_IMAGES}${imgId}`, {
         headers: {
           'X-Api-Key': process.env.DOGS_API_KEY,
         },
       });
       const result = await data.json();
-      console.log(result);
-
       dog.imgUrl = result.url;
+
+      listItem.querySelector('.loader').classList.add('hidden');
     }
-
-    const dogListItems = [...document.querySelectorAll('.dog__item')];
-
     await addImageUrlToMarkup(dogListItems, dog.id, dog.imgUrl);
   } catch (err) {
     console.log(err);
