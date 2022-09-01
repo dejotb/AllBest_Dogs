@@ -1,4 +1,4 @@
-// import IMAGE from 'https://picsum.photos/200/300';
+import IMAGE from 'url:../imgs/dog-unknown.webp';
 import { API_URL_BREEDS, API_URL_IMAGES, DOG__LIST } from './config.js';
 import { addImageUrlToMarkup } from './views.js';
 
@@ -49,7 +49,7 @@ export async function fetchImgUrl(dog, imgId) {
     // let dogImgUrl;
 
     if (imgId.length === 0) {
-      dog.imgUrl = 'https://picsum.photos/200/300';
+      dog.imgUrl = IMAGE;
     } else {
       if (!process.env.DOGS_API_KEY) {
         throw new Error('You forgot to set DOGS_API_KEY ');
