@@ -27,6 +27,7 @@ html {
 body {
   display: grid;
   margin: 0 auto;
+
   justify-items: center;
   font-size: calc(15px + 0.2vw);
   font-family: var(--ff-primary);
@@ -36,6 +37,10 @@ body {
   font-weight: 400;
   line-height: 1.6;
   text-rendering: optimizeSpeed;
+
+  @media screen and (min-width: 720px) {
+    padding: 0 4rem;
+  }
 }
 
 ::selection {

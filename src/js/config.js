@@ -4,3 +4,5 @@ export const API_URL_IMAGES = 'https://api.thedogapi.com/v1/images/';
 // DOM Elements
 
 export const DOGS__FORM = document.querySelector('#dogs__form');
+
+export const DOG__LIST = document.querySelector('.dog__list');

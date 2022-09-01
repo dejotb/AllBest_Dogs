@@ -1,4 +1,4 @@
-import { API_URL_BREEDS, API_URL_IMAGES } from './config.js';
+import { API_URL_BREEDS, API_URL_IMAGES, DOG__LIST } from './config.js';
 import { addImageUrlToMarkup } from './views.js';
 
 export const state = {
@@ -19,10 +19,10 @@ export function createDogsObjects(dogs) {
     origin: dog.origin,
   }));
 
-  console.log(state.dogs);
+  // console.log(state.dogs);
 }
 
-export async function loadData(value) {
+export async function fetchData(value) {
   try {
     if (!process.env.DOGS_API_KEY) {
       throw new Error('You forgot to set DOGS_API_KEY ');
@@ -43,7 +43,7 @@ export async function loadData(value) {
   }
 }
 
-export async function addImgUrl(dog, imgId) {
+export async function fetchImgUrl(dog, imgId) {
   try {
     if (!process.env.DOGS_API_KEY) {
       throw new Error('You forgot to set DOGS_API_KEY ');
@@ -65,5 +65,15 @@ export async function addImgUrl(dog, imgId) {
     await addImageUrlToMarkup(dogListItems, dogId, dog.imgUrl);
   } catch (err) {
     console.log(err);
+  }
+}
+
+export function centerDogsListGrid() {
+  if (state.dogs.length >= 3) return;
+  if (state.dogs.length === 1) {
+    DOG__LIST.classList.add('centered--one');
+  }
+  if (state.dogs.length === 2) {
+    DOG__LIST.classList.add('centered--two');
   }
 }

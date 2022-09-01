@@ -7,22 +7,26 @@
 .dog {
   &__list {
     display: grid;
-    // justify-content: center;
-    // justify-items: center;
+    justify-content: center;
+    justify-items: center;
     // flex-wrap: wrap;
     padding: 0.5rem;
-    grid-gap: 1rem;
-    // max-width: fit-content;
+    grid-row-gap: 1rem;
+    max-width: 1200px;
     grid-template-columns: repeat(1, minmax(250px, 350px));
 
     // background-color: var(--color-yellow);
 
     @media screen and (min-width: 720px) {
-      grid-template-columns: repeat(2, minmax(300px, 350px));
+      // grid-template-columns: minmax(300px, 400px);
+      // grid-template-columns: repeat(2, minmax(300px, 400px));
+      grid-template-columns: repeat(auto-fill, minmax(200px, 350px));
       grid-gap: 1.5rem;
     }
     @media screen and (min-width: 1200px) {
-      grid-template-columns: repeat(3, minmax(350px, 400px));
+      grid-template-columns: repeat(auto-fill, minmax(300px, 350px));
+      // grid-template-columns: repeat(3, minmax(300px, 400px));
+      // grid-template-columns: minmax(300px, 400px);
     }
   }
   &__item {
@@ -52,6 +56,14 @@
   }
 }
 
+.centered--one {
+  grid-template-columns: minmax(300px, 400px);
+}
+
+.centered--two {
+  grid-template-columns: repeat(auto-fill, minmax(100px, 400px));
+}
+
 // ==========================================================================
 // Search bar component
 // ==========================================================================
@@ -64,7 +76,7 @@
   &__search {
     height: 100%;
     // width: clamp(30rem, 2vw, 50rem);
-    width: min(80vw, 32rem);
+    width: min(70vw, 32rem);
     background-color: pink;
     padding: 1rem;
   }

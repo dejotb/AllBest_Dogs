@@ -1,4 +1,5 @@
-import IMAGE from '../imgs/dog-unknown.webp';
+import IMAGE from '../../dist/dog-unknown.e8e5e60a.webp';
+import { editText } from './helpers.js';
 
 const dogList = document.querySelector('.dog__list');
 
@@ -9,6 +10,9 @@ export async function createMarkup(dog) {
       <p>Name: ${dog.name}</p>
       <p>life span: ${dog.life_span}</p>
       <p>${dog.temperament}</p>
+      <a href="https://www.petfinder.com/dog-breeds/${editText(
+        dog.name
+      )}/" target="_blank">link</a>
       </li>
 
       `;
