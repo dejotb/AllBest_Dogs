@@ -29,7 +29,7 @@ export async function addImageUrlToMarkup(dogListItems, dogId, dogImgUrl) {
     (listItem) => +listItem.getAttribute('data-id') === dogId
   );
 
-  console.log(dogImgUrl);
+  // console.log(dogImgUrl);
   // if (dogImgUrl === undefined || !dogImgUrl) {
   // addImage.querySelector('img').src = IMAGE;
   // } else

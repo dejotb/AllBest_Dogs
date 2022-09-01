@@ -58,17 +58,19 @@ export async function fetchImgUrl(dog, imgId) {
 
     const result = await data.json();
 
+    // console.log(result.url);
+    if (result.url === undefined || result.url === '') {
+      result.url = 'https://picsum.photos/200/300';
+    }
+    console.log(result.url);
     dog.imgUrl = result.url;
 
-    if (dog.imgUrl === undefined) {
-      dog.imgUrl = 'https://picsum.photos/200/300';
-    }
     const dogImgUrl = dog.imgUrl;
     const dogId = dog.id;
 
     const dogListItems = [...document.querySelectorAll('.dog__item')];
 
-    console.log(dog.imgUrl);
+    // console.log(dog.imgUrl);
     await addImageUrlToMarkup(dogListItems, dogId, dogImgUrl);
   } catch (err) {
     console.log(err);
