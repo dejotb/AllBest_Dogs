@@ -67,10 +67,9 @@ export async function fetchImgUrl(dog) {
       });
       const result = await data.json();
       dog.imgUrl = result.url;
-
-      listItem.querySelector('.loader').classList.add('hidden');
     }
     await addImageUrlToMarkup(dogListItems, dog.id, dog.imgUrl);
+    listItem.querySelector('.loader').classList.add('hidden');
   } catch (err) {
     console.log(err);
   }
