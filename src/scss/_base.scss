@@ -27,13 +27,13 @@ html {
 body {
   display: grid;
   margin: 0 auto;
-
+  align-content: start;
   justify-items: center;
   font-size: calc(15px + 0.2vw);
   font-family: var(--ff-primary);
   // color: var(--color-font);
   background-color: var(--color-blue);
-
+  min-height: 100vh;
   font-weight: 400;
   line-height: 1.6;
   text-rendering: optimizeSpeed;

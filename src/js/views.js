@@ -1,4 +1,4 @@
-import IMAGE from '../../dist/dog-unknown.e8e5e60a.webp';
+import IMAGE from 'url:../imgs/dog-unknown.webp';
 import { editText } from './helpers.js';
 
 const dogList = document.querySelector('.dog__list');
