@@ -25,15 +25,16 @@ export function fetchDog(e) {
   console.log(e);
   DOG_LIST.classList.remove('centered--one');
   DOG_LIST.classList.remove('centered--two');
-  const dogsInput = document.querySelector('#dogs__input').value;
+  const dogsInput = document.querySelector('#dogs__input');
 
   if (dogsInput.length < 3) {
     DOG_LIST.textContent = 'search string has to be longer that 3 characters';
     return;
   }
-
   DOG_LIST.textContent = '';
 
-  showDog(dogsInput);
+  showDog(dogsInput.value);
   tempDisableEvents(e);
+
+  dogsInput.value = '';
 }

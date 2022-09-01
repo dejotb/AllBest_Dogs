@@ -5,12 +5,12 @@ const dogList = document.querySelector('.dog__list');
 
 export async function createMarkup(dog) {
   const markup = `
-      <li class="dog__item" data-id="${dog.id}">
-      <img class="dog__image" src='' alt='${dog.name} 'crossorigin''>
+      <li class="dog__item" data-id="${dog.id}" tabindex="0">
+
+      <img class="dog__image" src='' alt='${dog.name}'>
       <p>Name: ${dog.name}</p>
       <p>life span: ${dog.life_span}</p>
       <p>${dog.temperament}</p>
-      <a href="${BREED_WIKI_URL}/${editText(dog.name)}" target="_blank">link</a>
       </li>
 
       `;
@@ -19,6 +19,9 @@ export async function createMarkup(dog) {
 
 // ? text blueprint
 // <p>The ${dog.name} is a ${dog.breed_group} dog, bred for ${dog.bred_for}</p>
+
+// ? add to individual card
+// <a href="${BREED_WIKI_URL}/${editText(dog.name)}" target="_blank">link</a>
 // ?
 
 export async function addImageUrlToMarkup(dogListItems, dogId, dogImgUrl) {
