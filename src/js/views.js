@@ -8,7 +8,7 @@ const dogList = document.querySelector('.dog__list');
 export async function createMarkup(dog) {
   const markup = `
       <li class="dog__item" data-id="${dog.id}">
-      <img class="dog__image" src='' alt='${dog.name}'>
+      <img class="dog__image" src='' alt='${dog.name} crossorigin'>
       <p>Name: ${dog.name}</p>
       <p>life span: ${dog.life_span}</p>
       <p>${dog.temperament}</p>
