@@ -1,7 +1,6 @@
-import IMAGE from 'url:../imgs/dog-unknown.webp';
 import { editText } from './helpers.js';
 
-console.log(IMAGE);
+// console.log(IMAGE);
 
 const dogList = document.querySelector('.dog__list');
 
@@ -25,11 +24,7 @@ export async function createMarkup(dog) {
 // <p>The ${dog.name} is a ${dog.breed_group} dog, bred for ${dog.bred_for}</p>
 // ?
 
-export async function addImageUrlToMarkup(
-  dogListItems,
-  dogId,
-  dogImgUrl = IMAGE
-) {
+export async function addImageUrlToMarkup(dogListItems, dogId, dogImgUrl) {
   const addImage = dogListItems.find(
     (listItem) => +listItem.getAttribute('data-id') === dogId
   );

@@ -1,3 +1,4 @@
+import IMAGE from 'url:../imgs/dog-unknown.webp';
 import { API_URL_BREEDS, API_URL_IMAGES, DOG__LIST } from './config.js';
 import { addImageUrlToMarkup } from './views.js';
 
@@ -56,13 +57,19 @@ export async function fetchImgUrl(dog, imgId) {
     });
 
     const result = await data.json();
+
     dog.imgUrl = result.url;
 
+    if (dog.imgUrl === undefined) {
+      dog.imgUrl = IMAGE;
+    }
+    const dogImgUrl = dog.imgUrl;
     const dogId = dog.id;
 
     const dogListItems = [...document.querySelectorAll('.dog__item')];
 
-    await addImageUrlToMarkup(dogListItems, dogId, dog.imgUrl);
+    console.log(dog.imgUrl);
+    await addImageUrlToMarkup(dogListItems, dogId, dogImgUrl);
   } catch (err) {
     console.log(err);
   }
