@@ -33,11 +33,3 @@ export async function addImageUrlToMarkup(dogListItems, dogId, dogImgUrl) {
 
   addImage.querySelector('img').src = dogImgUrl;
 }
-
-export function renderloader(parentElement) {
-  const markup = `
-        <span class="loader"></span>
-    `;
-  //   this._clear();
-  parentElement.insertAdjacentHTML('afterbegin', markup);
-}

@@ -22,12 +22,13 @@ async function showDog(breed) {
 
 export function fetchDog(e) {
   e.preventDefault();
-  console.log(e);
   DOG_LIST.classList.remove('centered--one');
   DOG_LIST.classList.remove('centered--two');
   const dogsInput = document.querySelector('#dogs__input');
 
-  if (dogsInput.length < 3) {
+  console.log(dogsInput);
+
+  if (dogsInput.value.length < 3) {
     DOG_LIST.textContent = 'search string has to be longer that 3 characters';
     return;
   }
