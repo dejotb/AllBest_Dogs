@@ -12,7 +12,7 @@ export function createDogsObjects(dogs) {
     bred_for: dog.bred_for,
     breed_group: dog.breed_group,
     life_span: dog.life_span,
-    imgId: !dog.reference_image_id ? '' : dog.reference_image_id,
+    imgId: !dog.reference_image_id ? 'HyJvcl9N7' : dog.reference_image_id,
     temperament: dog.temperament,
     height: dog.height.metric,
     weight: dog.weight.metric,
@@ -45,6 +45,7 @@ export async function fetchData(value) {
 }
 
 export async function fetchImgUrl(dog, imgId) {
+  console.log(imgId);
   try {
     if (!process.env.DOGS_API_KEY) {
       throw new Error('You forgot to set DOGS_API_KEY ');
@@ -55,14 +56,14 @@ export async function fetchImgUrl(dog, imgId) {
         'X-Api-Key': process.env.DOGS_API_KEY,
       },
     });
-
     const result = await data.json();
+    console.log(result);
 
     // console.log(result.url);
     if (result.url === undefined || result.url === '') {
       result.url = 'https://picsum.photos/200/300';
     }
-    console.log(result.url);
+    // console.log(result.url);
     dog.imgUrl = result.url;
 
     const dogImgUrl = dog.imgUrl;

@@ -9,8 +9,10 @@ export async function generateMarkup(dogs) {
   model.centerDogsListGrid();
 }
 export async function getImgUrl(dogs) {
-  await dogs.map((dog) => model.fetchImgUrl(dog, dog.imgId));
-  // console.log(dogs);
+  await dogs.map((dog) => {
+    model.fetchImgUrl(dog, dog.imgId);
+    console.log(dog.imgId);
+  });
 }
 
 async function showDog(breed) {
