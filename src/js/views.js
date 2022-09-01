@@ -1,6 +1,5 @@
 import { editText } from './helpers.js';
-
-// console.log(IMAGE);
+import { BREED_WIKI_URL } from './config.js';
 
 const dogList = document.querySelector('.dog__list');
 
@@ -11,9 +10,7 @@ export async function createMarkup(dog) {
       <p>Name: ${dog.name}</p>
       <p>life span: ${dog.life_span}</p>
       <p>${dog.temperament}</p>
-      <a href="https://www.petfinder.com/dog-breeds/${editText(
-        dog.name
-      )}/" target="_blank">link</a>
+      <a href="${BREED_WIKI_URL}/${editText(dog.name)}" target="_blank">link</a>
       </li>
 
       `;
@@ -29,9 +26,5 @@ export async function addImageUrlToMarkup(dogListItems, dogId, dogImgUrl) {
     (listItem) => +listItem.getAttribute('data-id') === dogId
   );
 
-  // console.log(dogImgUrl);
-  // if (dogImgUrl === undefined || !dogImgUrl) {
-  // addImage.querySelector('img').src = IMAGE;
-  // } else
   addImage.querySelector('img').src = dogImgUrl;
 }

@@ -1,7 +1,8 @@
 import * as model from './model.js';
 // import { addImgUrl } from './model.js';
 import { createMarkup } from './views.js';
-import { DOG__LIST } from './config.js';
+import { DOG_LIST } from './config.js';
+import { tempDisableEvents } from './helpers.js';
 
 export async function generateMarkup(dogs) {
   dogs.map((dog) => createMarkup(dog));
@@ -21,15 +22,18 @@ async function showDog(breed) {
 
 export function fetchDog(e) {
   e.preventDefault();
-  DOG__LIST.classList.remove('centered--one');
-  DOG__LIST.classList.remove('centered--two');
+  console.log(e);
+  DOG_LIST.classList.remove('centered--one');
+  DOG_LIST.classList.remove('centered--two');
   const dogsInput = document.querySelector('#dogs__input').value;
 
   if (dogsInput.length < 3) {
-    DOG__LIST.textContent = 'search string has to be longer that 3 characters';
+    DOG_LIST.textContent = 'search string has to be longer that 3 characters';
     return;
   }
 
-  DOG__LIST.textContent = '';
+  DOG_LIST.textContent = '';
+
   showDog(dogsInput);
+  tempDisableEvents(e);
 }
