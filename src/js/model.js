@@ -1,4 +1,4 @@
-import IMAGE from 'url:../imgs/dog-unknown.webp';
+// import IMAGE from 'https://picsum.photos/200/300';
 import { API_URL_BREEDS, API_URL_IMAGES, DOG__LIST } from './config.js';
 import { addImageUrlToMarkup } from './views.js';
 
@@ -61,7 +61,7 @@ export async function fetchImgUrl(dog, imgId) {
     dog.imgUrl = result.url;
 
     if (dog.imgUrl === undefined) {
-      dog.imgUrl = IMAGE;
+      dog.imgUrl = 'https://picsum.photos/200/300';
     }
     const dogImgUrl = dog.imgUrl;
     const dogId = dog.id;
