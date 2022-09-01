@@ -7,7 +7,7 @@ const dogList = document.querySelector('.dog__list');
 export async function createMarkup(dog) {
   const markup = `
       <li class="dog__item" data-id="${dog.id}">
-      <img class="dog__image" src='' alt='${dog.name} crossorigin'>
+      <img class="dog__image" src='' alt='${dog.name} 'crossorigin''>
       <p>Name: ${dog.name}</p>
       <p>life span: ${dog.life_span}</p>
       <p>${dog.temperament}</p>
@@ -28,7 +28,10 @@ export async function addImageUrlToMarkup(dogListItems, dogId, dogImgUrl) {
   const addImage = dogListItems.find(
     (listItem) => +listItem.getAttribute('data-id') === dogId
   );
-  if (dogImgUrl === undefined || !dogImgUrl) {
-    addImage.querySelector('img').src = IMAGE;
-  } else addImage.querySelector('img').src = dogImgUrl;
+
+  console.log(dogImgUrl);
+  // if (dogImgUrl === undefined || !dogImgUrl) {
+  // addImage.querySelector('img').src = IMAGE;
+  // } else
+  addImage.querySelector('img').src = dogImgUrl;
 }
