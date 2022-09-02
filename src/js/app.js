@@ -1,3 +1,4 @@
+import { flattenDiagnosticMessageText } from 'typescript';
 import * as model from './model.js';
 import { fetchDog } from './controller.js';
 import { DOGS_FORM } from './config.js';

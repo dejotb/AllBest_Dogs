@@ -18,6 +18,7 @@ export function createDogsObjects(dogs) {
     weight: dog.weight.metric,
     id: dog.id,
     origin: dog.origin,
+    // imgUrl: dog.image.url,
   }));
 }
 
