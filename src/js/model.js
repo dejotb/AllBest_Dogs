@@ -10,6 +10,7 @@ import { addImageUrlToMarkup } from './views.js';
 export const state = {
   dogs: [],
   breedSuggestions: [],
+  breedList: [],
 };
 
 export function createDogsObjects(dogs) {

@@ -27,6 +27,7 @@ export function fetchDog(e) {
   DOG_LIST.classList.remove('centered--one');
   DOG_LIST.classList.remove('centered--two');
   const dogsInput = document.querySelector('#dogs__input');
+  // createSearchList();
 
   if (dogsInput.value.length < 3) {
     DOG_LIST.textContent = 'search string has to be longer that 3 characters';
@@ -111,8 +112,32 @@ export async function createSearchList() {
     const newListItem = document.createElement('li');
     newListItem.textContent = el;
 
+    model.state.breedList.push(newListItem);
     autoCompleteInput.appendChild(newListItem);
   });
 }
+
+const listAllBreeds = document.querySelector('.select__breeds');
+
+// listAllBreeds.addEventListener('click', (e) => {
+//   // model.state.breedSuggestions = model.state.breedList;
+//   autoCompleteInput.classList.toggle('active');
+//   console.log(model.state.breedList);
+//   const allList = autoCompleteInput.querySelectorAll('li');
+//   // console.log(allList);
+//   model.state.breedSuggestions.forEach((el) => {
+//     const newListItem = document.createElement('li');
+//     newListItem.textContent = el;
+
+//     autoCompleteInput.appendChild(newListItem);
+//   });
+//   model.state.breedSuggestions.forEach((el) =>
+//     el.addEventListener('click', select)
+//   );
+//   // allList.forEach((el) => el.addEventListener('keyup', checkKeyPressed));
+//   // const allList = autoCompleteInput.querySelectorAll('li');
+//   // console.log(allList);
+//   // allList.forEach((el) => el.addEventListener('click', select));
+// });
 
 createSearchList();
