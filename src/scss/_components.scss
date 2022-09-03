@@ -78,6 +78,8 @@
 .form {
   &__wrapper {
     height: 4rem;
+    z-index: 10000;
+    position: relative;
   }
 
   &__search {
@@ -90,8 +92,12 @@
   }
 
   &__button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    // transform: translateY();
     // width: 2rem;
-    height: 100%;
+    // height: 100%;
   }
 }
 
