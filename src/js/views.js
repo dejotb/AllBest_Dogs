@@ -1,3 +1,4 @@
+import * as model from './model.js';
 import { editText } from './helpers.js';
 import { BREED_WIKI_URL } from './config.js';
 
@@ -33,3 +34,50 @@ export async function addImageUrlToMarkup(dogListItems, dogId, dogImgUrl) {
 
   addImage.querySelector('img').src = dogImgUrl;
 }
+
+// search view
+
+const inputBox = document.querySelector('input');
+const autoCompleteInput = document.querySelector('.autocomplete__input');
+
+inputBox.addEventListener('keyup', handleUserData);
+
+export function handleUserData(e) {
+  const userData = e.target.value;
+  let emptyArray = [];
+  if (userData) {
+    emptyArray = model.state.breedSuggestions.filter((data) =>
+      // filtering array value and user input to lowercase and return only results that start with inputed char
+      data.toLocaleLowerCase().startsWith(userData.toLocaleLowerCase())
+    );
+    emptyArray = emptyArray.map((data) => (data = `<li>${data}</li>`));
+    console.log(emptyArray);
+    autoCompleteInput.classList.add('active');
+  } else {
+    autoCompleteInput.classList.remove('active');
+  }
+  showBreedSuggestions(emptyArray);
+}
+
+export function showBreedSuggestions(list) {
+  let listData;
+  if (!list.length) {
+    const userValue = inputBox.value;
+    listData = `<li>${userValue}</li>`;
+  } else {
+    listData = list.join('');
+    console.log(listData);
+  }
+  autoCompleteInput.innerHTML = listData;
+}
+
+export async function createSearchList() {
+  await model.fetchAllBreeds();
+  await model.state.breedSuggestions.forEach((el) => {
+    const newListItem = document.createElement('li');
+    newListItem.textContent = el;
+    autoCompleteInput.appendChild(newListItem);
+  });
+}
+
+createSearchList();

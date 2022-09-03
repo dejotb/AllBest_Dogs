@@ -1,9 +1,15 @@
 import IMAGE from 'url:../imgs/dog-unknown.webp';
-import { API_URL_BREEDS, API_URL_IMAGES, DOG_LIST } from './config.js';
-import { addImageUrlToMarkup, renderloader } from './views.js';
+import {
+  API_URL_BREED,
+  API_URL_IMAGES,
+  DOG_LIST,
+  API_URL_BREEDS,
+} from './config.js';
+import { addImageUrlToMarkup } from './views.js';
 
 export const state = {
   dogs: [],
+  breedSuggestions: [],
 };
 
 export function createDogsObjects(dogs) {
@@ -22,7 +28,25 @@ export function createDogsObjects(dogs) {
   }));
 }
 
-export async function fetchData(value) {
+export async function fetchAllBreeds() {
+  try {
+    if (!process.env.DOGS_API_KEY) {
+      throw new Error('You forgot to set DOGS_API_KEY ');
+    }
+    const data = await fetch(`${API_URL_BREEDS}`, {
+      headers: {
+        'X-Api-Key': process.env.DOGS_API_KEY,
+      },
+    });
+    const result = await data.json();
+
+    state.breedSuggestions = result.map((item) => item.name);
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+export async function fetchDogsData(value) {
   try {
     if (!process.env.DOGS_API_KEY) {
       throw new Error('You forgot to set DOGS_API_KEY ');
@@ -30,7 +54,7 @@ export async function fetchData(value) {
     if (value === '' || value === undefined)
       console.log(`search for dog's breed`);
 
-    const data = await fetch(`${API_URL_BREEDS}${value}`, {
+    const data = await fetch(`${API_URL_BREED}${value}`, {
       headers: {
         'X-Api-Key': process.env.DOGS_API_KEY,
       },

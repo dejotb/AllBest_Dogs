@@ -85,12 +85,42 @@
     // width: clamp(30rem, 2vw, 50rem);
     width: min(70vw, 32rem);
     background-color: pink;
-    padding: 1rem;
+    padding: 0 12px;
+    box-shadow: 0px 1px 5px 3px rgba(0, 0, 0, 0.12);
   }
 
   &__button {
     // width: 2rem;
+    height: 100%;
   }
+}
+
+.autocomplete__input li {
+  padding: 0 12px;
+  cursor: default;
+  // display: none;
+
+  &:hover {
+    background-color: var(--color-yellow);
+  }
+}
+
+// .autocomplete__input .active li {
+//   display: block;
+// }
+
+.autocomplete__input {
+  background-color: pink;
+  box-shadow: 0px 1px 5px 3px rgba(0, 0, 0, 0.12);
+  overflow-y: auto;
+  max-height: 28rem;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.active {
+  opacity: 1;
+  pointer-events: all;
 }
 
 // ==========================================================================

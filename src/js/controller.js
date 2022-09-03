@@ -14,7 +14,7 @@ export async function getImgUrl(dogs) {
 }
 
 async function showDog(breed) {
-  await model.fetchData(breed);
+  await model.fetchDogsData(breed);
   await generateMarkup(model.state.dogs);
 
   await getImgUrl(model.state.dogs);
