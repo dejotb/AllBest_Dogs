@@ -14,6 +14,7 @@ export async function createMarkup(dog) {
       <p>Name: ${dog.name}</p>
       <p>life span: ${dog.life_span}</p>
       <p>${dog.temperament}</p>
+      <a href="${BREED_WIKI_URL}/${editText(dog.name)}" target="_blank">link</a>
       </li>
 
       `;

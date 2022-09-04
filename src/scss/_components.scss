@@ -9,24 +9,17 @@
     display: grid;
     justify-content: center;
     justify-items: center;
-    // flex-wrap: wrap;
     padding: 0.5rem;
     grid-row-gap: 1rem;
     max-width: 1200px;
     grid-template-columns: repeat(1, minmax(250px, 350px));
 
-    // background-color: var(--color-yellow);
-
     @media screen and (min-width: 720px) {
-      // grid-template-columns: minmax(300px, 400px);
-      // grid-template-columns: repeat(2, minmax(300px, 400px));
       grid-template-columns: repeat(auto-fill, minmax(200px, 350px));
       grid-gap: 1.5rem;
     }
     @media screen and (min-width: 1200px) {
       grid-template-columns: repeat(auto-fill, minmax(300px, 350px));
-      // grid-template-columns: repeat(3, minmax(300px, 400px));
-      // grid-template-columns: minmax(300px, 400px);
     }
   }
   &__item {
@@ -36,7 +29,6 @@
     width: 100%;
     grid-gap: 1rem;
     @media screen and (min-width: 420px) {
-      // width: 350px;
       background-color: var(--color-yellow);
     }
   }
@@ -106,14 +98,12 @@
   cursor: default;
   // display: none;
 
-  &:hover {
+  &:hover,
+  // &:active,
+  &:focus {
     background-color: var(--color-yellow);
   }
 }
-
-// .autocomplete__input .active li {
-//   display: block;
-// }
 
 .autocomplete__input {
   background-color: pink;
@@ -122,12 +112,6 @@
   max-height: 28rem;
   opacity: 0;
   pointer-events: none;
-}
-
-.select__breeds {
-  // position: absolute;
-  // top: 0;
-  // right: -3.5rem;
 }
 
 .active {

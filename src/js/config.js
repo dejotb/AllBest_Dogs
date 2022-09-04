@@ -8,6 +8,12 @@ export const DOGS_FORM = document.querySelector('#dogs__form');
 
 export const DOG_LIST = document.querySelector('.dog__list');
 
+export const INPUT_BOX = document.querySelector('input');
+
+export const AUTOCOMPLETE_INPUT = document.querySelector(
+  '.autocomplete__input'
+);
+
 // Link URLs
 
 export const BREED_WIKI_URL = 'https://en.wikipedia.org/wiki';
