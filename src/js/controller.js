@@ -6,8 +6,9 @@ import {
   DOGS_FORM,
   AUTOCOMPLETE_INPUT,
   INPUT_BOX,
+  ALERTS,
 } from './config.js';
-import { tempDisableEvents } from './helpers.js';
+import { tempDisableEvents, isElementFocused } from './helpers.js';
 
 export async function generateMarkup(dogs) {
   dogs.map((dog) => createMarkup(dog));
@@ -34,10 +35,11 @@ export function fetchDog(e) {
   const dogsInput = document.querySelector('#dogs__input');
 
   if (dogsInput.value.length < 3) {
-    DOG_LIST.textContent = 'search string has to be longer that 3 characters';
+    DOG_LIST.textContent = 'search string has to be longer than 3 characters';
     return;
   }
   DOG_LIST.textContent = '';
+
   AUTOCOMPLETE_INPUT.classList.remove('active');
   showDog(dogsInput.value);
   tempDisableEvents(e);

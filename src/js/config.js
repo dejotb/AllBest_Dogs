@@ -14,6 +14,8 @@ export const AUTOCOMPLETE_INPUT = document.querySelector(
   '.autocomplete__input'
 );
 
+export const ALERTS = document.querySelector('.alerts__container');
+
 // Link URLs
 
 export const BREED_WIKI_URL = 'https://en.wikipedia.org/wiki';

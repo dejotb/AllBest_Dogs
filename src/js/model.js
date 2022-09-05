@@ -4,6 +4,7 @@ import {
   API_URL_IMAGES,
   DOG_LIST,
   API_URL_BREEDS,
+  ALERTS,
 } from './config.js';
 import { addImageUrlToMarkup } from './views.js';
 
@@ -55,6 +56,8 @@ export async function fetchDogsData(value) {
     if (value === '' || value === undefined)
       console.log(`search for dog's breed`);
 
+    ALERTS.querySelector('.loader').classList.remove('hidden');
+
     const data = await fetch(`${API_URL_BREED}${value}`, {
       headers: {
         'X-Api-Key': process.env.DOGS_API_KEY,
@@ -62,6 +65,7 @@ export async function fetchDogsData(value) {
     });
     const result = await data.json();
 
+    ALERTS.querySelector('.loader').classList.add('hidden');
     createDogsObjects(result);
   } catch (err) {
     console.log(err);
