@@ -60,7 +60,9 @@ export function generateDogCard(e) {
 DOG_LIST.addEventListener('click', generateDogCard);
 
 MODAL.addEventListener('click', (e) => {
-  MODAL.textContent = '';
-  MODAL.classList.add('hidden');
-  // console.log(e.target);
+  if (e.target.querySelector('.modal__card')) {
+    MODAL.textContent = '';
+    MODAL.classList.add('hidden');
+  }
+  // console.log('yes');
 });
