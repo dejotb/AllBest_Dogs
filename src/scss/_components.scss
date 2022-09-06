@@ -6,17 +6,18 @@
 
 .dog {
   &__list {
+    // background-color: green;
     display: grid;
     justify-content: center;
     justify-items: center;
     padding: 0.5rem;
-    grid-row-gap: 1rem;
+    // grid-row-gap: 2rem;
     max-width: 1200px;
     grid-template-columns: repeat(1, minmax(250px, 350px));
 
     @media screen and (min-width: 720px) {
       grid-template-columns: repeat(auto-fill, minmax(200px, 350px));
-      grid-gap: 1.5rem;
+      grid-gap: 3rem;
     }
     @media screen and (min-width: 1200px) {
       grid-template-columns: repeat(auto-fill, minmax(300px, 350px));
@@ -36,20 +37,22 @@
   &__image {
     // display: grid;
     position: relative;
-    // width: 100%;
-    // height: 250px;
+    width: 100%;
+    // height: 100%;
+    height: 250px;
 
     & img {
       border-radius: 5px;
       //   aspect-ratio: 1/1;
       height: 270px;
       width: 100%;
+      height: 100%;
       object-fit: cover;
       object-position: center;
 
       @media screen and (min-width: 720px) {
         background-color: var(--color-yellow);
-        height: 300px;
+        // height: 300px;
       }
     }
   }
@@ -70,7 +73,7 @@
 .form {
   &__wrapper {
     height: 4rem;
-    z-index: 10000;
+    z-index: var(--z-index-box);
     position: relative;
   }
 
@@ -126,7 +129,7 @@
 .loader {
   position: absolute;
   top: 45%;
-  left: 45%;
+  left: 42%;
   translate: -50%, -50%;
   width: 48px;
   height: 48px;
@@ -143,6 +146,55 @@
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+
+// ==========================================================================
+// Popup Card
+// ==========================================================================
+
+.modal {
+  &__container {
+    position: fixed;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(5px);
+    // padding: 0.5rem;
+    z-index: var(--z-index-popup);
+  }
+
+  &__card {
+    background-color: var(--color-yellow);
+    width: 90%;
+    max-width: 800px;
+    // height: 90%;
+    color: red;
+    // z-index: var(--z-index-modal);
+
+    @media screen and (min-width: 720px) {
+      width: 50%;
+    }
+    @media screen and (min-width: 1200px) {
+      width: 40%;
+    }
+
+    & .dog__image {
+      height: 30rem;
+
+      @media screen and (min-width: 720px) {
+        height: 35rem;
+      }
+
+      @media screen and (min-width: 1200px) {
+        height: 50rem;
+      }
+    }
   }
 }
 

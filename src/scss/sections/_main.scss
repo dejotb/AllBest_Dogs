@@ -1,17 +1,23 @@
 .main {
   display: grid;
-
+  // max-width: 1200px;
   justify-items: center;
-  // align-items: center;
+  // align-content: start;
+  // min-width: 1400px;
+  // background-color: silver;
   grid-gap: 2rem;
 }
 
 .alerts__container {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  // translate: transform(-50%, -50%);
-  // width: 30rem;
+  position: relative;
+  // top: 50%;
+  // left: 50%;
+  // translate: transform(-50%, -80%);
+  width: 30rem;
   // height: 20rem;
-  background-color: pink;
+
+  & .loader {
+    top: 40%;
+    left: 40%;
+  }
 }

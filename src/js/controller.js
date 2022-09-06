@@ -1,6 +1,6 @@
 import * as model from './model.js';
 // import { addImgUrl } from './model.js';
-import { createMarkup } from './views.js';
+import { createGridMarkup } from './views.js';
 import {
   DOG_LIST,
   DOGS_FORM,
@@ -11,7 +11,7 @@ import {
 import { tempDisableEvents, isElementFocused } from './helpers.js';
 
 export async function generateMarkup(dogs) {
-  dogs.map((dog) => createMarkup(dog));
+  dogs.map((dog) => createGridMarkup(dog));
   if (!dogs.length)
     DOG_LIST.textContent = `We coudn't find such a dog's breed. Please try to find some other :)`;
 
@@ -55,8 +55,8 @@ export async function createSearchList() {
     const newListItem = document.createElement('li');
     newListItem.textContent = el;
 
-    model.state.breedList.push(newListItem);
-    AUTOCOMPLETE_INPUT.appendChild(newListItem);
+    // model.state.breedList.push(newListItem);
+    // AUTOCOMPLETE_INPUT.appendChild(newListItem);
   });
 }
 
