@@ -13,7 +13,7 @@ export async function fetchDataCategories(value) {
     });
     const result = await data.json();
 
-    console.log(result);
+    // console.log(result);
 
     // ? method to get breed groups
     // const breedGroups = result.map((element) => element.breed_group);
@@ -22,7 +22,7 @@ export async function fetchDataCategories(value) {
 
     // ? method to get breed temperaments
 
-    const breedtemperamentsLists = result.map((element) => element.temperament);
+    const breedtemperamentsLists = result.map((element) => element.bred_for);
 
     // console.log(breedtemperamentsLists);
 
@@ -40,8 +40,6 @@ export async function fetchDataCategories(value) {
     console.log(err);
   }
 }
-
-// fetchDataCategories();
 
 // ?
 // ? categories to be used: breed_group, temperament

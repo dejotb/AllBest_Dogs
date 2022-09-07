@@ -10,8 +10,8 @@
     display: grid;
     justify-content: center;
     justify-items: center;
-    padding: 0.5rem;
-    // grid-row-gap: 2rem;
+    padding: 1rem;
+    grid-row-gap: 2rem;
     max-width: 1200px;
     grid-template-columns: repeat(1, minmax(250px, 350px));
 
@@ -25,10 +25,20 @@
   }
   &__item {
     display: grid;
+    padding: 0.5rem;
+    justify-items: center;
     background-color: pink;
     border-radius: 5px;
     width: 100%;
     grid-gap: 1rem;
+    cursor: pointer;
+    scale: 1;
+    transition: scale 0.3s;
+
+    &:hover {
+      scale: 1.03;
+    }
+
     @media screen and (min-width: 420px) {
       background-color: var(--color-yellow);
     }
@@ -158,7 +168,8 @@
     position: fixed;
     display: grid;
     justify-items: center;
-    align-items: center;
+    align-items: start;
+    padding: 0.5rem;
     top: 0;
     left: 0;
     bottom: 0;
@@ -170,18 +181,22 @@
   }
 
   &__card {
+    display: grid;
+    grid-gap: 0.5rem;
     background-color: var(--color-yellow);
-    width: 90%;
-    max-width: 800px;
+    width: 98%;
+    max-width: 650px;
+    padding: 1rem;
+    // overflow-y: scroll;
     // height: 90%;
-    color: red;
+    // color: red;
     // z-index: var(--z-index-modal);
 
     @media screen and (min-width: 720px) {
       width: 50%;
     }
     @media screen and (min-width: 1200px) {
-      width: 40%;
+      width: 35%;
     }
 
     & .dog__image {
@@ -192,7 +207,7 @@
       }
 
       @media screen and (min-width: 1200px) {
-        height: 50rem;
+        height: 45rem;
       }
     }
   }
@@ -200,4 +215,8 @@
 
 .hidden {
   display: none;
+}
+
+.sticky__body {
+  overflow: hidden;
 }
