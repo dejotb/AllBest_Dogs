@@ -50,24 +50,34 @@ export async function addImageUrlToMarkup(dogListItems, dogId, dogImgUrl) {
 export function generateDogCard(e) {
   const activeDogId = e.target.closest('.dog__item').dataset.id;
   const dog = model.state.dogs.find((el) => el.id === +activeDogId);
+  console.log(e.target);
   const markup = `
     <div class='modal__card'>
+      <h3>${dog.name}</h3>
       <div class="dog__image">
         <span class="loader hidden"></span>
         <img src='${dog.imgUrl}' alt='${dog.name}'>
       </div>
-      <h3>${dog.name}</h3>
-      <p>${dog.name} is a ${dog.breed_group.toLowerCase()} dog, bred for: ${
-    dog.bred_for ? dog.bred_for.toLowerCase() : undefined
-  }</p>
-      <p>breed group: ${dog.breed_group.toLowerCase()}</p>
-      <p>temperament: ${dog.temperament.toLowerCase()}</p>
-      <p>life span: ${dog.life_span}</p>
-      <p>height: ${dog.height}cm</p>
-      <p>weight: ${dog.weight}kg </p>
+      <ul class='modal__text'>
+        <li>bred group: ${
+          dog.breed_group ? dog.breed_group.toLowerCase() : undefined
+        };</li>
+        <li> bred for: ${
+          dog.bred_for ? dog.bred_for.toLowerCase() : undefined
+        };</li>
+        <li>temperament: ${
+          dog.temperament ? dog.temperament.toLowerCase() : undefined
+        };</li>
+        <li>life span: ${dog.life_span};</li>
+        <li>height: ${dog.height}cm;</li>
+        <li>weight: ${dog.weight}kg;</li>
+      </ul>
+      <a href="${BREED_WIKI_URL}/${editText(
+    dog.name
+  )}" target="_blank">more info..</a>
 
-      <a href="${BREED_WIKI_URL}/${editText(dog.name)}" target="_blank">link</a>
-    </div>
+      </div>
+
   `;
   MODAL.insertAdjacentHTML('afterbegin', markup);
   MODAL.classList.remove('hidden');
