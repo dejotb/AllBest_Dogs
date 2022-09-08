@@ -18,6 +18,8 @@ export const ALERTS = document.querySelector('.alerts__container');
 
 export const MODAL = document.querySelector('.modal__container');
 
+export const BTN__FACTS = document.querySelector('.fact__button');
+
 // Link URLs
 
 export const BREED_WIKI_URL = 'https://en.wikipedia.org/wiki';

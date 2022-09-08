@@ -9,7 +9,7 @@ export async function createGridMarkup(dog) {
       <li class="dog__item" data-id="${dog.id}" tabindex="0">
       <div class="dog__image">
           <span class="loader hidden"></span>
-          <img src='' alt='${dog.name}'>
+          <img src='' alt='' loading="lazy">
       </div>
       <h3>${dog.name}</h3>
       `;

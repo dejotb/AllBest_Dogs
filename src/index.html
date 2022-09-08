@@ -11,9 +11,16 @@
   </head>
   <body>
     <header id="header" class="header">
-      <h1>All Best Dogs! A to Z</h1>
+      <!-- <h1>All Best Dogs! A to Z</h1> -->
+      <div class="fact__wrapper">
+        <span>
+          <button class="fact__button" type="submit">🔀</button>
+          <p class="fact__text"></p>
+        </span>
+      </div>
     </header>
-    <main class="main">
+    <main id="main" class="main">
+      <h2>Let's find the best dogs!</h2>
       <form id="dogs__form" class="form__wrapper">
         <input
           id="dogs__input"
@@ -23,7 +30,7 @@
           placeholder="Search by keyword (e.g. spaniel)"
         />
         <ul class="autocomplete__input" tabindex="-1"></ul>
-        <button class="form__button" id="search__button">🔍</button>
+        <button class="form__button" id="search__button">Search</button>
       </form>
       <div class="alerts__container">
         <span class="loader hidden"></span>

@@ -1,5 +1,10 @@
 .header {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  justify-items: center;
   margin-bottom: 2rem;
+  height: 50vh;
+  width: 100vw;
+  // background-image: url("./imgs/background.jpg");
+  // background-position: center;
+  // background-size: cover;
 }

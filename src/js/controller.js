@@ -110,8 +110,15 @@ export function handleUserData(e) {
     const allList = AUTOCOMPLETE_INPUT.querySelectorAll('li');
 
     allList.forEach((el) => el.addEventListener('click', select));
+
     allList.forEach((el) => el.addEventListener('keyup', checkKeyPressed));
   } else {
     AUTOCOMPLETE_INPUT.classList.remove('active');
   }
+}
+
+export async function showDogFact() {
+  const dogFact = document.querySelector('.fact__text');
+  await model.fetchDogsFacts();
+  dogFact.textContent = `Dog fact: ${model.state.fact}`;
 }

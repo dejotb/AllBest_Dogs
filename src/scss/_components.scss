@@ -79,6 +79,7 @@
 
 .form {
   &__wrapper {
+    // display: flex;
     height: 4rem;
     z-index: var(--z-index-box);
     position: relative;
@@ -87,19 +88,24 @@
   &__search {
     height: 100%;
     // width: clamp(30rem, 2vw, 50rem);
-    width: min(70vw, 32rem);
+    width: min(90vw, 38rem);
     // background-color: pink;
     padding: 0 12px;
     box-shadow: 0px 1px 5px 3px rgba(0, 0, 0, 0.12);
   }
 
   &__button {
+    background-color: var(--color-green);
+    padding: 1rem;
+    display: grid;
+    align-content: center;
+    color: var(--color-white);
     position: absolute;
     top: 0;
     right: 0;
     // transform: translateY();
     // width: 2rem;
-    // height: 100%;
+    height: 100%;
   }
 }
 
@@ -219,6 +225,37 @@
   }
 }
 
+// ==========================================================================
+// Facts
+// ==========================================================================
+.fact {
+  &__wrapper {
+    display: flex;
+    gap: 0.5rem;
+    // justify-content: start;
+    align-items: flex-start;
+    height: 20rem;
+    max-width: 70ch;
+
+    @media screen and (min-width: 720px) {
+      width: 70ch;
+    }
+    // @media screen and (min-width: 1200px) {
+    //   grid-template-columns: repeat(auto-fill, minmax(300px, 350px));
+    // }
+    // background-color: pink;
+    // height: fit-content;
+  }
+  &__button {
+    // display: inline;
+    align-self: flex-start;
+    background-color: transparent;
+    border: none;
+    // justify-self: start;
+  }
+}
+
+// utils
 .hidden {
   display: none;
 }

@@ -1,13 +1,17 @@
 import { flattenDiagnosticMessageText } from 'typescript';
 import * as model from './model.js';
-import { fetchDog, createSearchList, handleUserData } from './controller.js';
-import { DOGS_FORM, INPUT_BOX } from './config.js';
+import {
+  fetchDog,
+  createSearchList,
+  handleUserData,
+  showDogFact,
+} from './controller.js';
+import { DOGS_FORM, INPUT_BOX, BTN__FACTS } from './config.js';
 import { isElementFocused } from './helpers.js';
 import { fetchDataCategories } from './temporary.js';
 
-require('dotenv').config();
-
 createSearchList();
+showDogFact();
 
 DOGS_FORM.addEventListener('submit', fetchDog);
 
@@ -18,3 +22,8 @@ document
   .addEventListener('click', isElementFocused.bind(INPUT_BOX));
 
 // fetchDataCategories();
+
+BTN__FACTS.addEventListener('click', (e) => {
+  e.preventDefault();
+  showDogFact();
+});

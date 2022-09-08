@@ -8,10 +8,13 @@ import {
 } from './config.js';
 import { addImageUrlToMarkup } from './views.js';
 
+require('dotenv').config();
+
 export const state = {
   dogs: [],
   breedSuggestions: [],
   breedList: [],
+  fact: '',
 };
 
 export function createDogsObjects(dogs) {
@@ -69,6 +72,27 @@ export async function fetchDogsData(value) {
 
     ALERTS.querySelector('.loader').classList.add('hidden');
     createDogsObjects(result);
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+export async function fetchDogsFacts() {
+  const options = {
+    method: 'GET',
+    headers: {
+      'X-RapidAPI-Key': process.env.FACTS_API_KEY,
+      'X-RapidAPI-Host': 'dog-facts2.p.rapidapi.com',
+    },
+  };
+  try {
+    const data = await fetch(
+      'https://dog-facts2.p.rapidapi.com/facts',
+      options
+    );
+
+    const result = await data.json();
+    [state.fact] = result.facts;
   } catch (err) {
     console.log(err);
   }

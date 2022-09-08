@@ -43,3 +43,18 @@ export async function fetchDataCategories(value) {
 
 // ?
 // ? categories to be used: breed_group, temperament
+
+document.querySelector('#search__button').addEventListener(
+  'click',
+  (e) => {
+    setTimeout(
+      () => {
+        document.querySelector('#main').style.minHeight = '100vh';
+        document.querySelector('#main').scrollIntoView(true);
+      },
+
+      1800
+    );
+  }
+  // { once: true }
+);
