@@ -5,22 +5,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="dog breeds search tool" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap"
+      rel="stylesheet"
+    />
     <title>All Best Dogs!</title>
     <link rel="stylesheet" href="style.scss" />
     <script type="module" defer src="./js/app.js"></script>
   </head>
   <body>
     <header id="header" class="header">
+      <h1 class="heading--1">Let's find all best dogs!</h1>
+      <video autoplay muted loop id="myVideo">
+        <source src="./imgs/dog-video.mp4" type="video/mp4" />
+      </video>
       <!-- <h1>All Best Dogs! A to Z</h1> -->
-      <div class="fact__wrapper">
+      <!-- <div class="fact__wrapper">
         <span>
           <button class="fact__button" type="submit">🔀</button>
           <p class="fact__text"></p>
         </span>
-      </div>
+      </div> -->
     </header>
     <main id="main" class="main">
-      <h2>Let's find the best dogs!</h2>
       <form id="dogs__form" class="form__wrapper">
         <input
           id="dogs__input"

@@ -18,3 +18,14 @@ export function isElementFocused(element) {
   if (document.activeElement !== element)
     AUTOCOMPLETE_INPUT.classList.remove('active');
 }
+
+export function scrollToView() {
+  setTimeout(
+    () => {
+      document.querySelector('#main').style.minHeight = '100vh';
+      document.querySelector('#main').scrollIntoView(true);
+    },
+
+    1800
+  );
+}

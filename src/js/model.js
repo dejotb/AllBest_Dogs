@@ -1,4 +1,4 @@
-import IMAGE from 'url:../imgs/dog-unknown.webp';
+import IMAGE from 'url:../imgs/dog-unknown.svg';
 import {
   API_URL_BREED,
   API_URL_IMAGES,
@@ -7,8 +7,6 @@ import {
   ALERTS,
 } from './config.js';
 import { addImageUrlToMarkup } from './views.js';
-
-require('dotenv').config();
 
 export const state = {
   dogs: [],

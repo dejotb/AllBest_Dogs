@@ -13,6 +13,8 @@ ul {
 }
 
 * {
+  scroll-margin-top: 2rem;
+
   &:focus {
     outline-color: var(--color-blue);
   }
@@ -26,7 +28,8 @@ html {
 
 body {
   display: grid;
-  margin: 0;
+  grid-gap: 2rem;
+  margin: 0 auto;
   min-height: 100vh;
   width: 100vw;
   align-content: start;
@@ -40,9 +43,7 @@ body {
   line-height: 1.6;
   text-rendering: optimizeSpeed;
   // background-image: url("./imgs/background.jpg");
-  background-repeat: repeat;
   // background-size: 2rem;
-  background-size: contain;
   // background-position: start;
   @media screen and (min-width: 720px) {
     // padding: 0 4rem;

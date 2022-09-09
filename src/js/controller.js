@@ -6,9 +6,13 @@ import {
   DOGS_FORM,
   AUTOCOMPLETE_INPUT,
   INPUT_BOX,
-  ALERTS,
+  MAIN,
 } from './config.js';
-import { tempDisableEvents, isElementFocused } from './helpers.js';
+import {
+  tempDisableEvents,
+  isElementFocused,
+  scrollToView,
+} from './helpers.js';
 
 export async function generateMarkup(dogs) {
   dogs.map((dog) => createGridMarkup(dog));
@@ -72,6 +76,8 @@ export function select(e) {
   showDog(dogsInput.value);
 
   dogsInput.value = '';
+
+  scrollToView(MAIN);
 }
 
 function checkKeyPressed(e) {

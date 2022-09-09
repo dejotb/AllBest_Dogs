@@ -1,0 +1,20 @@
+@use "./abstracts" as *;
+
+.heading {
+  &--1 {
+    font-size: var(--fs-500);
+    // font-size: 2rem;
+    font-family: var(--ff-display);
+    text-shadow: 3px 3px 0px var(--color-white);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    line-height: 1.1;
+    letter-spacing: 1px;
+    max-width: 70ch;
+    color: var(--color-white);
+    margin-bottom: 6rem;
+
+    @media screen and (min-width: 720px) {
+      //   font-size: var(--fs-600);
+    }
+  }
+}

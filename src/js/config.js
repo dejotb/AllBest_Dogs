@@ -3,6 +3,7 @@ export const API_URL_IMAGES = 'https://api.thedogapi.com/v1/images/';
 export const API_URL_BREEDS = 'https://api.thedogapi.com/v1/breeds';
 
 // DOM Elements
+export const MAIN = document.querySelector('#main');
 
 export const DOGS_FORM = document.querySelector('#dogs__form');
 
@@ -18,7 +19,9 @@ export const ALERTS = document.querySelector('.alerts__container');
 
 export const MODAL = document.querySelector('.modal__container');
 
-export const BTN__FACTS = document.querySelector('.fact__button');
+export const BTN_FACTS = document.querySelector('.fact__button');
+
+export const BTN_SEARCH = document.querySelector('#search__button');
 
 // Link URLs
 

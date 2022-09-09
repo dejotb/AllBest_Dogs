@@ -6,9 +6,11 @@ import {
   handleUserData,
   showDogFact,
 } from './controller.js';
-import { DOGS_FORM, INPUT_BOX, BTN__FACTS } from './config.js';
-import { isElementFocused } from './helpers.js';
+import { DOGS_FORM, INPUT_BOX, MAIN, BTN_SEARCH } from './config.js';
+import { isElementFocused, scrollToView } from './helpers.js';
 import { fetchDataCategories } from './temporary.js';
+
+require('dotenv').config();
 
 createSearchList();
 // showDogFact();
@@ -21,9 +23,11 @@ document
   .querySelector('body')
   .addEventListener('click', isElementFocused.bind(INPUT_BOX));
 
+BTN_SEARCH.addEventListener('click', scrollToView.bind(MAIN));
+
 // fetchDataCategories();
 
-BTN__FACTS.addEventListener('click', (e) => {
-  e.preventDefault();
-  showDogFact();
-});
+// BTN__FACTS.addEventListener('click', (e) => {
+//   e.preventDefault();
+//   showDogFact();
+// });
