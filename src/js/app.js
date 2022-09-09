@@ -11,7 +11,7 @@ import { isElementFocused } from './helpers.js';
 import { fetchDataCategories } from './temporary.js';
 
 createSearchList();
-showDogFact();
+// showDogFact();
 
 DOGS_FORM.addEventListener('submit', fetchDog);
 
