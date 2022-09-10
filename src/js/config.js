@@ -18,6 +18,7 @@ export const AUTOCOMPLETE_INPUT = document.querySelector(
 export const ALERTS = document.querySelector('.alerts__container');
 
 export const MODAL = document.querySelector('.modal__container');
+export const MODAL_LIST = document.querySelector('.modal__list');
 
 export const BTN_FACTS = document.querySelector('.fact__button');
 

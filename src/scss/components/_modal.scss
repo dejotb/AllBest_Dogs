@@ -20,13 +20,26 @@
     z-index: var(--z-index-popup);
   }
 
+  &__list {
+    width: 98%;
+    max-width: 650px;
+    max-height: 800px;
+
+    @media screen and (min-width: 720px) {
+      width: 50%;
+    }
+    @media screen and (min-width: 1200px) {
+      width: 30%;
+    }
+  }
+
   &__card {
     display: grid;
     grid-gap: 0.5rem;
     background-color: var(--color-yellow);
-    width: 98%;
-    max-width: 650px;
-    max-height: 800px;
+    // width: 98%;
+    // max-width: 650px;
+    // max-height: 800px;
     padding: 1.5rem;
     border-radius: 1rem;
     font-size: 1.75rem;
@@ -35,12 +48,12 @@
     // color: red;
     // z-index: var(--z-index-modal);
 
-    @media screen and (min-width: 720px) {
-      width: 50%;
-    }
-    @media screen and (min-width: 1200px) {
-      width: 30%;
-    }
+    // @media screen and (min-width: 720px) {
+    //   width: 50%;
+    // }
+    // @media screen and (min-width: 1200px) {
+    //   width: 30%;
+    // }
 
     & .dog__image {
       height: 30rem;

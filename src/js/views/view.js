@@ -1,9 +1,16 @@
 import IMAGE from 'url:../../imgs/dog-unknown.svg';
 import * as model from '../model.js';
 import { editText } from '../helpers.js';
-import { BREED_WIKI_URL, DOG_LIST, MODAL, API_URL_IMAGES } from '../config.js';
+import {
+  BREED_WIKI_URL,
+  DOG_LIST,
+  MODAL,
+  MODAL_LIST,
+  API_URL_IMAGES,
+} from '../config.js';
 
 const dogList = document.querySelector('.dog__list');
+const modalCard = document.querySelector('.modal__card');
 
 export async function createGridMarkup(dog) {
   const markup = `
@@ -44,12 +51,12 @@ export function generateDogCard(e) {
   const dog = model.state.dogs.find((el) => el.id === +activeDogId);
   console.log(e.target);
   const markup = `
-    <div class='modal__card'>
+    <li class='modal__card' data-id="${dog.id}">
       <h3>${dog.name}</h3>
       <div class="dog__image">
         <span class="loader hidden"></span>
         <img src='${dog.imgUrl}' alt='${dog.name}'>
-        <span class='dog__heart'>${
+        <span class='dog__heart' data-liked=false>${
           model.state.likedDogs.find((el) => el.id === dog.id) ? '❤️' : '🤍'
         }</span>
       </div>
@@ -70,11 +77,10 @@ export function generateDogCard(e) {
       <a href="${BREED_WIKI_URL}/${editText(
     dog.name
   )}" target="_blank">more info..</a>
-
-      </div>
+    </li>
 
   `;
-  MODAL.insertAdjacentHTML('afterbegin', markup);
+  MODAL_LIST.insertAdjacentHTML('afterbegin', markup);
   MODAL.classList.remove('hidden');
   document.body.classList.add('sticky__body');
   Array.from(DOG_LIST.children).forEach((element) => {
@@ -144,12 +150,12 @@ export async function getImgUrl(dogs) {
   await dogs.map((dog) => fetchImgUrl(dog));
 }
 
-dogList.addEventListener('click', (e) => {
+export function handleHeart(e) {
   if (e.target.classList.contains('dog__heart')) {
     const heart = e.target;
 
     const [likedDog] = model.state.dogs.filter(
-      (dog) => dog.id === +heart.closest('.dog__item').dataset.id
+      (dog) => dog.id === +heart.closest('li').dataset.id
     );
 
     if (model.state.likedDogs.find((el) => el.id === likedDog.id)) {
@@ -158,11 +164,15 @@ dogList.addEventListener('click', (e) => {
       );
       model.state.likedDogs = reducedLikedDogs;
       heart.textContent = '🤍';
+      // heart.style.transform = 'scale(1)';
       console.log(model.state.likedDogs);
     } else {
       model.state.likedDogs.push(likedDog);
       heart.textContent = '❤️';
+      // heart.style.transform = 'scale(1)';
       console.log(model.state.likedDogs);
     }
   }
-});
+}
+
+dogList.addEventListener('click', handleHeart);
