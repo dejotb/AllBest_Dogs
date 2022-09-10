@@ -1,9 +1,9 @@
 @use "./abstracts" as *;
 
 // utils
-.hidden {
-  display: none;
-}
+// .hidden {
+//   display: none;
+// }
 
 .sticky__body {
   overflow: hidden;
@@ -11,4 +11,18 @@
 
 .min__height {
   min-height: 100vh;
+}
+
+.hidden {
+  opacity: 0;
+  display: none;
+}
+.visible {
+  opacity: 1;
+  display: grid;
+}
+
+.transparent {
+  opacity: 0;
+  pointer-events: none;
 }

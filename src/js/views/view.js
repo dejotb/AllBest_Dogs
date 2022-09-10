@@ -11,6 +11,9 @@ export async function createGridMarkup(dog) {
       <div class="dog__image">
           <span class="loader hidden"></span>
           <img src='' alt='' loading="lazy">
+          <span class='dog__heart' data-liked=false>${
+            model.state.likedDogs.find((el) => el.id === dog.id) ? '❤️' : '🤍'
+          }</span>
       </div>
       <h3>${dog.name}</h3>
       `;
@@ -35,6 +38,8 @@ export async function addImageUrlToMarkup(dogListItems, dogId, dogImgUrl) {
 }
 
 export function generateDogCard(e) {
+  if (e.target.classList.contains('dog__heart')) return;
+
   const activeDogId = e.target.closest('.dog__item').dataset.id;
   const dog = model.state.dogs.find((el) => el.id === +activeDogId);
   console.log(e.target);
@@ -44,6 +49,9 @@ export function generateDogCard(e) {
       <div class="dog__image">
         <span class="loader hidden"></span>
         <img src='${dog.imgUrl}' alt='${dog.name}'>
+        <span class='dog__heart'>${
+          model.state.likedDogs.find((el) => el.id === dog.id) ? '❤️' : '🤍'
+        }</span>
       </div>
       <ul class='modal__text'>
         <li>bred group: ${
@@ -135,3 +143,26 @@ export async function generateMarkup(dogs) {
 export async function getImgUrl(dogs) {
   await dogs.map((dog) => fetchImgUrl(dog));
 }
+
+dogList.addEventListener('click', (e) => {
+  if (e.target.classList.contains('dog__heart')) {
+    const heart = e.target;
+
+    const [likedDog] = model.state.dogs.filter(
+      (dog) => dog.id === +heart.closest('.dog__item').dataset.id
+    );
+
+    if (model.state.likedDogs.find((el) => el.id === likedDog.id)) {
+      const reducedLikedDogs = model.state.likedDogs.filter(
+        (el) => el.id !== likedDog.id
+      );
+      model.state.likedDogs = reducedLikedDogs;
+      heart.textContent = '🤍';
+      console.log(model.state.likedDogs);
+    } else {
+      model.state.likedDogs.push(likedDog);
+      heart.textContent = '❤️';
+      console.log(model.state.likedDogs);
+    }
+  }
+});

@@ -4,7 +4,8 @@ export const state = {
   dogs: [],
   breedSuggestions: [],
   breedList: [],
-  fact: '',
+  likedDogs: [],
+  // fact: '',
 };
 
 export function createDogsObjects(dogs) {
