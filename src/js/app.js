@@ -6,7 +6,7 @@ import {
   handleUserData,
   showDogFact,
 } from './controller.js';
-import { DOGS_FORM, INPUT_BOX, MAIN, BTN_SEARCH } from './config.js';
+import { DOGS_FORM, INPUT_BOX, MAIN, BTN_SEARCH, BTN_FACTS } from './config.js';
 import { isElementFocused, scrollToView } from './helpers.js';
 import { fetchDataCategories } from './temporary.js';
 
@@ -27,7 +27,7 @@ BTN_SEARCH.addEventListener('click', scrollToView.bind(MAIN));
 
 // fetchDataCategories();
 
-// BTN__FACTS.addEventListener('click', (e) => {
+// BTN_FACTS.addEventListener('click', (e) => {
 //   e.preventDefault();
 //   showDogFact();
 // });

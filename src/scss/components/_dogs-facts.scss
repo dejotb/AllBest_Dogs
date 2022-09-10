@@ -1,0 +1,30 @@
+@use "../base/abstracts" as *;
+// ==========================================================================
+// Facts
+// ==========================================================================
+.fact {
+  &__wrapper {
+    display: flex;
+    gap: 0.5rem;
+    // justify-content: start;
+    align-items: flex-start;
+    height: 20rem;
+    max-width: 70ch;
+
+    @media screen and (min-width: 720px) {
+      width: 70ch;
+    }
+    // @media screen and (min-width: 1200px) {
+    //   grid-template-columns: repeat(auto-fill, minmax(300px, 350px));
+    // }
+    // background-color: pink;
+    // height: fit-content;
+  }
+  &__button {
+    // display: inline;
+    align-self: flex-start;
+    background-color: transparent;
+    border: none;
+    // justify-self: start;
+  }
+}

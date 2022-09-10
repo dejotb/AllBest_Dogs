@@ -1,0 +1,63 @@
+@use "../base/abstracts" as *;
+// ==========================================================================
+// Popup Card
+// ==========================================================================
+
+.modal {
+  &__container {
+    position: fixed;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    padding: 0.5rem;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(5px);
+    // padding: 0.5rem;
+    z-index: var(--z-index-popup);
+  }
+
+  &__card {
+    display: grid;
+    grid-gap: 0.5rem;
+    background-color: var(--color-yellow);
+    width: 98%;
+    max-width: 650px;
+    max-height: 800px;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    font-size: 1.75rem;
+
+    // height: 90%;
+    // color: red;
+    // z-index: var(--z-index-modal);
+
+    @media screen and (min-width: 720px) {
+      width: 50%;
+    }
+    @media screen and (min-width: 1200px) {
+      width: 30%;
+    }
+
+    & .dog__image {
+      height: 30rem;
+
+      @media screen and (min-width: 720px) {
+        height: 35rem;
+      }
+
+      @media screen and (min-width: 1200px) {
+        height: 45rem;
+      }
+    }
+  }
+
+  &__text {
+    // overflow-y: scroll;
+    // background-color: pink;
+    // max-height: 70%;
+  }
+}

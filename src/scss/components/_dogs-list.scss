@@ -1,0 +1,72 @@
+@use "../base/abstracts" as *;
+// ==========================================================================
+// Card Component
+// ==========================================================================
+
+.dog {
+  &__list {
+    display: grid;
+    justify-content: center;
+    justify-items: center;
+    padding: 1rem;
+    grid-row-gap: 2rem;
+    max-width: 1200px;
+    grid-template-columns: repeat(1, minmax(250px, 350px));
+
+    @media screen and (min-width: 720px) {
+      grid-template-columns: repeat(auto-fill, minmax(200px, 350px));
+      grid-gap: 3rem;
+    }
+    @media screen and (min-width: 1200px) {
+      grid-template-columns: repeat(auto-fill, minmax(300px, 350px));
+    }
+  }
+  &__item {
+    display: grid;
+    padding: 0.5rem;
+    justify-items: center;
+    // background-color: pink;
+    background-color: var(--color-yellow);
+    border-radius: 5px;
+    width: 100%;
+    grid-gap: 1rem;
+    cursor: pointer;
+    scale: 1;
+    transition: scale 0.3s;
+
+    &:hover {
+      scale: 1.03;
+    }
+  }
+
+  &__image {
+    // display: grid;
+    position: relative;
+    width: 100%;
+    // height: 100%;
+    height: 250px;
+
+    & img {
+      border-radius: 5px;
+      //   aspect-ratio: 1/1;
+      height: 270px;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+
+      @media screen and (min-width: 720px) {
+        background-color: var(--color-yellow);
+        // height: 300px;
+      }
+    }
+  }
+}
+
+.centered--one {
+  grid-template-columns: minmax(300px, 400px);
+}
+
+.centered--two {
+  grid-template-columns: repeat(auto-fill, minmax(100px, 400px));
+}

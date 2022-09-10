@@ -2,23 +2,9 @@
   display: grid;
   // max-width: 1200px;
   justify-items: center;
-  padding: 2rem 0;
+  padding: 6rem 0;
   align-content: start;
   // min-width: 1400px;
   // background-color: silver;
-  grid-gap: 2rem;
-}
-
-.alerts__container {
-  position: relative;
-  // top: 50%;
-  // left: 50%;
-  // translate: transform(-50%, -80%);
-  width: 30rem;
-  // height: 20rem;
-
-  & .loader {
-    top: 40%;
-    left: 40%;
-  }
+  // grid-gap: 2rem;
 }

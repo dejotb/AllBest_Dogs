@@ -13,7 +13,7 @@ ul {
 }
 
 * {
-  scroll-margin-top: 2rem;
+  // scroll-margin-top: 6rem;
 
   &:focus {
     outline-color: var(--color-blue);
@@ -28,9 +28,9 @@ html {
 
 body {
   display: grid;
-  grid-gap: 2rem;
+  // grid-gap: 6rem;
   margin: 0 auto;
-  min-height: 100vh;
+  // min-height: 100vh;
   width: 100vw;
   align-content: start;
   justify-content: center;

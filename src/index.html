@@ -22,29 +22,34 @@
         <source src="./imgs/dog-video.mp4" type="video/mp4" />
       </video>
       <!-- <h1>All Best Dogs! A to Z</h1> -->
-      <!-- <div class="fact__wrapper">
-        <span>
-          <button class="fact__button" type="submit">🔀</button>
-          <p class="fact__text"></p>
-        </span>
-      </div> -->
     </header>
     <main id="main" class="main">
-      <form id="dogs__form" class="form__wrapper">
-        <input
-          id="dogs__input"
-          class="form__search"
-          type="text"
-          autocomplete="off"
-          placeholder="Search by keyword (e.g. spaniel)"
-        />
-        <ul class="autocomplete__input" tabindex="-1"></ul>
-        <button class="form__button" id="search__button">Search</button>
-      </form>
-      <div class="alerts__container">
-        <span class="loader hidden"></span>
-      </div>
-      <ul class="dog__list"></ul>
+      <section class="dogs__container">
+        <form id="dogs__form" class="form__wrapper">
+          <input
+            id="dogs__input"
+            class="form__search"
+            type="text"
+            autocomplete="off"
+            placeholder="Search by keyword (e.g. spaniel)"
+          />
+          <ul class="autocomplete__input" tabindex="-1"></ul>
+          <button class="form__button" id="search__button">Search</button>
+        </form>
+        <div class="alerts__container">
+          <span class="loader hidden"></span>
+        </div>
+        <ul class="dog__list"></ul>
+      </section>
+      <!-- <section class="dog_facts">
+        <div class="fact__wrapper">
+          <span>
+            <button class="fact__button" type="submit">🔀</button>
+            <p class="fact__text"></p>
+          </span>
+        </div>
+      </section> -->
+
       <div class="modal__container hidden"></div>
     </main>
   </body>

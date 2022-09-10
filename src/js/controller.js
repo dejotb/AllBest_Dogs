@@ -1,3 +1,4 @@
+import { mainModule } from 'process';
 import * as model from './model.js';
 // import { addImgUrl } from './model.js';
 import { createGridMarkup } from './views.js';
@@ -76,8 +77,7 @@ export function select(e) {
   showDog(dogsInput.value);
 
   dogsInput.value = '';
-
-  scrollToView(MAIN);
+  scrollToView();
 }
 
 function checkKeyPressed(e) {

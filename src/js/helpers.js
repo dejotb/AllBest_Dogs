@@ -1,5 +1,5 @@
 import { isLabeledStatement } from 'typescript';
-import { TIMEOUT_SEC, AUTOCOMPLETE_INPUT, INPUT_BOX } from './config.js';
+import { TIMEOUT_SEC, AUTOCOMPLETE_INPUT, INPUT_BOX, MAIN } from './config.js';
 
 export function editText(string) {
   return string.replace(' ', '_');
@@ -22,8 +22,8 @@ export function isElementFocused(element) {
 export function scrollToView() {
   setTimeout(
     () => {
-      document.querySelector('#main').style.minHeight = '100vh';
-      document.querySelector('#main').scrollIntoView(true);
+      MAIN.style.minHeight = '100vh';
+      MAIN.scrollIntoView(true);
     },
 
     1800
