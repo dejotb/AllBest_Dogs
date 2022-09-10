@@ -1,5 +1,4 @@
-import { isLabeledStatement } from 'typescript';
-import { TIMEOUT_SEC, AUTOCOMPLETE_INPUT, INPUT_BOX, MAIN } from './config.js';
+import { TIMEOUT_SEC, AUTOCOMPLETE_INPUT, MAIN } from './config.js';
 
 export function editText(string) {
   return string.replace(' ', '_');

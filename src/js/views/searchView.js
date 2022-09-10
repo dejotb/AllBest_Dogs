@@ -1,21 +1,13 @@
-import { mainModule } from 'process';
-import * as model from './model.js';
-// import { addImgUrl } from './model.js';
-import { createGridMarkup } from './views.js';
-import {
-  DOG_LIST,
-  DOGS_FORM,
-  AUTOCOMPLETE_INPUT,
-  INPUT_BOX,
-  MAIN,
-} from './config.js';
-import {
-  tempDisableEvents,
-  isElementFocused,
-  scrollToView,
-} from './helpers.js';
+import * as model from '../model.js';
 
-// search view
+import { DOG_LIST, AUTOCOMPLETE_INPUT, INPUT_BOX } from '../config.js';
+import { scrollToView } from '../helpers.js';
+
+import { showDog } from '../controller.js';
+
+// ==========================================================================
+// SEARCH VIEW
+// ==========================================================================
 
 export async function createSearchList() {
   await model.fetchAllBreeds();
@@ -43,7 +35,7 @@ export function select(e) {
   scrollToView();
 }
 
-function checkKeyPressed(e) {
+function checkSearchKeyPressed(e) {
   if (e.keyCode !== 13) return;
   select(e);
   const listItems = Array.from(AUTOCOMPLETE_INPUT.querySelectorAll('li'));
@@ -55,15 +47,13 @@ export function showBreedSuggestions(list) {
   if (!list.length) {
     const userValue = INPUT_BOX.value;
     listData = `<li>${userValue}</li>`;
-    // console.log(listData);
   } else {
-    // list.tabIndex = 0;
     listData = list.join('');
   }
   AUTOCOMPLETE_INPUT.innerHTML = listData;
 }
 
-export function handleUserData(e) {
+export function handleUserSearchData(e) {
   const userData = e.target.value;
   let emptyArray = [];
   if (userData) {
@@ -80,7 +70,9 @@ export function handleUserData(e) {
 
     allList.forEach((el) => el.addEventListener('click', select));
 
-    allList.forEach((el) => el.addEventListener('keyup', checkKeyPressed));
+    allList.forEach((el) =>
+      el.addEventListener('keyup', checkSearchKeyPressed)
+    );
   } else {
     AUTOCOMPLETE_INPUT.classList.remove('active');
   }

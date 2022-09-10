@@ -1,23 +1,20 @@
-import { flattenDiagnosticMessageText } from 'typescript';
-import * as model from './model.js';
 import {
   fetchDog,
   createSearchList,
-  handleUserData,
-  showDogFact,
 } from './controller.js';
-import { DOGS_FORM, INPUT_BOX, MAIN, BTN_SEARCH, BTN_FACTS } from './config.js';
+import { DOGS_FORM, INPUT_BOX, MAIN, BTN_SEARCH, MODAL } from './config.js';
 import { isElementFocused, scrollToView } from './helpers.js';
-import { fetchDataCategories } from './temporary.js';
+import { createSearchList, handleUserSearchData } from './views/searchView.js';
+import { closeModal } from './views/modalView.js';
 
 require('dotenv').config();
 
 createSearchList();
-// showDogFact();
+
 
 DOGS_FORM.addEventListener('submit', fetchDog);
 
-INPUT_BOX.addEventListener('keyup', handleUserData);
+INPUT_BOX.addEventListener('keyup', handleUserSearchData);
 
 document
   .querySelector('body')
@@ -25,9 +22,7 @@ document
 
 BTN_SEARCH.addEventListener('click', scrollToView.bind(MAIN));
 
-// fetchDataCategories();
 
-// BTN_FACTS.addEventListener('click', (e) => {
-//   e.preventDefault();
-//   showDogFact();
-// });
+
+MODAL.addEventListener('click', closeModal);
+document.addEventListener('keyup', closeModal);

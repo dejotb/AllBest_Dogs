@@ -1,6 +1,7 @@
-import * as model from './model.js';
-import { editText } from './helpers.js';
-import { BREED_WIKI_URL, DOG_LIST, MODAL } from './config.js';
+import IMAGE from 'url:../../imgs/dog-unknown.svg';
+import * as model from '../model.js';
+import { editText } from '../helpers.js';
+import { BREED_WIKI_URL, DOG_LIST, MODAL, API_URL_IMAGES } from '../config.js';
 
 const dogList = document.querySelector('.dog__list');
 
@@ -24,20 +25,6 @@ export async function createGridMarkup(dog) {
 // ?
 
 //
-
-// const markup = `
-//       <li class="dog__item" data-id="${dog.id}" tabindex="0">
-//       <div class="dog__image">
-//           <span class="loader hidden"></span>
-//           <img src='' alt='${dog.name}'>
-//       </div>
-//       <p>Name: ${dog.name}</p>
-//       <p>life span: ${dog.life_span}</p>
-//       <p>${dog.temperament}</p>
-//       <a href="${BREED_WIKI_URL}/${editText(dog.name)}" target="_blank">link</a>
-//       </li>
-
-//       `;
 
 export async function addImageUrlToMarkup(dogListItems, dogId, dogImgUrl) {
   const addImage = dogListItems.find(
@@ -94,16 +81,57 @@ DOG_LIST.addEventListener('keyup', (e) => {
   }
 });
 
-export function closeModal(e) {
-  if (e.target.querySelector('.modal__card') || e.keyCode === 27) {
-    MODAL.textContent = '';
-    MODAL.classList.add('hidden');
-    document.body.classList.remove('sticky__body');
-    Array.from(DOG_LIST.children).forEach((element) => {
-      element.tabIndex = 0;
-    });
+export function centerDogsListGrid() {
+  if (model.state.dogs.length >= 3) return;
+  if (model.state.dogs.length === 1) {
+    DOG_LIST.classList.add('centered--one');
+  }
+  if (model.state.dogs.length === 2) {
+    DOG_LIST.classList.add('centered--two');
   }
 }
 
-MODAL.addEventListener('click', closeModal);
-document.addEventListener('keyup', closeModal);
+export async function fetchImgUrl(dog) {
+  const { imgId, id } = dog;
+
+  try {
+    const dogListItems = [...document.querySelectorAll('.dog__item')];
+    const listItem = dogListItems.find(
+      (item) => +item.getAttribute('data-id') === id
+    );
+
+    if (imgId.length === 0) {
+      dog.imgUrl = IMAGE;
+    } else {
+      if (!process.env.DOGS_API_KEY) {
+        throw new Error('You forgot to set DOGS_API_KEY ');
+      }
+
+      listItem.querySelector('.loader').classList.remove('hidden');
+
+      const data = await fetch(`${API_URL_IMAGES}${imgId}`, {
+        headers: {
+          'X-Api-Key': process.env.DOGS_API_KEY,
+        },
+      });
+      const result = await data.json();
+      dog.imgUrl = result.url;
+    }
+    await addImageUrlToMarkup(dogListItems, dog.id, dog.imgUrl);
+    listItem.querySelector('.loader').classList.add('hidden');
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+export async function generateMarkup(dogs) {
+  dogs.map((dog) => createGridMarkup(dog));
+  if (!dogs.length)
+    DOG_LIST.textContent = `We coudn't find such a dog's breed. Please try to find some other :)`;
+
+  centerDogsListGrid();
+}
+
+export async function getImgUrl(dogs) {
+  await dogs.map((dog) => fetchImgUrl(dog));
+}

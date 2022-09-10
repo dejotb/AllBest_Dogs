@@ -47,3 +47,20 @@ export async function fetchDataCategories(value) {
 // document
 //   .querySelector('.autocomplete__input')
 //   .forEach((el) => el.addEventListener('click', scrollToView));
+
+//! facts
+
+// export async function showDogFact() {
+//   const dogFact = document.querySelector('.fact__text');
+//   await model.fetchDogsFacts();
+//   dogFact.textContent = `Dog fact: ${model.state.fact}`;
+// }
+
+// BTN_FACTS.addEventListener('click', (e) => {
+//   e.preventDefault();
+//   showDogFact();
+// });
+
+// showDogFact();
+
+//!
