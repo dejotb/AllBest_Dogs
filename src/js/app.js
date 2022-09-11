@@ -47,3 +47,6 @@ document.addEventListener('keyup', closeModal);
 
 document.querySelector('.nav').addEventListener('click', handleNavigation);
 document.querySelector('.btn--hamburger').addEventListener('click', handleHamburger);
+
+
+

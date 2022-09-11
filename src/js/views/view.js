@@ -1,4 +1,5 @@
 import IMAGE from 'url:../../imgs/dog-unknown.svg';
+import VanillaTilt from 'vanilla-tilt';
 import * as model from '../model.js';
 import { editText } from '../helpers.js';
 import {
@@ -14,16 +15,16 @@ const modalCard = document.querySelector('.modal__card');
 
 export async function createGridMarkup(dog) {
   const markup = `
-      <li class="dog__item" data-id="${dog.id}" tabindex="0">
-      <div class="dog__image">
-          <span class="loader hidden"></span>
-          <img src='' alt='' loading="lazy">
-          <span class='dog__heart' data-liked=false>${
-            model.state.likedDogs.find((el) => el.id === dog.id) ? '❤️' : '🤍'
-          }</span>
-      </div>
+      <li class="dog__item" data-id="${dog.id}" tabindex="0" data-tilt>
+        <div class="dog__image">
+            <span class="loader hidden"></span>
+            <img src='' alt='' loading="lazy">
+            <span class='dog__heart' data-liked=false>${
+              model.state.likedDogs.find((el) => el.id === dog.id) ? '❤️' : '🤍'
+            }</span>
+        </div>
       <h3>${dog.name}</h3>
-      `;
+      </li>`;
   dogList.insertAdjacentHTML('afterbegin', markup);
 }
 
@@ -51,7 +52,7 @@ export function generateDogCard(e) {
   const dog = model.state.dogs.find((el) => el.id === +activeDogId);
   console.log(e.target);
   const markup = `
-    <li class='modal__card' data-id="${dog.id}">
+    <li class='modal__card' data-id="${dog.id}" data-tilt  >
       <h3>${dog.name}</h3>
       <div class="dog__image">
         <span class="loader hidden"></span>
@@ -85,6 +86,11 @@ export function generateDogCard(e) {
   document.body.classList.add('sticky__body');
   Array.from(DOG_LIST.children).forEach((element) => {
     element.tabIndex = -1;
+  });
+
+  VanillaTilt.init(document.querySelector('.modal__card'), {
+    max: 10,
+    speed: 400,
   });
 }
 

@@ -43,6 +43,8 @@
     padding: 1.5rem;
     border-radius: 1rem;
     font-size: 1.75rem;
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
 
     // height: 90%;
     // color: red;
@@ -57,6 +59,7 @@
 
     & .dog__image {
       height: 30rem;
+      transform: translateZ(10px);
 
       @media screen and (min-width: 720px) {
         height: 35rem;
@@ -65,6 +68,10 @@
       @media screen and (min-width: 1200px) {
         height: 45rem;
       }
+    }
+
+    & h3 {
+      transform: translateZ(20px);
     }
   }
 

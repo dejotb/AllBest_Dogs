@@ -28,6 +28,7 @@
     // background-color: pink;
     background-color: var(--color-yellow);
     border-radius: 5px;
+    // box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.6);
     width: 100%;
     grid-gap: 1rem;
     cursor: pointer;
@@ -35,8 +36,9 @@
     transition: all 0.2s ease-in;
 
     &:hover {
+      box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
       scale: 1.01;
-      rotate: -1deg;
+      rotate: -0.5deg;
     }
   }
 
