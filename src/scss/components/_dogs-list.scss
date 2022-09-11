@@ -32,10 +32,11 @@
     grid-gap: 1rem;
     cursor: pointer;
     scale: 1;
-    transition: scale 0.3s;
+    transition: all 0.2s ease-in;
 
     &:hover {
-      scale: 1.03;
+      scale: 1.01;
+      rotate: -1deg;
     }
   }
 
@@ -68,10 +69,11 @@
     bottom: 0;
     right: 1rem;
     cursor: pointer;
-    transition: transform 0.2s ease-in;
+    transition: all 0.2s ease-in;
 
     &:hover {
-      transform: scale(1.4);
+      animation: beat 1s infinite alternate;
+      // transform: scale(1.4);
       // font-size: 4rem;
     }
   }
