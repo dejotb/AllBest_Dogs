@@ -151,28 +151,33 @@ export async function getImgUrl(dogs) {
 }
 
 export function handleHeart(e) {
-  if (e.target.classList.contains('dog__heart')) {
-    const heart = e.target;
+  if (!e.target.classList.contains('dog__heart')) return;
+  const heart = e.target;
 
-    const [likedDog] = model.state.dogs.filter(
-      (dog) => dog.id === +heart.closest('li').dataset.id
+  const [likedDog] = model.state.dogs.filter(
+    (dog) => dog.id === +heart.closest('li').dataset.id
+  );
+
+  if (model.state.likedDogs.find((el) => el.id === likedDog.id)) {
+    const reducedLikedDogs = model.state.likedDogs.filter(
+      (el) => el.id !== likedDog.id
     );
-
-    if (model.state.likedDogs.find((el) => el.id === likedDog.id)) {
-      const reducedLikedDogs = model.state.likedDogs.filter(
-        (el) => el.id !== likedDog.id
-      );
-      model.state.likedDogs = reducedLikedDogs;
-      heart.textContent = '🤍';
-      // heart.style.transform = 'scale(1)';
-      console.log(model.state.likedDogs);
-    } else {
-      model.state.likedDogs.push(likedDog);
-      heart.textContent = '❤️';
-      // heart.style.transform = 'scale(1)';
-      console.log(model.state.likedDogs);
-    }
+    model.state.likedDogs = reducedLikedDogs;
+    heart.textContent = '🤍';
+    // heart.style.transform = 'scale(1)';
+    console.log(model.state.likedDogs);
+  } else {
+    model.state.likedDogs.push(likedDog);
+    heart.textContent = '❤️';
+    // heart.style.transform = 'scale(1)';
+    console.log(model.state.likedDogs);
   }
+
+  const editedHeart = Array.from(DOG_LIST.children).find(
+    (el) => +el.dataset.id === likedDog.id
+  );
+
+  editedHeart.querySelector('.dog__heart').textContent = heart.textContent;
 }
 
 dogList.addEventListener('click', handleHeart);

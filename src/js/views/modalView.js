@@ -15,15 +15,14 @@ export function closeModal(e) {
 
 MODAL_LIST.addEventListener('click', (e) => {
   handleHeart(e);
-  const heart = e.target;
-  // console.log(heart.textContent);
-  const [likedDog] = model.state.dogs.filter(
-    (dog) => dog.id === +heart.closest('li').dataset.id
-  );
-  const editedHeart = Array.from(DOG_LIST.children).find(
-    (el) => +el.dataset.id === likedDog.id
-  );
+  // const heart = e.target;
+  // const [likedDog] = model.state.dogs.filter(
+  //   (dog) => dog.id === +heart.closest('li').dataset.id
+  // );
+  // const editedHeart = Array.from(DOG_LIST.children).find(
+  //   (el) => +el.dataset.id === likedDog.id
+  // );
 
-  editedHeart.querySelector('.dog__heart').textContent = heart.textContent;
+  // editedHeart.querySelector('.dog__heart').textContent = heart.textContent;
   // console.log(likedDog.id);
 });
