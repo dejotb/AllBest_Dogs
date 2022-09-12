@@ -1,5 +1,5 @@
 import * as model from './model.js';
-import { generateMarkup, getImgUrl } from './views/view.js';
+import { generateMarkup, getImgUrl, generateDogCard } from './views/view.js';
 import { DOG_LIST, AUTOCOMPLETE_INPUT } from './config.js';
 import { tempDisableEvents } from './helpers.js';
 
@@ -36,4 +36,5 @@ export function handleBasketItem(e) {
   const likedDog = model.state.likedDogs.find((dog) => dog.id === +selectedDog);
 
   console.log(likedDog);
+  generateDogCard(likedDog);
 }

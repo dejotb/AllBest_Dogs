@@ -46,12 +46,7 @@ export async function addImageUrlToMarkup(dogListItems, dogId, dogImgUrl) {
   addImage.querySelector('img').src = dogImgUrl;
 }
 
-export function generateDogCard(e) {
-  if (e.target.classList.contains('dog__heart')) return;
-
-  const activeDogId = e.target.closest('.dog__item').dataset.id;
-  const dog = model.state.dogs.find((el) => el.id === +activeDogId);
-  console.log(e.target);
+export function generateDogCard(dog) {
   const markup = `
     <li class='modal__card' data-id="${dog.id}" data-tilt  >
       <h3>${dog.name}</h3>
@@ -95,10 +90,19 @@ export function generateDogCard(e) {
   });
 }
 
-DOG_LIST.addEventListener('click', generateDogCard);
+function checkIfHeartClicked(e) {
+  if (e.target.classList.contains('dog__heart')) return;
+
+  const activeDogId = e.target.closest('.dog__item').dataset.id;
+  const dog = model.state.dogs.find((el) => el.id === +activeDogId);
+  // console.log(dog);
+  generateDogCard(dog);
+}
+
+DOG_LIST.addEventListener('click', checkIfHeartClicked);
 DOG_LIST.addEventListener('keyup', (e) => {
   if (e.key === 'Enter') {
-    generateDogCard(e);
+    checkIfHeartClicked(e);
   }
 });
 
@@ -165,11 +169,24 @@ export function handleHeart(e) {
     (dog) => dog.id === +heart.closest('li').dataset.id
   );
 
+  // check if selected liked dog is fisible in DOG__LIST, or if DOG__LIST is empty
+  if (!likedDog || !DOG_LIST.querySelector('.dog__item')) {
+    const filteredLikedDogs = model.state.likedDogs.filter(
+      (el) => el.id !== +e.target.closest('.modal__card').dataset.id
+    );
+    model.state.likedDogs = filteredLikedDogs;
+    heart.remove();
+    updateBasket(e.target.closest('.modal__card'));
+    return;
+  }
+
+  // ?
+
   if (model.state.likedDogs.find((el) => el.id === likedDog.id)) {
-    const reducedLikedDogs = model.state.likedDogs.filter(
+    const filteredLikedDogs = model.state.likedDogs.filter(
       (el) => el.id !== likedDog.id
     );
-    model.state.likedDogs = reducedLikedDogs;
+    model.state.likedDogs = filteredLikedDogs;
     heart.textContent = '🤍';
     console.log(model.state.likedDogs);
   } else {
