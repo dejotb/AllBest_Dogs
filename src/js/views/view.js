@@ -191,6 +191,11 @@ export function handleHeart(e) {
     console.log(model.state.likedDogs);
   } else {
     model.state.likedDogs.push(likedDog);
+
+    document.querySelector('.btn--hamburger').classList.add('heart-beat');
+    setTimeout(() => {
+      document.querySelector('.btn--hamburger').classList.remove('heart-beat');
+    }, 1000);
     heart.textContent = '❤️';
     console.log(model.state.likedDogs);
   }

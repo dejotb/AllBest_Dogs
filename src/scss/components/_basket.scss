@@ -167,6 +167,7 @@
 
   &--hamburger,
   &--close {
+    transition: all 0.2s ease-in;
     width: 4rem;
 
     &:hover {
@@ -176,12 +177,6 @@
     }
   }
 
-  &--hamburger {
-    // transform: translateY(-0.5rem);
-    @media screen and (min-width: $bp-md) {
-      //   display: none;
-    }
-  }
   &--hamburger,
   &--close {
     position: absolute;
@@ -207,4 +202,8 @@
   &__text {
     color: var(--color-dark);
   }
+}
+
+.heart-beat {
+  animation: beat 1s 1 alternate;
 }
