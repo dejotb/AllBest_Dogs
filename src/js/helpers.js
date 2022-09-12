@@ -22,9 +22,9 @@ export function scrollToView() {
   setTimeout(
     () => {
       MAIN.style.minHeight = '100vh';
-      MAIN.scrollIntoView(true);
+      MAIN.scrollIntoView();
     },
 
-    1800
+    100
   );
 }

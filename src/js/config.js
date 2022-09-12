@@ -24,6 +24,8 @@ export const BTN_FACTS = document.querySelector('.fact__button');
 
 export const BTN_SEARCH = document.querySelector('#search__button');
 
+export const BASKET_ITEMS = document.querySelector('.basket__items');
+
 // Link URLs
 
 export const BREED_WIKI_URL = 'https://en.wikipedia.org/wiki';

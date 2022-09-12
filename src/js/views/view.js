@@ -1,5 +1,6 @@
 import IMAGE from 'url:../../imgs/dog-unknown.svg';
 import VanillaTilt from 'vanilla-tilt';
+import { updateBasket } from './basketView.js';
 import * as model from '../model.js';
 import { editText } from '../helpers.js';
 import {
@@ -15,7 +16,7 @@ const modalCard = document.querySelector('.modal__card');
 
 export async function createGridMarkup(dog) {
   const markup = `
-      <li class="dog__item" data-id="${dog.id}" tabindex="0" data-tilt>
+      <li class="dog__item" data-id="${dog.id}" tabindex="0">
         <div class="dog__image">
             <span class="loader hidden"></span>
             <img src='' alt='' loading="lazy">
@@ -56,7 +57,7 @@ export function generateDogCard(e) {
       <h3>${dog.name}</h3>
       <div class="dog__image">
         <span class="loader hidden"></span>
-        <img src='${dog.imgUrl}' alt='${dog.name}'>
+        <img src='${dog.imgUrl}' alt='${dog.name}' loading="lazy">
         <span class='dog__heart' data-liked=false>${
           model.state.likedDogs.find((el) => el.id === dog.id) ? '❤️' : '🤍'
         }</span>
@@ -89,8 +90,8 @@ export function generateDogCard(e) {
   });
 
   VanillaTilt.init(document.querySelector('.modal__card'), {
-    max: 10,
-    speed: 400,
+    max: 8,
+    speed: 300,
   });
 }
 
@@ -170,12 +171,10 @@ export function handleHeart(e) {
     );
     model.state.likedDogs = reducedLikedDogs;
     heart.textContent = '🤍';
-    // heart.style.transform = 'scale(1)';
     console.log(model.state.likedDogs);
   } else {
     model.state.likedDogs.push(likedDog);
     heart.textContent = '❤️';
-    // heart.style.transform = 'scale(1)';
     console.log(model.state.likedDogs);
   }
 
@@ -184,6 +183,8 @@ export function handleHeart(e) {
   );
 
   editedHeart.querySelector('.dog__heart').textContent = heart.textContent;
+
+  updateBasket(likedDog);
 }
 
 dogList.addEventListener('click', handleHeart);

@@ -28,3 +28,12 @@ export function fetchDog(e) {
 
   dogsInput.value = '';
 }
+
+export function handleBasketItem(e) {
+  const selectedDog = e.target.closest('.basket__item').dataset.id;
+  console.log(selectedDog);
+
+  const likedDog = model.state.likedDogs.find((dog) => dog.id === +selectedDog);
+
+  console.log(likedDog);
+}

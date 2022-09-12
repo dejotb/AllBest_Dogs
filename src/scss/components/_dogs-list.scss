@@ -74,7 +74,7 @@
     transition: all 0.2s ease-in;
 
     &:hover {
-      animation: beat 1s infinite alternate;
+      animation: beat 1s 2 alternate;
       // transform: scale(1.4);
       // font-size: 4rem;
     }
