@@ -34,7 +34,7 @@ BASKET_ITEMS.addEventListener('click', handleBasketItem);
 
 console.log(model.state.likedDogs);
 
-
+setLocalStorage('likedDogs', model.state.likedDogs);
 window.addEventListener('beforeunload', () => {
   setLocalStorage('likedDogs', model.state.likedDogs);
 });
