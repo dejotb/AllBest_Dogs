@@ -10,9 +10,10 @@ export const state = {
 
 const retrievedLikedDogs = localStorage.getItem('likedDogs');
 
-console.log(JSON.parse(retrievedLikedDogs));
-
-state.likedDogs = JSON.parse(retrievedLikedDogs);
+// console.log(JSON.parse(retrievedLikedDogs));
+state.likedDogs = JSON.parse(retrievedLikedDogs)
+  ? JSON.parse(retrievedLikedDogs)
+  : [];
 
 export function createDogsObjects(dogs) {
   state.dogs = dogs.map((dog) => ({
