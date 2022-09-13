@@ -2,7 +2,7 @@ import IMAGE from 'url:../../imgs/dog-unknown.svg';
 import VanillaTilt from 'vanilla-tilt';
 import { updateBasket } from './basketView.js';
 import * as model from '../model.js';
-import { editText } from '../helpers.js';
+import { editText, setLocalStorage, getLocalStorage } from '../helpers.js';
 import {
   BREED_WIKI_URL,
   DOG_LIST,
@@ -169,7 +169,7 @@ export function handleHeart(e) {
     (dog) => dog.id === +heart.closest('li').dataset.id
   );
 
-  // check if selected liked dog is fisible in DOG__LIST, or if DOG__LIST is empty
+  // check if selected liked dog is visible in DOG__LIST, or if DOG__LIST is empty
   if (!likedDog || !DOG_LIST.querySelector('.dog__item')) {
     const filteredLikedDogs = model.state.likedDogs.filter(
       (el) => el.id !== +e.target.closest('.modal__card').dataset.id
@@ -188,7 +188,6 @@ export function handleHeart(e) {
     );
     model.state.likedDogs = filteredLikedDogs;
     heart.textContent = '🤍';
-    console.log(model.state.likedDogs);
   } else {
     model.state.likedDogs.push(likedDog);
 
@@ -197,7 +196,6 @@ export function handleHeart(e) {
       document.querySelector('.btn--hamburger').classList.remove('heart-beat');
     }, 1000);
     heart.textContent = '❤️';
-    console.log(model.state.likedDogs);
   }
 
   const editedHeart = Array.from(DOG_LIST.children).find(

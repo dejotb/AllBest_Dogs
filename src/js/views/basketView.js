@@ -1,39 +1,11 @@
 import * as model from '../model.js';
 import { BASKET_ITEMS } from '../config.js';
+import { getLocalStorage } from '../helpers.js';
 
 const basket = document.querySelector('.basket');
 const hamburger = document.querySelector('.btn--hamburger');
 const basketWrapper = document.querySelector('.basket__list--wrapper');
 const basketItems = document.querySelector('.basket__items');
-
-// ==========================================================================
-// Handle Hamburger
-// ==========================================================================
-
-const handleHamburger = (e) => {
-  const hamburgerState = e.currentTarget.getAttribute('aria-expanded');
-  if (hamburgerState === 'false') {
-    basketWrapper.classList.add('visible');
-    hamburger.setAttribute('aria-expanded', 'true');
-    hamburger.classList.add('transparent');
-  }
-};
-
-hamburger.addEventListener('click', handleHamburger);
-
-const handleBasket = (e) => {
-  if (e.target.closest('.hamburger')) {
-    return;
-  }
-
-  if (e.target.closest('.btn--close')) {
-    hamburger.setAttribute('aria-expanded', 'false');
-    basketWrapper.classList.remove('visible');
-    hamburger.classList.remove('transparent');
-  }
-};
-
-basket.addEventListener('click', handleBasket);
 
 export function createBasketMarkup(dog) {
   const markup = `
@@ -56,3 +28,34 @@ export function updateBasket() {
   console.log(likedDogs);
   likedDogs.forEach((el) => createBasketMarkup(el));
 }
+
+// ==========================================================================
+// Handle Hamburger
+// ==========================================================================
+
+const handleHamburger = (e) => {
+  const hamburgerState = e.currentTarget.getAttribute('aria-expanded');
+  if (hamburgerState === 'false') {
+    updateBasket();
+
+    basketWrapper.classList.add('visible');
+    hamburger.setAttribute('aria-expanded', 'true');
+    hamburger.classList.add('transparent');
+  }
+};
+
+hamburger.addEventListener('click', handleHamburger);
+
+const handleBasket = (e) => {
+  if (e.target.closest('.hamburger')) {
+    return;
+  }
+
+  if (e.target.closest('.btn--close')) {
+    hamburger.setAttribute('aria-expanded', 'false');
+    basketWrapper.classList.remove('visible');
+    hamburger.classList.remove('transparent');
+  }
+};
+
+basket.addEventListener('click', handleBasket);

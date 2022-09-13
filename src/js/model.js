@@ -8,6 +8,8 @@ export const state = {
   // fact: '',
 };
 
+state.likedDogs = JSON.parse(localStorage.likedDogs);
+
 export function createDogsObjects(dogs) {
   state.dogs = dogs.map((dog) => ({
     name: dog.name,
