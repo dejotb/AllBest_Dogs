@@ -8,7 +8,11 @@ export const state = {
   // fact: '',
 };
 
-state.likedDogs = JSON.parse(localStorage.likedDogs);
+const retrievedLikedDogs = localStorage.getItem('likedDogs');
+
+console.log(JSON.parse(retrievedLikedDogs));
+
+state.likedDogs = JSON.parse(retrievedLikedDogs);
 
 export function createDogsObjects(dogs) {
   state.dogs = dogs.map((dog) => ({
