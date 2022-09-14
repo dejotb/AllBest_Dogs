@@ -7,7 +7,7 @@
   width: 100vw;
   position: relative;
   // margin: -5px;
-  overflow: hidden;
+  // overflow: hidden;
   position: relative;
   // background-color: pink;
   // background-image: url("./imgs/background.jpg");
@@ -27,7 +27,7 @@
     // bottom: 0;
     z-index: -1;
     // filter: blur(2px);
-    // transform: scale(1.01);
+    // transform: scale(1.1);
     // margin: -5px -10px -5px -10px;
     @media screen and (min-width: 1200px) {
       height: 70%;
@@ -36,7 +36,7 @@
 
   &__box {
     // bottom: 10vh;
-    align-self: start;
+    align-self: center;
     display: grid;
     // align-self: end;
     grid-gap: 3rem;
