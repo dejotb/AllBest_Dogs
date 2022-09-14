@@ -11,7 +11,6 @@ import { handleNavigation,  handleBasket} from './views/basketView.js';
 
 require('dotenv').config();
 
-// getLocalStorage('likedDogs');
 
 createSearchList();
 
@@ -34,12 +33,6 @@ BASKET_ITEMS.addEventListener('click', handleBasketItem);
 
 console.log(model.state.likedDogs);
 
-
-
-
-
-localStorage.setItem('likedDogs', JSON.stringify(model.state.likedDogs))
-// setLocalStorage('likedDogs', model.state.likedDogs);
 window.addEventListener('beforeunload', () => {
   localStorage.setItem('likedDogs', JSON.stringify(model.state.likedDogs))
 });
