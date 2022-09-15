@@ -35,10 +35,20 @@
     </nav>
 
     <header id="header" class="header">
-      <h1 class="heading--1">Let's find all best dogs!</h1>
-      <div class="header__box">
-        <h2>Overview of all dog breeds</h2>
-        <div class="header__text">
+      <div class="header__title">
+        <h1 class="heading--1">Let's find all best dogs!</h1>
+        <a class="btn--cta" href="#dogs" role="button">search</a>
+      </div>
+
+      <video autoplay muted loop class="header__video">
+        <source src="./imgs/dog-video.mp4" type="video/mp4" />
+      </video>
+      <!-- <h1>All Best Dogs! A to Z</h1> -->
+    </header>
+    <main id="main" class="main">
+      <section class="overview">
+        <h2 class="overview__title">All Best Dogs - Overview</h2>
+        <div class="overview__text">
           <p>
             In All Best Dogs we stand for one thing above all: the great
             declaration of love for the dog as man's best friend. We love all
@@ -49,55 +59,19 @@
             descriptions you will find everything about the character,
             temperament as well as the size, weight and average life expectancy.
             The description of what the breed stands for in use and what the
-            dog's bred group is, will help you to find the perfect dog for you.
+            dog's bred group is, will help you find the perfect dog for you.
           </p>
         </div>
-      </div>
-      <video autoplay muted loop class="header__video">
-        <source src="./imgs/dog-video.mp4" type="video/mp4" />
-      </video>
-      <!-- <h1>All Best Dogs! A to Z</h1> -->
-    </header>
-    <main id="main" class="main">
-      <section class="dogs_top">
-        <!-- <h2>Editor's pick</h2> -->
-        <!-- <ul class="dog__list--top">
-          <li class="dog__item" data-id="214">
-            <div class="dog__image">
-              <span class="loader hidden"></span>
-              <img
-                src="https://cdn2.thedogapi.com/images/S1T8Ee9Nm_1280.jpg"
-                alt=""
-                loading="lazy"
-              />
-            </div>
-            <h3>Samoyed</h3>
-          </li>
-          <li class="dog__item" data-id="214">
-            <div class="dog__image">
-              <span class="loader hidden"></span>
-              <img
-                src="https://cdn2.thedogapi.com/images/S1T8Ee9Nm_1280.jpg"
-                alt=""
-                loading="lazy"
-              />
-            </div>
-            <h3>Samoyed</h3>
-          </li>
-          <li class="dog__item" data-id="214">
-            <div class="dog__image">
-              <span class="loader hidden"></span>
-              <img
-                src="https://cdn2.thedogapi.com/images/S1T8Ee9Nm_1280.jpg"
-                alt=""
-                loading="lazy"
-              />
-            </div>
-            <h3>Samoyed</h3>
-          </li>
-        </ul> -->
       </section>
-      <section class="dogs__container">
+      <!-- <section class="dog_facts">
+        <div class="fact__wrapper">
+          <span>
+            <button class="fact__button" type="submit">🔀</button>
+            <p class="fact__text"></p>
+          </span>
+        </div>
+      </section> -->
+      <section id="dogs" class="dogs__container">
         <form id="dogs__form" class="form__wrapper">
           <input
             id="dogs__input"
@@ -112,16 +86,8 @@
         <div class="alerts__container">
           <span class="loader hidden"></span>
         </div>
-        <ul class="dog__list"></ul>
+        <ul class="dogs__list"></ul>
       </section>
-      <!-- <section class="dog_facts">
-        <div class="fact__wrapper">
-          <span>
-            <button class="fact__button" type="submit">🔀</button>
-            <p class="fact__text"></p>
-          </span>
-        </div>
-      </section> -->
 
       <div class="modal__container hidden">
         <div class="modal__list"></div>

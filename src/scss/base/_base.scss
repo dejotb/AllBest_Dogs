@@ -31,10 +31,11 @@ body {
   // grid-gap: 6rem;
   margin: 0 auto;
   // min-height: 100vh;
+  color: var(--color-white);
   width: 100vw;
   align-content: start;
   justify-content: center;
-  font-size: calc(15px + 0.2vw);
+  font-size: calc(15px + 0.1vw);
   font-family: var(--ff-primary);
   overflow-x: hidden;
   // color: var(--color-font);

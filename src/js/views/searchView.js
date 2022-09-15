@@ -1,6 +1,6 @@
 import * as model from '../model.js';
 
-import { DOG_LIST, AUTOCOMPLETE_INPUT, INPUT_BOX } from '../config.js';
+import { DOGS_LIST, AUTOCOMPLETE_INPUT, INPUT_BOX } from '../config.js';
 import { scrollToView } from '../helpers.js';
 
 import { showDog } from '../controller.js';
@@ -23,11 +23,11 @@ export async function createSearchList() {
 export function select(e) {
   const selectUserData = e.target.textContent;
   INPUT_BOX.value = selectUserData;
-  DOG_LIST.classList.remove('centered--one');
-  DOG_LIST.classList.remove('centered--two');
+  DOGS_LIST.classList.remove('centered--one');
+  DOGS_LIST.classList.remove('centered--two');
   const dogsInput = document.querySelector('#dogs__input');
 
-  DOG_LIST.textContent = '';
+  DOGS_LIST.textContent = '';
   AUTOCOMPLETE_INPUT.classList.remove('active');
   showDog(dogsInput.value);
 

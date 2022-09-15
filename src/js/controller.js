@@ -1,7 +1,7 @@
 import * as model from './model.js';
 import { generateMarkup, getImgUrl, generateDogCard } from './views/view.js';
 import {
-  DOG_LIST,
+  DOGS_LIST,
   AUTOCOMPLETE_INPUT,
   BTN_HAMBURGER,
   BASKET_WRAPPER,
@@ -17,15 +17,15 @@ export async function showDog(breed) {
 
 export function fetchDog(e) {
   e.preventDefault();
-  DOG_LIST.classList.remove('centered--one');
-  DOG_LIST.classList.remove('centered--two');
+  DOGS_LIST.classList.remove('centered--one');
+  DOGS_LIST.classList.remove('centered--two');
   const dogsInput = document.querySelector('#dogs__input');
 
   if (dogsInput.value.length < 3) {
-    DOG_LIST.textContent = 'search string has to be longer than 3 characters';
+    DOGS_LIST.textContent = 'search string has to be longer than 3 characters';
     return;
   }
-  DOG_LIST.textContent = '';
+  DOGS_LIST.textContent = '';
 
   AUTOCOMPLETE_INPUT.classList.remove('active');
   showDog(dogsInput.value);

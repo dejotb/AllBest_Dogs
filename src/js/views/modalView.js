@@ -1,5 +1,5 @@
 import * as model from '../model.js';
-import { DOG_LIST, MODAL, MODAL_LIST } from '../config.js';
+import { DOGS_LIST, MODAL, MODAL_LIST } from '../config.js';
 import { handleHeart } from './view.js';
 
 export function closeModal(e) {
@@ -7,7 +7,7 @@ export function closeModal(e) {
     MODAL_LIST.textContent = '';
     MODAL.classList.add('hidden');
     document.body.classList.remove('sticky__body');
-    Array.from(DOG_LIST.children).forEach((element) => {
+    Array.from(DOGS_LIST.children).forEach((element) => {
       element.tabIndex = 0;
     });
   }

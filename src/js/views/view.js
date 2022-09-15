@@ -5,13 +5,13 @@ import * as model from '../model.js';
 import { editText, setLocalStorage, getLocalStorage } from '../helpers.js';
 import {
   BREED_WIKI_URL,
-  DOG_LIST,
+  DOGS_LIST,
   MODAL,
   MODAL_LIST,
   API_URL_IMAGES,
 } from '../config.js';
 
-const dogList = document.querySelector('.dog__list');
+const dogList = document.querySelector('.dogs__list');
 const modalCard = document.querySelector('.modal__card');
 
 export async function createGridMarkup(dog) {
@@ -80,7 +80,7 @@ export function generateDogCard(dog) {
   MODAL_LIST.insertAdjacentHTML('afterbegin', markup);
   MODAL.classList.remove('hidden');
   document.body.classList.add('sticky__body');
-  Array.from(DOG_LIST.children).forEach((element) => {
+  Array.from(DOGS_LIST.children).forEach((element) => {
     element.tabIndex = -1;
   });
 
@@ -99,8 +99,8 @@ function checkIfHeartClicked(e) {
   generateDogCard(dog);
 }
 
-DOG_LIST.addEventListener('click', checkIfHeartClicked);
-DOG_LIST.addEventListener('keyup', (e) => {
+DOGS_LIST.addEventListener('click', checkIfHeartClicked);
+DOGS_LIST.addEventListener('keyup', (e) => {
   if (e.key === 'Enter') {
     checkIfHeartClicked(e);
   }
@@ -109,10 +109,10 @@ DOG_LIST.addEventListener('keyup', (e) => {
 export function centerDogsListGrid() {
   if (model.state.dogs.length >= 3) return;
   if (model.state.dogs.length === 1) {
-    DOG_LIST.classList.add('centered--one');
+    DOGS_LIST.classList.add('centered--one');
   }
   if (model.state.dogs.length === 2) {
-    DOG_LIST.classList.add('centered--two');
+    DOGS_LIST.classList.add('centered--two');
   }
 }
 
@@ -152,7 +152,7 @@ export async function fetchImgUrl(dog) {
 export async function generateMarkup(dogs) {
   dogs.map((dog) => createGridMarkup(dog));
   if (!dogs.length)
-    DOG_LIST.textContent = `We coudn't find such a dog's breed. Please try to find some other :)`;
+    DOGS_LIST.textContent = `We coudn't find such a dog's breed. Please try to find some other :)`;
 
   centerDogsListGrid();
 }
@@ -170,7 +170,7 @@ export function handleHeart(e) {
   );
 
   // check if selected liked dog is visible in DOG__LIST, or if DOG__LIST is empty
-  if (!likedDog || !DOG_LIST.querySelector('.dog__item')) {
+  if (!likedDog || !DOGS_LIST.querySelector('.dog__item')) {
     const filteredLikedDogs = model.state.likedDogs.filter(
       (el) => el.id !== +e.target.closest('.modal__card').dataset.id
     );
@@ -198,7 +198,7 @@ export function handleHeart(e) {
     heart.textContent = '❤️';
   }
 
-  const editedHeart = Array.from(DOG_LIST.children).find(
+  const editedHeart = Array.from(DOGS_LIST.children).find(
     (el) => +el.dataset.id === likedDog.id
   );
 

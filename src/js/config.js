@@ -9,7 +9,8 @@ export const MAIN = document.querySelector('#main');
 
 export const DOGS_FORM = document.querySelector('#dogs__form');
 
-export const DOG_LIST = document.querySelector('.dog__list');
+export const DOGS_CONTAINER = document.querySelector('.dogs__container');
+export const DOGS_LIST = document.querySelector('.dogs__list');
 
 export const INPUT_BOX = document.querySelector('input');
 

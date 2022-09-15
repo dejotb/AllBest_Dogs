@@ -1,4 +1,9 @@
-import { TIMEOUT_SEC, AUTOCOMPLETE_INPUT, MAIN } from './config.js';
+import {
+  TIMEOUT_SEC,
+  AUTOCOMPLETE_INPUT,
+  MAIN,
+  DOGS_CONTAINER,
+} from './config.js';
 
 export function editText(string) {
   return string.replace(' ', '_');
@@ -18,11 +23,11 @@ export function isElementFocused(element) {
     AUTOCOMPLETE_INPUT.classList.remove('active');
 }
 
-export function scrollToView() {
+export function scrollToView(e) {
   setTimeout(
     () => {
-      MAIN.style.minHeight = '100vh';
-      MAIN.scrollIntoView();
+      DOGS_CONTAINER.style.minHeight = '100vh';
+      DOGS_CONTAINER.scrollIntoView();
     },
 
     100

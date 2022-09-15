@@ -3,7 +3,7 @@ import {
   fetchDog,
   createSearchList, handleBasketItem, handleBasketVisibility
 } from './controller.js';
-import { DOGS_FORM, INPUT_BOX, MAIN, BTN_SEARCH, MODAL, BASKET_ITEMS, BTN_HAMBURGER, BODY } from './config.js';
+import { DOGS_FORM, INPUT_BOX,DOGS_CONTAINER, MAIN, BTN_SEARCH, MODAL, BASKET_ITEMS, BTN_FACTS, BTN_HAMBURGER, BODY } from './config.js';
 import { isElementFocused, scrollToView, setLocalStorage} from './helpers.js';
 import { createSearchList, handleUserSearchData } from './views/searchView.js';
 import { closeModal } from './views/modalView.js';
@@ -23,7 +23,7 @@ BODY.addEventListener('click', (e) => {
     handleBasketVisibility(e)
 });
 
-BTN_SEARCH.addEventListener('click', scrollToView.bind(MAIN));
+BTN_SEARCH.addEventListener('click', scrollToView.bind(DOGS_CONTAINER));
 
 MODAL.addEventListener('click', closeModal);
 document.addEventListener('keyup', closeModal);
@@ -36,3 +36,17 @@ console.log(model.state.likedDogs);
 window.addEventListener('beforeunload', () => {
   localStorage.setItem('likedDogs', JSON.stringify(model.state.likedDogs))
 });
+
+
+// export async function showDogFact() {
+//   const dogFact = document.querySelector('.fact__text');
+//   await model.fetchDogsFacts();
+//   dogFact.textContent = `Dog fact: ${model.state.fact}`;
+// }
+
+// BTN_FACTS.addEventListener('click', (e) => {
+//   e.preventDefault();
+//   showDogFact();
+// });
+
+// showDogFact();
