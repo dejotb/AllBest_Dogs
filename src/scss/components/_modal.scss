@@ -38,7 +38,7 @@
     display: grid;
     grid-gap: 0.5rem;
     background-color: var(--color-yellow);
-    background-color: #f5dbc4;
+    background-color: #c89666;
 
     border: 1px solid black;
     // width: 98%;
@@ -95,7 +95,15 @@
 
   &__text {
     display: grid;
-    grid-gap: 1rem;
+    // grid-gap: 1rem;
+    // padding: 1rem 0;
+
+    & li:nth-child(odd) {
+      background-color: #e1b382;
+    }
+    & li {
+      padding: 0.5rem;
+    }
   }
 
   &__chars {

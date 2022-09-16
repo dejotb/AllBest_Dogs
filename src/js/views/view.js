@@ -67,6 +67,7 @@ export function generateDogCard(dog) {
         <li ><span class="text--secondary">temperament:</span> ${
           dog.temperament ? dog.temperament.toLowerCase() : undefined
         }</li>
+        </ul>
         <ul class='modal__chars'>
         <li ><span class="text--secondary">life span (yrs)</span> ${dog.life_span.slice(
           0,
@@ -75,7 +76,6 @@ export function generateDogCard(dog) {
         <li ><span class="text--secondary">height (cm)</span> ${dog.height}</li>
         <li ><span class="text--secondary">weight (kg)</span> ${dog.weight}</li>
         </ul>
-      </ul>
 
     </li>
 
