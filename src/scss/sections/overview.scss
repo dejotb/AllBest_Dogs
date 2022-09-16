@@ -12,7 +12,7 @@
   justify-items: center;
   padding: 3rem 1rem;
   background-color: var(--color-blue);
-  // background-color: var(--color-white);
+  background-color: #f5dbc4;
 
   position: relative;
   //   z-index: var(--z-index-popup);
@@ -39,7 +39,7 @@
   }
 
   &__title {
-    border-bottom: solid var(--color-white) 1px;
+    border-bottom: solid black 1px;
     padding-bottom: 2rem;
     width: 100%;
   }

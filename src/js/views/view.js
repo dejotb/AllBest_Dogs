@@ -58,25 +58,33 @@ export function generateDogCard(dog) {
         }</span>
       </div>
       <ul class='modal__text'>
-        <li>bred group: ${
+        <li><span class="text--secondary">breed group:</span> ${
           dog.breed_group ? dog.breed_group.toLowerCase() : undefined
-        };</li>
-        <li> bred for: ${
+        }</li>
+        <li><span class="text--secondary">bred for:</span> ${
           dog.bred_for ? dog.bred_for.toLowerCase() : undefined
-        };</li>
-        <li>temperament: ${
+        }</li>
+        <li ><span class="text--secondary">temperament:</span> ${
           dog.temperament ? dog.temperament.toLowerCase() : undefined
-        };</li>
-        <li>life span: ${dog.life_span};</li>
-        <li>height: ${dog.height}cm;</li>
-        <li>weight: ${dog.weight}kg;</li>
+        }</li>
+        <ul class='modal__chars'>
+        <li ><span class="text--secondary">life span (yrs)</span> ${dog.life_span.slice(
+          0,
+          7
+        )}</li>
+        <li ><span class="text--secondary">height (cm)</span> ${dog.height}</li>
+        <li ><span class="text--secondary">weight (kg)</span> ${dog.weight}</li>
+        </ul>
       </ul>
-      <a href="${BREED_WIKI_URL}/${editText(
-    dog.name
-  )}" target="_blank">more info..</a>
+
     </li>
 
   `;
+
+  // <a href="${BREED_WIKI_URL}/${editText(
+  //   dog.name
+  // )}" target="_blank">more info..</a>
+
   MODAL_LIST.insertAdjacentHTML('afterbegin', markup);
   MODAL.classList.remove('hidden');
   document.body.classList.add('sticky__body');

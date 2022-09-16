@@ -22,14 +22,15 @@
 
   &__list {
     width: 98%;
-    max-width: 650px;
-    max-height: 800px;
+    max-width: 50rem;
+    max-height: 70rem;
 
     @media screen and (min-width: 720px) {
-      width: 50%;
+      // max-width: 50rem;
+      max-height: 80rem;
     }
     @media screen and (min-width: 1200px) {
-      width: 30%;
+      // width: 30%;
     }
   }
 
@@ -37,12 +38,16 @@
     display: grid;
     grid-gap: 0.5rem;
     background-color: var(--color-yellow);
+    background-color: #f5dbc4;
+
+    border: 1px solid black;
     // width: 98%;
     // max-width: 650px;
     // max-height: 800px;
-    padding: 1.5rem;
+    padding: 1rem;
     border-radius: 1rem;
-    font-size: 1.75rem;
+    // font-size: var(--fs-300);
+    font-size: 1.7rem;
     transform-style: preserve-3d;
     transform: perspective(1000px);
 
@@ -56,9 +61,22 @@
     // @media screen and (min-width: 1200px) {
     //   width: 30%;
     // }
+    // span {
+    //   font-size: var(--fs-200);
+    // }
+
+    h3 {
+      justify-self: center;
+    }
+
+    a {
+      // color: pink;
+      font-size: var(--fs-300);
+    }
 
     & .dog__image {
       height: 30rem;
+      // scale: 2.5;
       transform: translateZ(10px);
 
       @media screen and (min-width: 720px) {
@@ -66,7 +84,7 @@
       }
 
       @media screen and (min-width: 1200px) {
-        height: 45rem;
+        height: 40rem;
       }
     }
 
@@ -76,8 +94,20 @@
   }
 
   &__text {
-    // overflow-y: scroll;
+    display: grid;
+    grid-gap: 1rem;
+  }
+
+  &__chars {
+    display: grid;
+    justify-items: center;
+    grid-template-columns: repeat(3, 1fr);
     // background-color: pink;
-    // max-height: 70%;
+    grid-gap: 1rem;
+
+    & li {
+      display: grid;
+      justify-items: center;
+    }
   }
 }
