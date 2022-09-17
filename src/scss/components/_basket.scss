@@ -3,13 +3,14 @@
 .basket {
   position: fixed;
   top: 0;
-  left: 0;
-  align-self: start;
-  width: 100%;
-  display: grid;
-  align-items: center;
-  grid-auto-flow: column;
-  padding: 1rem;
+  right: 0;
+  // left: 0;
+  // align-self: start;
+  // width: 100%;
+  // display: grid;
+  // align-items: center;
+  // grid-auto-flow: column;
+
   //   background-color: var(--color-background);
   //   background-color: pink;
   z-index: var(--z-index-popup);
@@ -27,7 +28,7 @@
     animation: fade-in 0.4s ease-in-out;
     min-height: 25vh;
     max-height: 50vh;
-    border-radius: 5px;
+    border-radius: 0 0 15px 15px;
     // inset: 0;
     top: 0;
     right: 0;

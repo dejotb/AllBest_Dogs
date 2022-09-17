@@ -115,7 +115,7 @@
     grid-template-columns: repeat(3, 1fr);
     // background-color: pink;
     grid-gap: 1rem;
-
+    padding: 0.5rem;
     & li {
       display: grid;
       justify-items: center;
