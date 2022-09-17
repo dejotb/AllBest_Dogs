@@ -29,16 +29,17 @@
         <button class="btn btn--close">
           <span class="hamburger__text" data-title="😍"></span>
         </button>
-        <span>My best dogs:</span>
+        <span class="basket__title">My best dogs:</span>
         <ul class="basket__items"></ul>
       </div>
     </nav>
 
     <header id="header" class="header">
       <div class="header__title">
-        <h1 class="heading--1">Let's find all best dogs!</h1>
-        <a class="btn--cta" href="#dogs" role="button">search</a>
+        <h1 class="heading--1">All Best Dogs are here!</h1>
+        <a class="btn--cta" href="#dogs" role="button">click to find them!</a>
       </div>
+      <!-- <img class="header__video" src="./imgs/dog.jpg" alt="" /> -->
 
       <video autoplay muted loop class="header__video">
         <source src="./imgs/dog-video.mp4" type="video/mp4" />
@@ -72,6 +73,7 @@
         </div>
       </section> -->
       <section id="dogs" class="dogs__container">
+        <span>Let's find the best dogs! Type below to search.</span>
         <form id="dogs__form" class="form__wrapper">
           <input
             id="dogs__input"
@@ -81,7 +83,7 @@
             placeholder="Search by keyword (e.g. spaniel)"
           />
           <ul class="autocomplete__input" tabindex="-1"></ul>
-          <button class="form__button" id="search__button">Search</button>
+          <button class="form__button" id="search__button">Search 🔍</button>
         </form>
         <div class="alerts__container">
           <span class="loader hidden"></span>

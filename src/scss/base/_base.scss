@@ -40,7 +40,8 @@ body {
   overflow-x: hidden;
   // color: var(--color-font);
   // background-color: var(--color-blue);
-  background-color: #2d545e;
+  background-color: #fff5d7;
+  background-color: #ffe8b3;
   font-weight: 400;
   line-height: 1.6;
   text-rendering: optimizeSpeed;
@@ -101,7 +102,7 @@ a {
 }
 
 html {
-  scrollbar-color: var(--color-blue) #e0e0e0;
+  scrollbar-color: #feb300 #e0e0e0;
   scrollbar-width: thin;
 }
 

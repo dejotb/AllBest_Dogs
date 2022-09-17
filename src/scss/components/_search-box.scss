@@ -19,6 +19,7 @@
     // background-color: pink;
     padding: 0 12px;
     box-shadow: 0px 1px 5px 3px rgba(0, 0, 0, 0.12);
+    border-radius: 5px;
   }
 
   &__button {
@@ -26,12 +27,15 @@
     top: 0;
     right: 0;
     background-color: var(--color-green);
+    background-color: #ff5e6c;
     padding: 1rem;
     display: grid;
     align-content: center;
     color: var(--color-white);
     // transform: translateY();
     // width: 2rem;
+    border-radius: 5px;
+    border-radius: 0 5px 5px 0;
     height: 100%;
   }
 }
@@ -49,7 +53,7 @@
 }
 
 .autocomplete__input {
-  background-color: pink;
+  background-color: #fff5d7;
   box-shadow: 0px 1px 5px 3px rgba(0, 0, 0, 0.12);
   overflow-y: auto;
   max-height: 28rem;

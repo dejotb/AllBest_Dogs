@@ -23,7 +23,9 @@ export async function createGridMarkup(dog) {
             <span class='dog__heart' data-liked=false>${
               model.state.likedDogs.find((el) => el.id === dog.id) ? '❤️' : '🤍'
             }</span>
+
         </div>
+      <button class='dog__details' title="view details">🔎</button>
       <h3>${dog.name}</h3>
       </li>`;
   dogList.insertAdjacentHTML('afterbegin', markup);
@@ -49,7 +51,6 @@ export async function addImageUrlToMarkup(dogListItems, dogId, dogImgUrl) {
 export function generateDogCard(dog) {
   const markup = `
     <li class='modal__card' data-id="${dog.id}" data-tilt  >
-      <h3>${dog.name}</h3>
       <div class="dog__image">
         <span class="loader hidden"></span>
         <img src='${dog.imgUrl}' alt='${dog.name}' loading="lazy">
@@ -57,6 +58,7 @@ export function generateDogCard(dog) {
           model.state.likedDogs.find((el) => el.id === dog.id) ? '❤️' : '🤍'
         }</span>
       </div>
+      <h3>${dog.name}</h3>
       <ul class='modal__text'>
         <li><span class="text--secondary">breed group:</span> ${
           dog.breed_group ? dog.breed_group.toLowerCase() : undefined
@@ -69,16 +71,16 @@ export function generateDogCard(dog) {
         }</li>
         </ul>
         <ul class='modal__chars'>
-        <li ><span class="text--secondary">life span (yrs)</span> ${dog.life_span.slice(
-          0,
-          7
-        )}</li>
+        <li ><span class="text--secondary">life span (yrs)</span> ${
+          dog.life_span.split(' years')[0]
+        }</li>
         <li ><span class="text--secondary">height (cm)</span> ${dog.height}</li>
-        <li ><span class="text--secondary">weight (kg)</span> ${dog.weight}</li>
+        <li ><span class="text--secondary">weight (kg)</span> ${
+          dog.weight === 'NaN' ? undefined : dog.weight.toLowerCase()
+        }</li>
         </ul>
 
     </li>
-
   `;
 
   // <a href="${BREED_WIKI_URL}/${editText(

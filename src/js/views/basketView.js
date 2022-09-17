@@ -9,12 +9,12 @@ const basketItems = document.querySelector('.basket__items');
 
 export function createBasketMarkup(dog) {
   const markup = `
-  <li class="basket__item" data-id="${dog.id}" tabindex="0">
-  <div class="basket__image">
-      <span class="loader hidden"></span>
-      <img src='${dog.imgUrl}' alt='${dog.name}' loading="lazy">
-  </div>
-<h3>${dog.name}</h3>
+  <li class="basket__item" data-id="${dog.id}">
+    <div class="basket__image">
+        <span class="loader hidden"></span>
+        <img src='${dog.imgUrl}' alt='${dog.name}' loading="lazy">
+    </div>
+    <span class='basket__name'>${dog.name}</span>
 </li>
   `;
   document
