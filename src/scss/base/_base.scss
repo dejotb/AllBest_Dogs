@@ -43,6 +43,12 @@ body {
   // background-color: var(--color-blue);
   background-color: #fff5d7;
   background-color: #ffe8b3;
+  // background-color: #ffaaab;
+  background: linear-gradient(
+    0deg,
+    rgba(255, 245, 215, 0.30574236530549714) 0%,
+    rgba(255, 232, 179, 1) 18%
+  );
   font-weight: 400;
   line-height: 1.6;
   text-rendering: optimizeSpeed;

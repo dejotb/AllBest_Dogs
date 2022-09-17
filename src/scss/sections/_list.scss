@@ -65,7 +65,7 @@
 .dog {
   &__item {
     display: grid;
-    padding: 0.5rem;
+    padding: 0.5rem 0.5rem 1rem;
     justify-items: center;
     // background-color: pink;
     background-color: var(--color-yellow);
@@ -86,6 +86,10 @@
       box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
       scale: 1.01;
       rotate: -0.5deg;
+    }
+
+    & h3 {
+      font-size: 1.5rem;
     }
   }
 

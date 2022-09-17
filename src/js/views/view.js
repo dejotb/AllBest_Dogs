@@ -79,7 +79,9 @@ export function generateDogCard(dog) {
           dog.weight === 'NaN' ? undefined : dog.weight.toLowerCase()
         }</li>
         </ul>
-
+        <a class='text--secondary' href="${BREED_WIKI_URL}/${editText(
+    dog.name
+  )}" target="_blank">more details...</a>
     </li>
   `;
 
