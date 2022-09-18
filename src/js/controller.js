@@ -7,6 +7,8 @@ import {
   BASKET_WRAPPER,
 } from './config.js';
 import { tempDisableEvents } from './helpers.js';
+// import { showAlertText } from './views/alertView.js';
+import alert from './views/alertView.js';
 
 export async function showDog(breed) {
   await model.fetchDogsData(breed);
@@ -22,7 +24,8 @@ export function fetchDog(e) {
   const dogsInput = document.querySelector('#dogs__input');
 
   if (dogsInput.value.length < 3) {
-    DOGS_LIST.textContent = 'search string has to be longer than 3 characters';
+    const markup = `search string has to be longer than 3️⃣ characters.`;
+    alert(markup);
     return;
   }
   DOGS_LIST.textContent = '';

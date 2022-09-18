@@ -1,0 +1,10 @@
+@use "../base/abstracts" as *;
+
+.alert {
+  &__text {
+    background-color: #fff5d7;
+    padding: 1rem;
+    border: #feb300 solid 1px;
+    border-radius: 15px;
+  }
+}

@@ -12,7 +12,7 @@
 //   grid-gap: 2rem;
 // }
 
-.alerts__container {
+.loader__container {
   position: relative;
   // top: 50%;
   // left: 50%;
@@ -59,6 +59,10 @@
       max-width: 1200px;
       grid-template-columns: repeat(auto-fill, minmax(300px, 350px));
     }
+  }
+
+  &__title {
+    font-size: var(--fs-400);
   }
 }
 

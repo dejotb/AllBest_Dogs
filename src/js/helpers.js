@@ -3,6 +3,7 @@ import {
   AUTOCOMPLETE_INPUT,
   MAIN,
   DOGS_CONTAINER,
+  DOGS_LIST,
 } from './config.js';
 
 export function editText(string) {
@@ -26,7 +27,7 @@ export function isElementFocused(element) {
 export function scrollToView(e) {
   setTimeout(
     () => {
-      DOGS_CONTAINER.style.minHeight = '100vh';
+      // DOGS_CONTAINER.style.minHeight = '100vh';
       DOGS_CONTAINER.scrollIntoView();
     },
 

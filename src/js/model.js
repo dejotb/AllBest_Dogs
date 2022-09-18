@@ -1,4 +1,5 @@
-import { API_URL_BREED, API_URL_BREEDS, ALERTS } from './config.js';
+import { API_URL_BREED, API_URL_BREEDS, LOADER } from './config.js';
+import alert from './views/alertView.js';
 
 export const state = {
   dogs: [],
@@ -45,6 +46,8 @@ export async function fetchAllBreeds() {
 
     state.breedSuggestions = result.map((item) => item.name);
   } catch (err) {
+    const markup = err;
+    alert(markup);
     console.log(err);
   }
 }
@@ -57,7 +60,7 @@ export async function fetchDogsData(value) {
     if (value === '' || value === undefined)
       console.log(`search for dog's breed`);
 
-    ALERTS.querySelector('.loader').classList.remove('hidden');
+    LOADER.querySelector('.loader').classList.remove('hidden');
 
     const data = await fetch(`${API_URL_BREED}${value}`, {
       headers: {
@@ -66,9 +69,11 @@ export async function fetchDogsData(value) {
     });
     const result = await data.json();
 
-    ALERTS.querySelector('.loader').classList.add('hidden');
+    LOADER.querySelector('.loader').classList.add('hidden');
     createDogsObjects(result);
   } catch (err) {
+    const markup = err;
+    alert(markup);
     console.log(err);
   }
 }
@@ -90,6 +95,8 @@ export async function fetchDogsFacts() {
     const result = await data.json();
     [state.fact] = result.facts;
   } catch (err) {
+    const markup = err;
+    alert(markup);
     console.log(err);
   }
 }

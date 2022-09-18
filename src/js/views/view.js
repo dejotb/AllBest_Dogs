@@ -2,7 +2,8 @@ import IMAGE from 'url:../../imgs/dog-unknown.svg';
 import VanillaTilt from 'vanilla-tilt';
 import { updateBasket } from './basketView.js';
 import * as model from '../model.js';
-import { editText, setLocalStorage, getLocalStorage } from '../helpers.js';
+import { editText } from '../helpers.js';
+import alert from './alertView.js';
 import {
   BREED_WIKI_URL,
   DOGS_LIST,
@@ -163,8 +164,10 @@ export async function fetchImgUrl(dog) {
 
 export async function generateMarkup(dogs) {
   dogs.map((dog) => createGridMarkup(dog));
-  if (!dogs.length)
-    DOGS_LIST.textContent = `We coudn't find such a dog's breed. Please try to find some other :)`;
+  if (!dogs.length) {
+    const markup = `We coudn't find such a dog's breed. Please try to find some other 🐶`;
+    alert(markup);
+  }
 
   centerDogsListGrid();
 }
