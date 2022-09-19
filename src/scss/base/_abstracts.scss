@@ -28,14 +28,11 @@ $bp-sm: 45em; // 600px;
 
   // colors
   --color-font: #11347d;
-  // --color-primary: rgba(255, 232, 179, 1);
-  --color-primary: rgba(51, 120, 84, 1);
-  // --color-primary--light: rgba(255, 245, 215, 1);
-  --color-primary--light: rgba(133, 166, 122, 1);
+  --color-primary: rgba(255, 232, 179, 1);
+  --color-primary--light: rgba(255, 245, 215, 1);
 
   --color-green: #00ce7c;
   --color-yellow: rgba(254, 179, 0, 1);
-  --color-yellow: rgba(51, 120, 84, 1);
   // --color-blue: #275fac;
   --color-blue: #003580;
   --color-red: #db3445;
@@ -43,7 +40,6 @@ $bp-sm: 45em; // 600px;
   --color-grey: #363636;
   --color-grey--light: rgba(224, 224, 224, 1);
   --color-pink: rgba(255, 94, 108, 1);
-  --color-pink: #00ce7c;
 
   // z-index
 
