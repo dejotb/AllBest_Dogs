@@ -53,24 +53,10 @@
     transform-style: preserve-3d;
     transform: perspective(1000px);
 
-    // height: 90%;
-    // color: red;
-    // z-index: var(--z-index-modal);
-
-    // @media screen and (min-width: 720px) {
-    //   width: 50%;
+    // & .dog__caption h3 {
+    //   justify-self: center;
+    //   transform: translateZ(1.5rem);
     // }
-    // @media screen and (min-width: 1200px) {
-    //   width: 30%;
-    // }
-    // span {
-    //   font-size: var(--fs-200);
-    // }
-
-    h3 {
-      justify-self: center;
-      transform: translateZ(1.5rem);
-    }
 
     a {
       // color: pink;
@@ -94,9 +80,20 @@
       }
     }
 
-    // & h3 {
-    //   transform: translateZ(20px);
-    // }
+    & .dog__caption {
+      padding: 0.5rem 0;
+      justify-content: center;
+      transform: translateZ(20px);
+
+      & .dog__heart {
+        position: absolute;
+        right: 1rem;
+      }
+      & .dog__name {
+        font-size: 2rem;
+        font-weight: 600;
+      }
+    }
   }
 
   &__text {

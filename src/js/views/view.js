@@ -20,14 +20,15 @@ export async function createGridMarkup(dog) {
       <li class="dog__item" data-id="${dog.id}" tabindex="0">
         <div class="dog__image">
             <span class="loader hidden"></span>
-            <img src='' alt='' loading="lazy">
-            <span class='dog__heart' data-liked=false>${
-              model.state.likedDogs.find((el) => el.id === dog.id) ? '❤️' : '🤍'
-            }</span>
-
+            <img src='${dog.name}' alt='' loading="lazy">
         </div>
-      <button class='dog__details' title="view details">🔎</button>
-      <h3>${dog.name}</h3>
+        <div class='dog__caption'>
+          <button class='dog__details' title="view details">🔎</button>
+          <span class='dog__name'>${dog.name}</span>
+          <span class='dog__heart' data-liked=false>${
+            model.state.likedDogs.find((el) => el.id === dog.id) ? '❤️' : '🤍'
+          }</span>
+        </div>
       </li>`;
   dogList.insertAdjacentHTML('afterbegin', markup);
 }
@@ -55,11 +56,14 @@ export function generateDogCard(dog) {
       <div class="dog__image">
         <span class="loader hidden"></span>
         <img src='${dog.imgUrl}' alt='${dog.name}' loading="lazy">
+      </div>
+      <div class='dog__caption'>
+        <span class='dog__name'>${dog.name}</span>
         <span class='dog__heart' data-liked=false>${
           model.state.likedDogs.find((el) => el.id === dog.id) ? '❤️' : '🤍'
         }</span>
       </div>
-      <h3>${dog.name}</h3>
+
       <ul class='modal__text'>
         <li><span class="text--secondary">breed group:</span> ${
           dog.breed_group ? dog.breed_group.toLowerCase() : undefined
