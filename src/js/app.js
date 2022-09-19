@@ -3,11 +3,11 @@ import {
   fetchDog,
   createSearchList, handleBasketItem, handleBasketVisibility
 } from './controller.js';
-import { DOGS_FORM, INPUT_BOX,DOGS_CONTAINER, MAIN, BTN_SEARCH, MODAL, BASKET_ITEMS, BTN_FACTS, BTN_HAMBURGER, BODY } from './config.js';
+import { DOGS_FORM, INPUT_BOX,DOGS_CONTAINER, MAIN, BTN_SEARCH, MODAL, BASKET_ITEMS, BTN_FACTS, BTN_HAMBURGER, BODY, BASKET } from './config.js';
 import { isElementFocused, scrollToView, setLocalStorage} from './helpers.js';
 import { createSearchList, handleUserSearchData } from './views/searchView.js';
 import { closeModal } from './views/modalView.js';
-import { handleNavigation,  handleBasket} from './views/basketView.js';
+import { handleHamburger,  handleBasket} from './views/basketView.js';
 
 require('dotenv').config();
 
@@ -31,12 +31,17 @@ document.addEventListener('keyup', closeModal);
 BASKET_ITEMS.addEventListener('click', handleBasketItem);
 
 
-console.log(model.state.likedDogs);
+// console.log(model.state.likedDogs);
 
 window.addEventListener('beforeunload', () => {
   localStorage.setItem('likedDogs', JSON.stringify(model.state.likedDogs))
 });
 
+
+
+BTN_HAMBURGER.addEventListener('click', handleHamburger);
+
+BASKET.addEventListener('click', handleBasket);
 
 // export async function showDogFact() {
 //   const dogFact = document.querySelector('.fact__text');

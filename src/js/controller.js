@@ -24,7 +24,7 @@ export function fetchDog(e) {
   const dogsInput = document.querySelector('#dogs__input');
 
   if (dogsInput.value.length < 3) {
-    const markup = `search string has to be longer than 3️⃣ characters.`;
+    const markup = `String has to be atleast 3️⃣ characters.`;
     alert(markup);
     return;
   }

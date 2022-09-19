@@ -1,11 +1,17 @@
 import * as model from '../model.js';
-import { BASKET_ITEMS } from '../config.js';
+import {
+  BASKET,
+  BASKET_WRAPPER,
+  BASKET_ITEMS,
+  BTN_HAMBURGER,
+} from '../config.js';
 import { getLocalStorage } from '../helpers.js';
 
-const basket = document.querySelector('.basket');
-const hamburger = document.querySelector('.btn--hamburger');
-const basketWrapper = document.querySelector('.basket__list--wrapper');
-const basketItems = document.querySelector('.basket__items');
+// export const BTN_HAMBURGER = document.querySelector('.btn--hamburger');
+
+// export const BASKET = document.querySelector('.basket');
+// export const BASKET_WRAPPER = document.querySelector('.basket__list--wrapper');
+// export const BASKET_ITEMS = document.querySelector('.basket__items');
 
 export function createBasketMarkup(dog) {
   const markup = `
@@ -17,45 +23,46 @@ export function createBasketMarkup(dog) {
     <span class='basket__name'>${dog.name}</span>
 </li>
   `;
-  document
-    .querySelector('.basket__items')
-    .insertAdjacentHTML('afterbegin', markup);
+  BASKET_ITEMS.insertAdjacentHTML('afterbegin', markup);
 }
 
 export function updateBasket() {
-  document.querySelector('.basket__items').textContent = '';
+  BASKET_ITEMS.textContent = '';
   const { likedDogs } = model.state;
-  console.log(likedDogs);
-  likedDogs.forEach((el) => createBasketMarkup(el));
+  if (likedDogs.length === 0) {
+    const info = document.createElement('li');
+    info.textContent = `Basket is empty. Find your best dogs and add them here 🐶`;
+    BASKET_ITEMS.appendChild(info);
+  } else {
+    BASKET_ITEMS.textContent = '';
+    console.log(likedDogs);
+    likedDogs.forEach((el) => createBasketMarkup(el));
+  }
 }
 
 // ==========================================================================
 // Handle Hamburger
 // ==========================================================================
 
-const handleHamburger = (e) => {
+export const handleHamburger = (e) => {
   const hamburgerState = e.currentTarget.getAttribute('aria-expanded');
   if (hamburgerState === 'false') {
     updateBasket();
 
-    basketWrapper.classList.add('visible');
-    hamburger.setAttribute('aria-expanded', 'true');
-    hamburger.classList.add('transparent');
+    BASKET_WRAPPER.classList.add('visible');
+    BTN_HAMBURGER.setAttribute('aria-expanded', 'true');
+    BTN_HAMBURGER.classList.add('transparent');
   }
 };
 
-hamburger.addEventListener('click', handleHamburger);
-
-const handleBasket = (e) => {
+export const handleBasket = (e) => {
   if (e.target.closest('.hamburger')) {
     return;
   }
 
   if (e.target.closest('.btn--close')) {
-    hamburger.setAttribute('aria-expanded', 'false');
-    basketWrapper.classList.remove('visible');
-    hamburger.classList.remove('transparent');
+    BTN_HAMBURGER.setAttribute('aria-expanded', 'false');
+    BASKET_WRAPPER.classList.remove('visible');
+    BTN_HAMBURGER.classList.remove('transparent');
   }
 };
-
-basket.addEventListener('click', handleBasket);

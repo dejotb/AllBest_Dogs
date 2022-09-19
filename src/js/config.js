@@ -29,6 +29,7 @@ export const BTN_SEARCH = document.querySelector('#search__button');
 
 export const BTN_HAMBURGER = document.querySelector('.btn--hamburger');
 
+export const BASKET = document.querySelector('.basket');
 export const BASKET_WRAPPER = document.querySelector('.basket__list--wrapper');
 export const BASKET_ITEMS = document.querySelector('.basket__items');
 

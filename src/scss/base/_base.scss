@@ -16,7 +16,7 @@ ul {
   // scroll-margin-top: 6rem;
 
   &:focus {
-    outline-color: var(--color-blue);
+    outline-color: var(--color-pink);
   }
 }
 
@@ -46,6 +46,11 @@ body {
     rgba(255, 245, 215, 0.30574236530549714) 0%,
     var(--color-primary) 18%
   );
+  // background-image: linear-gradient(
+  //   to right bottom,
+  //   rgba(255, 245, 215, 0.30574236530549714),
+  //   var(--color-primary)
+  // );
   font-weight: 400;
   line-height: 1.6;
   text-rendering: optimizeSpeed;

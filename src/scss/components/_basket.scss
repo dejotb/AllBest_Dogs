@@ -4,43 +4,33 @@
   position: fixed;
   top: 0;
   right: 0;
-  // left: 0;
-  // align-self: start;
-  // width: 100%;
-  // display: grid;
-  // align-items: center;
-  // grid-auto-flow: column;
-
-  //   background-color: var(--color-background);
-  //   background-color: pink;
   z-index: var(--z-index-popup);
 
   &__list--wrapper {
     position: absolute;
-    border: var(--color-yellow) solid 1px;
-    // background-color: var(--color-blue-light);
-    background-color: var(--color-green);
-    background-color: var(--color-primary--light);
+    top: 0;
+    right: 0;
     display: grid;
     grid-gap: 1rem;
     align-content: start;
     justify-items: center;
-    animation: fade-in 0.4s ease-in-out;
+    width: 100vw;
     min-height: 25vh;
     max-height: 50vh;
+    padding: 1rem;
+    border: var(--color-yellow) solid 1px;
+    background-color: var(--color-primary--light);
+    animation: fade-in 0.4s ease-in-out;
     border-radius: 0 0 15px 15px;
-    // inset: 0;
-    top: 0;
-    right: 0;
-    width: 100vw;
-    opacity: 0;
     overflow-y: auto;
     display: none;
-    padding: 1rem;
+    opacity: 0;
 
-    @media screen and (min-width: $bp-sm) {
-      top: 0;
-      //   left: 0;
+    @media screen and (min-width: $bp-md) {
+      width: 35vw;
+      max-height: 70vh;
+    }
+    @media screen and (min-width: $bp-lg) {
       width: 30vw;
       max-height: 70vh;
     }
@@ -64,12 +54,6 @@
     display: grid;
     justify-items: center;
     width: 100%;
-    // grid-gap: 1rem;
-
-    @media screen and (min-width: $bp-md) {
-      //   grid-auto-flow: column;
-      //   grid-gap: 2rem;
-    }
   }
 
   &__item {
@@ -79,9 +63,7 @@
     cursor: pointer;
     width: 100%;
     padding: 0.5rem;
-    // white-space: nowrap;
     overflow: hidden;
-    // text-overflow: ellipsis;
 
     &:nth-child(odd) {
       background-color: var(--color-primary);
@@ -91,10 +73,9 @@
   &__image {
     width: 5rem;
     height: 5rem;
+
     & img {
       border-radius: 50%;
-      // overflow: hidden;
-      // background-size: cover;
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -106,116 +87,4 @@
     width: 100%;
     height: 100%;
   }
-
-  // &__logo {
-  //   justify-self: center;
-  //   width: 16rem;
-
-  //   & img {
-  //     transition: all 0.2s linear;
-  //   }
-
-  //   @media screen and (min-width: $bp-md) {
-  //     position: static;
-  //     justify-self: start;
-  //   }
-  // }
-}
-
-.btn {
-  position: relative;
-  text-decoration: none;
-  border: none;
-  height: 3.5rem;
-  background-color: transparent;
-  width: 10rem;
-  z-index: var(--z-index-popup);
-  font-family: var(--ff-display);
-
-  @media screen and (min-width: $bp-xl) {
-    width: 13rem;
-  }
-
-  &:active {
-    :after {
-      //   transform: translate3d(4px, 4px, 4px);
-    }
-  }
-  &:hover {
-    :after {
-      background-color: var(--color-blue-light);
-    }
-  }
-
-  ::before,
-  ::after {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 12vh;
-    border: 1px solid var(--color-dark);
-    z-index: -1;
-    pointer-events: none;
-  }
-
-  ::before {
-    content: "";
-    background-color: var(--color-light);
-    transform: translate(4px, 4px);
-  }
-
-  ::after {
-    content: attr(data-title);
-    display: grid;
-    align-content: center;
-    justify-items: center;
-    color: var(--color-dark);
-    background-color: var(--color-primary);
-    background-color: var(--color-yellow);
-    transition: background-color 0.125s linear, transform 0.125s ease-out;
-  }
-
-  &--hamburger,
-  &--close {
-    transition: all 0.2s ease-in;
-    width: 4rem;
-
-    &:hover {
-      :after {
-        background-color: var(--color-pink);
-      }
-    }
-  }
-
-  &--hamburger,
-  &--close {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-
-    // &:hover {
-    //   :after {
-    //     background-color: var(--color-red);
-    //   }
-    // }
-    @media screen and (min-width: $bp-md) {
-      //   display: none;
-    }
-  }
-}
-
-.hamburger {
-  @media screen and (min-width: $bp-md) {
-    // display: none;
-  }
-
-  &__text {
-    color: var(--color-dark);
-  }
-}
-
-.heart-beat {
-  animation: beat 1s 1 alternate;
 }
