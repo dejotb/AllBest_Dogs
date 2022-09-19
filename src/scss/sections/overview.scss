@@ -12,9 +12,7 @@
 
   justify-items: center;
   padding: 2rem 1rem;
-  // background-color: var(--color-blue);
-  background-color: #fff5d7;
-  // background-color: #ffe8b3;
+  background-color: var(--color-primary--light);
 
   position: relative;
   //   z-index: var(--z-index-popup);
@@ -41,7 +39,7 @@
   }
 
   &__title {
-    border-bottom: solid #feb300 1px;
+    border-bottom: solid var(--color-yellow) 1px;
     padding-bottom: 2rem;
     width: 95%;
   }

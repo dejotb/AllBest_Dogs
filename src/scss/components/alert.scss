@@ -2,9 +2,9 @@
 
 .alert {
   &__text {
-    background-color: #fff5d7;
+    background-color: var(--color-primary--light);
     padding: 1rem;
-    border: #feb300 solid 1px;
+    border: var(--color-yellow) solid 1px;
     border-radius: 15px;
   }
 }

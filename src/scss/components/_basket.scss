@@ -17,10 +17,10 @@
 
   &__list--wrapper {
     position: absolute;
-    border: #feb300 solid 1px;
+    border: var(--color-yellow) solid 1px;
     // background-color: var(--color-blue-light);
     background-color: var(--color-green);
-    background-color: #fff5d7;
+    background-color: var(--color-primary--light);
     display: grid;
     grid-gap: 1rem;
     align-content: start;
@@ -49,7 +49,7 @@
   &__title {
     font-size: 2.5rem;
     text-align: center;
-    border-bottom: solid #feb300 1px;
+    border-bottom: solid var(--color-yellow) 1px;
     padding-bottom: 0.5rem;
     width: 95%;
   }
@@ -84,7 +84,7 @@
     // text-overflow: ellipsis;
 
     &:nth-child(odd) {
-      background-color: #ffe8b3;
+      background-color: var(--color-primary);
     }
   }
 
@@ -173,7 +173,7 @@
     justify-items: center;
     color: var(--color-dark);
     background-color: var(--color-primary);
-    background-color: #feb300;
+    background-color: var(--color-pink);
     transition: background-color 0.125s linear, transform 0.125s ease-out;
   }
 
@@ -184,7 +184,7 @@
 
     &:hover {
       :after {
-        background-color: #ff5e6c;
+        background-color: var(--color-pink);
       }
     }
   }
