@@ -1,4 +1,5 @@
-import IMAGE from 'url:../../imgs/dog-unknown.svg';
+import IMAGE__LOADING from 'url:../../imgs/dog-loading.svg';
+import IMAGE__UNKNOWN from 'url:../../imgs/dog-unknown.svg';
 import VanillaTilt from 'vanilla-tilt';
 import { updateBasket } from './basketView.js';
 import * as model from '../model.js';
@@ -20,7 +21,7 @@ export async function createGridMarkup(dog) {
       <li class="dog__item" data-id="${dog.id}" tabindex="0">
         <div class="dog__image">
             <span class="loader hidden"></span>
-            <img src='${IMAGE}' alt='${dog.name}' loading="lazy">
+            <img src='${IMAGE__LOADING}' alt='${dog.name}' loading="lazy">
         </div>
         <div class='dog__caption'>
           <button class='dog__details' title="view details">🔎</button>
@@ -143,7 +144,7 @@ export async function fetchImgUrl(dog) {
     );
 
     if (dog.imgId.length === 0) {
-      dog.imgUrl = IMAGE;
+      dog.imgUrl = IMAGE__UNKNOWN;
     } else {
       if (!process.env.DOGS_API_KEY) {
         throw new Error('You forgot to set DOGS_API_KEY ');
