@@ -1,3 +1,4 @@
+import IMAGE from 'url:../imgs/dog-unknown.svg';
 import { API_URL_BREED, API_URL_BREEDS, LOADER, POPULAR } from './config.js';
 import alert from './views/alertView.js';
 import {
@@ -25,6 +26,7 @@ state.likedDogs = JSON.parse(retrievedLikedDogs)
   : [];
 
 export function createDogsObjects(dogs) {
+  console.log(dogs);
   state.dogs = dogs.map((dog) => ({
     name: dog.name,
     bred_for: dog.bred_for,
@@ -36,7 +38,7 @@ export function createDogsObjects(dogs) {
     weight: dog.weight.metric,
     id: dog.id,
     origin: dog.origin,
-    // imgUrl: dog.image.url,
+    // imgUrl: IMAGE,
   }));
 }
 
@@ -66,13 +68,14 @@ export async function fetchAllBreedsData() {
     if (!process.env.DOGS_API_KEY) {
       throw new Error('You forgot to set DOGS_API_KEY ');
     }
+    LOADER.querySelector('.loader').classList.remove('hidden');
     const data = await fetch(`${API_URL_BREEDS}`, {
       headers: {
         'X-Api-Key': process.env.DOGS_API_KEY,
       },
     });
     const result = await data.json();
-
+    LOADER.querySelector('.loader').classList.add('hidden');
     createDogsObjects(result);
   } catch (err) {
     const markup = err;
