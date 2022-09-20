@@ -50,7 +50,6 @@ export async function addImageUrlToMarkup(dogListItems, dogId, dogImgUrl) {
   );
 
   // addImage.querySelector('img').src = dogImgUrl;
-  console.log(dogImgUrl);
   addImage.querySelector(
     '.dog__image'
   ).style.backgroundImage = `url('${dogImgUrl}')`;
