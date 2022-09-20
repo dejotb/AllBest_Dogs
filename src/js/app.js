@@ -15,7 +15,7 @@ require('dotenv').config();
 
 
 createSearchList();
-// showPopularDogs();
+showPopularDogs();
 
 DOGS_FORM.addEventListener('submit', fetchDog);
 
