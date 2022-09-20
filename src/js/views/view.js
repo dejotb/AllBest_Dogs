@@ -20,7 +20,7 @@ export async function createGridMarkup(dog) {
       <li class="dog__item" data-id="${dog.id}" tabindex="0">
         <div class="dog__image">
             <span class="loader hidden"></span>
-            <img src='${dog.name}' alt='' loading="lazy">
+            <img src='${IMAGE}' alt='${dog.name}' loading="lazy">
         </div>
         <div class='dog__caption'>
           <button class='dog__details' title="view details">🔎</button>
@@ -134,7 +134,7 @@ export function centerDogsListGrid() {
 }
 
 export async function fetchImgUrl(dog) {
-  const { imgId, id } = dog;
+  const { id } = dog;
 
   try {
     const dogListItems = [...document.querySelectorAll('.dog__item')];
@@ -142,7 +142,7 @@ export async function fetchImgUrl(dog) {
       (item) => +item.getAttribute('data-id') === id
     );
 
-    if (imgId.length === 0) {
+    if (dog.imgId.length === 0) {
       dog.imgUrl = IMAGE;
     } else {
       if (!process.env.DOGS_API_KEY) {
@@ -151,7 +151,7 @@ export async function fetchImgUrl(dog) {
 
       listItem.querySelector('.loader').classList.remove('hidden');
 
-      const data = await fetch(`${API_URL_IMAGES}${imgId}`, {
+      const data = await fetch(`${API_URL_IMAGES}${dog.imgId}`, {
         headers: {
           'X-Api-Key': process.env.DOGS_API_KEY,
         },
