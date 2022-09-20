@@ -1,4 +1,4 @@
-import { API_URL_BREED, API_URL_BREEDS, LOADER } from './config.js';
+import { API_URL_BREED, API_URL_BREEDS, LOADER, POPULAR } from './config.js';
 import alert from './views/alertView.js';
 import {
   generateMarkup,
@@ -12,46 +12,7 @@ export const state = {
   breedSuggestions: [],
   breedList: [],
   likedDogs: [],
-  popular: [
-    'Labrador Retriever',
-    'Yorkshire Terrier',
-    'Bernese Mountain Dog',
-    'West Highland White Terrier',
-    'American Staffordshire Terrier',
-    'Siberian Husky',
-    'Miniature Schnauzer',
-    'French Bulldog',
-    'Golden Retriever',
-    'German Shepherd Dog',
-    // {
-    //   bred_for: 'Herding, Guard dog',
-    //   breed_group: 'Herding',
-    //   height: '56 - 66',
-    //   id: 115,
-    //   imgId: 'SJyBfg5NX',
-    //   imgUrl: 'https://cdn2.thedogapi.com/images/SJyBfg5NX_1280.jpg',
-    //   life_span: '10 - 13 years',
-    //   name: 'German Shepherd Dog',
-    //   origin: undefined,
-    //   temperament:
-    //     'Alert, Loyal, Obedient, Curious, Confident, Intelligent, Watchful, Courageous',
-    //   weight: '23 - 41',
-    // },
-    // {
-    //   bred_for: 'Water retrieving',
-    //   breed_group: 'Sporting',
-    //   height: '55 - 62',
-    //   id: 149,
-    //   imgId: 'B1uW7l5VX',
-    //   imgUrl: 'https://cdn2.thedogapi.com/images/B1uW7l5VX_1280.jpg',
-    //   life_span: '10 - 13 years',
-    //   name: 'Labrador Retriever',
-    //   origin: undefined,
-    //   temperament:
-    //     'Kind, Outgoing, Agile, Gentle, Intelligent, Trusting, Even Tempered',
-    //   weight: '25 - 36',
-    // },
-  ],
+  popular: POPULAR,
   temporary: [],
   // fact: '',
 };
@@ -92,6 +53,7 @@ export async function fetchAllBreeds() {
     const result = await data.json();
 
     state.breedSuggestions = result.map((item) => item.name);
+    console.log(state.breedSuggestions);
   } catch (err) {
     const markup = err;
     alert(markup);
