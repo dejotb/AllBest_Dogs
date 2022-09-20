@@ -16,12 +16,13 @@ import {
 const dogList = document.querySelector('.dogs__list');
 const modalCard = document.querySelector('.modal__card');
 
+/* <img src='${IMAGE__LOADING}' alt='${dog.name}' loading="lazy"> */
+
 export async function createGridMarkup(dog) {
   const markup = `
       <li class="dog__item" data-id="${dog.id}" tabindex="0">
         <div class="dog__image">
             <span class="loader hidden"></span>
-            <img src='${IMAGE__LOADING}' alt='${dog.name}' loading="lazy">
         </div>
         <div class='dog__caption'>
           <button class='dog__details' title="view details">🔎</button>
@@ -48,7 +49,11 @@ export async function addImageUrlToMarkup(dogListItems, dogId, dogImgUrl) {
     (listItem) => +listItem.getAttribute('data-id') === dogId
   );
 
-  addImage.querySelector('img').src = dogImgUrl;
+  // addImage.querySelector('img').src = dogImgUrl;
+  console.log(dogImgUrl);
+  addImage.querySelector(
+    '.dog__image'
+  ).style.backgroundImage = `url('${dogImgUrl}')`;
 }
 
 export function generateDogCard(dog) {
