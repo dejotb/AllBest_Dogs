@@ -1,5 +1,11 @@
 import { API_URL_BREED, API_URL_BREEDS, LOADER } from './config.js';
 import alert from './views/alertView.js';
+import {
+  generateMarkup,
+  getImgUrl,
+  fetchImgUrl,
+  createGridMarkup,
+} from './views/view.js';
 
 export const state = {
   dogs: [],
@@ -7,7 +13,6 @@ export const state = {
   breedList: [],
   likedDogs: [],
   popular: [
-    'German Shepherd Dog',
     'Labrador Retriever',
     'Yorkshire Terrier',
     'Bernese Mountain Dog',
@@ -17,6 +22,7 @@ export const state = {
     'Miniature Schnauzer',
     'French Bulldog',
     'Golden Retriever',
+    'German Shepherd Dog',
     // {
     //   bred_for: 'Herding, Guard dog',
     //   breed_group: 'Herding',
@@ -58,7 +64,6 @@ state.likedDogs = JSON.parse(retrievedLikedDogs)
   : [];
 
 export function createDogsObjects(dogs) {
-  // state.temporary = [];
   state.dogs = dogs.map((dog) => ({
     name: dog.name,
     bred_for: dog.bred_for,
@@ -72,9 +77,6 @@ export function createDogsObjects(dogs) {
     origin: dog.origin,
     // imgUrl: dog.image.url,
   }));
-  // state.temporary.push(...state.dogs);
-  // state.dogs = state.temporary;
-  // console.log(state.dogs);
 }
 
 export async function fetchAllBreeds() {
@@ -116,10 +118,33 @@ export async function fetchDogsData(value) {
 
     LOADER.querySelector('.loader').classList.add('hidden');
     createDogsObjects(result);
-    // state.temporary.push(...result);
-    // console.log(state.temporary);
-    // state.dogs = state.temporary;
-    // console.log(state.dogs);
+  } catch (err) {
+    const markup = err;
+    alert(markup);
+    console.log(err);
+  }
+}
+
+export async function fetchTopDogsData(value) {
+  try {
+    if (!process.env.DOGS_API_KEY) {
+      throw new Error('You forgot to set DOGS_API_KEY ');
+    }
+    if (value === '' || value === undefined)
+      console.log(`search for dog's breed`);
+
+    LOADER.querySelector('.loader').classList.remove('hidden');
+
+    const data = await fetch(`${API_URL_BREED}${value}`, {
+      headers: {
+        'X-Api-Key': process.env.DOGS_API_KEY,
+      },
+    });
+    const result = await data.json();
+
+    LOADER.querySelector('.loader').classList.add('hidden');
+
+    return result;
   } catch (err) {
     const markup = err;
     alert(markup);

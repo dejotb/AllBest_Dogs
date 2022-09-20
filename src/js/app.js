@@ -8,12 +8,13 @@ import { isElementFocused, scrollToView, setLocalStorage} from './helpers.js';
 import { createSearchList, handleUserSearchData } from './views/searchView.js';
 import { closeModal } from './views/modalView.js';
 import { handleHamburger,  handleBasket} from './views/basketView.js';
-import { showSelectedTopDogs} from './views/selectView.js';
+import { showSelectedTopDogs, showPopularDogs} from './views/selectView.js';
 
 require('dotenv').config();
 
 
 createSearchList();
+showPopularDogs();
 
 DOGS_FORM.addEventListener('submit', fetchDog);
 
