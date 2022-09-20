@@ -1,7 +1,7 @@
 import * as model from './model.js';
 import {
   fetchDog,
-  createSearchList, handleBasketItem, handleBasketVisibility
+  createSearchList, handleBasketItem, handleBasketVisibility, generateMarkup
 } from './controller.js';
 import { DOGS_FORM, INPUT_BOX,DOGS_CONTAINER, TOP__DOGS, MAIN, BTN_SEARCH, MODAL, BASKET_ITEMS, BTN_FACTS, BTN_HAMBURGER, BODY, BASKET } from './config.js';
 import { isElementFocused, scrollToView, setLocalStorage} from './helpers.js';
@@ -9,6 +9,7 @@ import { createSearchList, handleUserSearchData } from './views/searchView.js';
 import { closeModal } from './views/modalView.js';
 import { handleHamburger,  handleBasket} from './views/basketView.js';
 import { showSelectedTopDogs, showPopularDogs} from './views/selectView.js';
+import { generateMarkup, getImgUrl} from './views/view.js';
 
 require('dotenv').config();
 

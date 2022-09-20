@@ -61,6 +61,26 @@ export async function fetchAllBreeds() {
   }
 }
 
+export async function fetchAllBreedsData() {
+  try {
+    if (!process.env.DOGS_API_KEY) {
+      throw new Error('You forgot to set DOGS_API_KEY ');
+    }
+    const data = await fetch(`${API_URL_BREEDS}`, {
+      headers: {
+        'X-Api-Key': process.env.DOGS_API_KEY,
+      },
+    });
+    const result = await data.json();
+
+    createDogsObjects(result);
+  } catch (err) {
+    const markup = err;
+    alert(markup);
+    console.log(err);
+  }
+}
+
 export async function fetchDogsData(value) {
   try {
     if (!process.env.DOGS_API_KEY) {
