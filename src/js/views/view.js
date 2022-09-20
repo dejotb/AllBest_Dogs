@@ -57,7 +57,8 @@ export async function addImageUrlToMarkup(dogListItems, dogId, dogImgUrl) {
 /* <img src='${dog.imgUrl}' alt='${dog.name}' loading="lazy"> */
 export function generateDogCard(dog) {
   const markup = `
-    <li class='modal__card' data-id="${dog.id}" data-tilt  >
+  <button class='modal__button'>❎</button>
+  <li class='modal__card' data-id="${dog.id}" data-tilt  >
       <div class="dog__image" style='background-image: url(${dog.imgUrl})'>
         <span class="loader hidden"></span>
       </div>

@@ -3,7 +3,12 @@ import { DOGS_LIST, MODAL, MODAL_LIST } from '../config.js';
 import { handleHeart } from './view.js';
 
 export function closeModal(e) {
-  if (e.target.querySelector('.modal__card') || e.keyCode === 27) {
+  if (
+    e.target.querySelector('.modal__card') ||
+    e.keyCode === 27 ||
+    e.target.classList.contains('modal__button')
+  ) {
+    console.log(e.target);
     MODAL_LIST.textContent = '';
     MODAL.classList.add('hidden');
     document.body.classList.remove('sticky__body');

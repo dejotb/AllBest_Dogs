@@ -55,7 +55,6 @@ export async function fetchAllBreeds() {
     const result = await data.json();
 
     state.breedSuggestions = result.map((item) => item.name);
-    console.log(state.breedSuggestions);
   } catch (err) {
     const markup = err;
     alert(markup);

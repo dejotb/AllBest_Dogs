@@ -26,6 +26,9 @@
     width: 98%;
     max-width: 50rem;
     max-height: 70rem;
+    display: grid;
+    // justify-items: center;
+    // align-items: center;
 
     @media screen and (min-width: 720px) {
       // max-width: 50rem;
@@ -52,6 +55,7 @@
     font-size: 1.7rem;
     transform-style: preserve-3d;
     transform: perspective(1000px);
+    // position: relative;
 
     // & .dog__caption h3 {
     //   justify-self: center;
@@ -122,5 +126,14 @@
       display: grid;
       justify-items: center;
     }
+  }
+
+  &__button {
+    // position: absolute;
+    right: -5rem;
+    // width: fit-content;
+    justify-self: end;
+    font-size: 3rem;
+    margin-bottom: 1rem;
   }
 }
