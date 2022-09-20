@@ -6,7 +6,7 @@
   border: none;
   height: 3.5rem;
   background-color: transparent;
-  width: 10rem;
+  // width: 10rem;
   z-index: var(--z-index-popup);
 
   ::before,
@@ -33,9 +33,7 @@
     display: grid;
     align-content: center;
     justify-items: center;
-    color: var(--color-dark);
-    background-color: var(--color-primary);
-    background-color: var(--color-pink);
+    background-color: var(--color-yellow);
     transition: background-color 0.125s linear, transform 0.125s ease-out;
   }
 
@@ -46,7 +44,7 @@
 
     &:hover {
       :after {
-        background-color: var(--color-yellow);
+        background-color: var(--color-pink);
       }
     }
   }

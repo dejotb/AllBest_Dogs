@@ -3,11 +3,12 @@ import {
   fetchDog,
   createSearchList, handleBasketItem, handleBasketVisibility
 } from './controller.js';
-import { DOGS_FORM, INPUT_BOX,DOGS_CONTAINER, MAIN, BTN_SEARCH, MODAL, BASKET_ITEMS, BTN_FACTS, BTN_HAMBURGER, BODY, BASKET } from './config.js';
+import { DOGS_FORM, INPUT_BOX,DOGS_CONTAINER, TOP__DOGS, MAIN, BTN_SEARCH, MODAL, BASKET_ITEMS, BTN_FACTS, BTN_HAMBURGER, BODY, BASKET } from './config.js';
 import { isElementFocused, scrollToView, setLocalStorage} from './helpers.js';
 import { createSearchList, handleUserSearchData } from './views/searchView.js';
 import { closeModal } from './views/modalView.js';
 import { handleHamburger,  handleBasket} from './views/basketView.js';
+import { showSelectedTopDogs} from './views/selectView.js';
 
 require('dotenv').config();
 
@@ -55,3 +56,13 @@ BASKET.addEventListener('click', handleBasket);
 // });
 
 // showDogFact();
+
+
+//////////////////////////////
+//?
+
+
+
+
+TOP__DOGS.addEventListener('change', showSelectedTopDogs)
+

@@ -14,6 +14,8 @@ export const DOGS_LIST = document.querySelector('.dogs__list');
 
 export const INPUT_BOX = document.querySelector('input');
 
+export const TOP__DOGS = document.querySelector('#dogs__top');
+
 export const AUTOCOMPLETE_INPUT = document.querySelector(
   '.autocomplete__input'
 );

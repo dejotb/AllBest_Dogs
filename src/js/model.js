@@ -6,6 +6,47 @@ export const state = {
   breedSuggestions: [],
   breedList: [],
   likedDogs: [],
+  popular: [
+    'German Shepherd Dog',
+    'Labrador Retriever',
+    'Yorkshire Terrier',
+    'Bernese Mountain Dog',
+    'West Highland White Terrier',
+    'American Staffordshire Terrier',
+    'Siberian Husky',
+    'Miniature Schnauzer',
+    'French Bulldog',
+    'Golden Retriever',
+    // {
+    //   bred_for: 'Herding, Guard dog',
+    //   breed_group: 'Herding',
+    //   height: '56 - 66',
+    //   id: 115,
+    //   imgId: 'SJyBfg5NX',
+    //   imgUrl: 'https://cdn2.thedogapi.com/images/SJyBfg5NX_1280.jpg',
+    //   life_span: '10 - 13 years',
+    //   name: 'German Shepherd Dog',
+    //   origin: undefined,
+    //   temperament:
+    //     'Alert, Loyal, Obedient, Curious, Confident, Intelligent, Watchful, Courageous',
+    //   weight: '23 - 41',
+    // },
+    // {
+    //   bred_for: 'Water retrieving',
+    //   breed_group: 'Sporting',
+    //   height: '55 - 62',
+    //   id: 149,
+    //   imgId: 'B1uW7l5VX',
+    //   imgUrl: 'https://cdn2.thedogapi.com/images/B1uW7l5VX_1280.jpg',
+    //   life_span: '10 - 13 years',
+    //   name: 'Labrador Retriever',
+    //   origin: undefined,
+    //   temperament:
+    //     'Kind, Outgoing, Agile, Gentle, Intelligent, Trusting, Even Tempered',
+    //   weight: '25 - 36',
+    // },
+  ],
+  temporary: [],
   // fact: '',
 };
 
@@ -17,6 +58,7 @@ state.likedDogs = JSON.parse(retrievedLikedDogs)
   : [];
 
 export function createDogsObjects(dogs) {
+  // state.temporary = [];
   state.dogs = dogs.map((dog) => ({
     name: dog.name,
     bred_for: dog.bred_for,
@@ -30,6 +72,9 @@ export function createDogsObjects(dogs) {
     origin: dog.origin,
     // imgUrl: dog.image.url,
   }));
+  // state.temporary.push(...state.dogs);
+  // state.dogs = state.temporary;
+  // console.log(state.dogs);
 }
 
 export async function fetchAllBreeds() {
@@ -71,6 +116,10 @@ export async function fetchDogsData(value) {
 
     LOADER.querySelector('.loader').classList.add('hidden');
     createDogsObjects(result);
+    // state.temporary.push(...result);
+    // console.log(state.temporary);
+    // state.dogs = state.temporary;
+    // console.log(state.dogs);
   } catch (err) {
     const markup = err;
     alert(markup);

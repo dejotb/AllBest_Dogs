@@ -167,6 +167,7 @@ export async function fetchImgUrl(dog) {
 }
 
 export async function generateMarkup(dogs) {
+  // console.log(dogs);
   dogs.map((dog) => createGridMarkup(dog));
   if (!dogs.length) {
     const markup = `We coudn't find such a dog's breed. Please try to find some other 🐶`;
