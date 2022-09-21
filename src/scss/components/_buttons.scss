@@ -52,18 +52,13 @@
   &--hamburger,
   &--close {
     position: absolute;
-    top: 1rem;
-    right: 1rem;
-  }
-}
+    top: 0.5rem;
+    right: 0.5rem;
 
-.hamburger {
-  @media screen and (min-width: $bp-md) {
-    // display: none;
-  }
-
-  &__text {
-    color: var(--color-dark);
+    @media screen and (min-width: $bp-lg) {
+      top: 1rem;
+      right: 1rem;
+    }
   }
 }
 
@@ -72,14 +67,20 @@
 }
 
 .btn--cta {
+  font-family: var(--ff-display);
   background-color: var(--color-pink);
-  border: 1px solid var(--color-font);
-  padding: 0.5rem 2rem;
+  // border: 1px solid var(--color-font);
+  padding: 0.5rem 1.5rem;
   display: grid;
   align-content: center;
   color: var(--color-white);
-  text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.2);
+  // text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
   justify-self: end;
   box-shadow: 0px 1px 5px 3px rgba(0, 0, 0, 0.12);
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    box-shadow: 0px 1px 10px 7px rgba(0, 0, 0, 0.2);
+  }
 }
