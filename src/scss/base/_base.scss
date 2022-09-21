@@ -24,6 +24,21 @@ html {
   box-sizing: border-box;
   font-size: 62.5%;
   scroll-behavior: smooth;
+
+  scrollbar-color: var(--color-yellow) var(--color-primary--light);
+  scrollbar-width: thin;
+
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-yellow);
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--color-primary--light);
+  }
 }
 
 body {
@@ -108,11 +123,6 @@ a {
   color: inherit;
   text-decoration: none;
   transition: 0.2s all;
-}
-
-html {
-  scrollbar-color: var(--color-yellow) var(--color-grey--light);
-  scrollbar-width: thin;
 }
 
 input,

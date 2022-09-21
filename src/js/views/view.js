@@ -1,4 +1,3 @@
-import IMAGE__LOADING from 'url:../../imgs/dog-loading.svg';
 import IMAGE__UNKNOWN from 'url:../../imgs/dog-unknown.svg';
 import VanillaTilt from 'vanilla-tilt';
 import { updateBasket } from './basketView.js';

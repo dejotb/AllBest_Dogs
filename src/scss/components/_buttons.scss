@@ -54,15 +54,6 @@
     position: absolute;
     top: 1rem;
     right: 1rem;
-
-    // &:hover {
-    //   :after {
-    //     background-color: var(--color-red);
-    //   }
-    // }
-    @media screen and (min-width: $bp-md) {
-      //   display: none;
-    }
   }
 }
 
@@ -82,10 +73,12 @@
 
 .btn--cta {
   background-color: var(--color-pink);
+  border: 1px solid var(--color-font);
   padding: 0.5rem 2rem;
   display: grid;
   align-content: center;
   color: var(--color-white);
+  text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
   justify-self: end;
   box-shadow: 0px 1px 5px 3px rgba(0, 0, 0, 0.12);

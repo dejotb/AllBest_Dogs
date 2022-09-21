@@ -1,8 +1,15 @@
+// ==========================================================================
+// API links
+// ==========================================================================
+
 export const API_URL_BREED = 'https://api.thedogapi.com/v1/breeds/search?q=';
 export const API_URL_IMAGES = 'https://api.thedogapi.com/v1/images/';
 export const API_URL_BREEDS = 'https://api.thedogapi.com/v1/breeds';
 
+// ==========================================================================
 // DOM Elements
+// ==========================================================================
+
 export const BODY = document.querySelector('body');
 
 export const MAIN = document.querySelector('#main');
@@ -35,11 +42,21 @@ export const BASKET = document.querySelector('.basket');
 export const BASKET_WRAPPER = document.querySelector('.basket__list--wrapper');
 export const BASKET_ITEMS = document.querySelector('.basket__items');
 
-// Link URLs
+// ==========================================================================
+// TIMEOUT time is sec
+// ==========================================================================
+
+export const TIMEOUT_SEC = 0.5;
+
+// ==========================================================================
+// LINK URL
+// ==========================================================================
 
 export const BREED_WIKI_URL = 'https://en.wikipedia.org/wiki';
 
-export const TIMEOUT_SEC = 0.5;
+// ==========================================================================
+// Most popular breeds Array
+// ==========================================================================
 
 export const POPULAR = [
   {
