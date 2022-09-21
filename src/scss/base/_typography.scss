@@ -2,7 +2,6 @@
 
 .heading {
   &--1 {
-    font-size: var(--fs-500);
     // font-size: 2rem;
     font-family: var(--ff-display);
     text-shadow: 3px 3px 0px var(--color-white);
@@ -12,6 +11,7 @@
     max-width: 70ch;
     color: var(--color-white);
     // margin-bottom: 6rem;
+    font-size: var(--fs-600);
 
     @media screen and (min-width: 720px) {
       //   font-size: var(--fs-600);

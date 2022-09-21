@@ -96,8 +96,8 @@
         right: 1rem;
       }
       & .dog__name {
-        font-size: 2rem;
-        font-weight: 600;
+        font-size: var(--fs-300);
+        font-family: var(--ff-display);
       }
     }
   }
