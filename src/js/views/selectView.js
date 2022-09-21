@@ -39,7 +39,8 @@ async function showTopDogs() {
   if (TOP__DOGS.value === 'longest-living') {
     filteredData = await fetchedData
       .filter(
-        (dog) => dog.life_span.split(' years').join(' ').trim().slice(-2) > 15
+        (dog) =>
+          dog.life_span.split(' years').sort().join(' ').trim().slice(-2) > 15
       )
       .slice(0, 12);
   }

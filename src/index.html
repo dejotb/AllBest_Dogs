@@ -86,16 +86,20 @@
             🔍
           </button>
         </form>
-        <div class="dogs__top">
-          <label for="dogs__top">Filter top 12 🏆 breeds by:</label>
-          <select id="dogs__top" name="dogs top" form="dogs top">
-            <option value="popularity">Popularity</option>
-            <option value="largest">Largest</option>
-            <option value="smallest">Smallest</option>
-            <option value="longest-living">Longest-living</option>
-          </select>
+        <div class="select__wrapper">
+          <label class="select__label" for="dogs-select"
+            >Filter top 12 🏆 breeds by:</label
+          >
+          <div class="select__list">
+            <select id="dogs__select" name="dogs-select" form="dogs-select">
+              <option value="popularity">most popular</option>
+              <option value="largest">largest</option>
+              <option value="smallest">smallest</option>
+              <option value="longest-living">longest-living</option>
+            </select>
+            <span class="focus"></span>
+          </div>
         </div>
-
         <div class="loader__container">
           <span class="loader hidden"></span>
         </div>
@@ -106,8 +110,15 @@
         <div class="modal__list"></div>
       </div>
     </main>
-    <!-- <footer>
-      <span>Made by Bartosz</span>
-    </footer> -->
+    <footer class="footer">
+      <a
+        class="footer__logo"
+        href="https://bartosz.website/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Bartosz Kraszewski © 2022</a
+      >
+    </footer>
   </body>
 </html>

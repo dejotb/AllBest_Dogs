@@ -14,6 +14,7 @@
   &__search {
     height: 100%;
     // width: clamp(30rem, 2vw, 50rem);
+
     width: min(90vw, 38rem);
     // border: gold 3px solid;
     // background-color: pink;
@@ -47,7 +48,7 @@
   &:hover,
     // &:active,
     &:focus {
-    background-color: var(--color-yellow);
+    background-color: var(--color-primary);
   }
 }
 

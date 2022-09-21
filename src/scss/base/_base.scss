@@ -32,7 +32,7 @@ body {
   margin: 0 auto;
   // min-height: 100vh;
   // color: var(--color-white);
-  color: #3f3844;
+  color: var(--color-font);
   width: 100vw;
   align-content: start;
   justify-content: center;
@@ -130,4 +130,10 @@ p {
   &:not(:last-child) {
     margin-bottom: 1rem;
   }
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  font-size: var(--fs-100);
 }
