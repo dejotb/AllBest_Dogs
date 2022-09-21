@@ -42,6 +42,15 @@
     }
   }
 
+  &__dashboard {
+    display: grid;
+    grid-gap: 2rem;
+    // background-color: var(--color-primary--light);
+    // border: 1px solid var(--color-primary);
+    // padding: 1rem 0.5rem;
+    border-radius: 5px;
+  }
+
   &__list {
     display: grid;
     justify-content: center;

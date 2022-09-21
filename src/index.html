@@ -63,32 +63,34 @@
         </div>
       </section>
       <section id="dogs" class="dogs__container">
-        <span class="dogs__title">Search or filter dog breeds below.</span>
-        <form id="dogs__form" class="form__wrapper">
-          <input
-            id="dogs__input"
-            class="form__search"
-            type="text"
-            autocomplete="off"
-            placeholder="Search by keyword (e.g. spaniel)"
-          />
-          <ul class="autocomplete__input" tabindex="-1"></ul>
-          <button class="form__button" id="search__button" title="search">
-            🔍
-          </button>
-        </form>
-        <div class="select__wrapper">
-          <label class="select__label" for="dogs-select"
-            >Filter top 12 🏆 breeds by:</label
-          >
-          <div class="select__list">
-            <select id="dogs__select" name="dogs-select" form="dogs-select">
-              <option value="popularity">most popular</option>
-              <option value="largest">largest</option>
-              <option value="smallest">smallest</option>
-              <option value="longest-living">longest-living</option>
-            </select>
-            <span class="focus"></span>
+        <div class="dogs__dashboard">
+          <span class="dogs__title">Search or filter dog breeds below.</span>
+          <form id="dogs__form" class="form__wrapper">
+            <input
+              id="dogs__input"
+              class="form__search"
+              type="text"
+              autocomplete="off"
+              placeholder="Search by keyword (e.g. spaniel)"
+            />
+            <ul class="autocomplete__input" tabindex="-1"></ul>
+            <button class="form__button" id="search__button" title="search">
+              🔍
+            </button>
+          </form>
+          <div class="select__wrapper">
+            <label class="select__label" for="dogs-select"
+              >Filter top 12 🏆 breeds by:</label
+            >
+            <div class="select__list">
+              <select id="dogs__select" name="dogs-select" form="dogs-select">
+                <option value="popularity">most popular</option>
+                <option value="largest">largest</option>
+                <option value="smallest">smallest</option>
+                <option value="longest-living">longest-living</option>
+              </select>
+              <span class="focus"></span>
+            </div>
           </div>
         </div>
         <div class="loader__container">
