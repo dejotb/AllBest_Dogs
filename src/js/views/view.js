@@ -27,7 +27,7 @@ export async function createGridMarkup(dog) {
           <button class='dog__details' title="view details">🔎</button>
           <span class='dog__name'>${dog.name}</span>
           <span class='dog__heart' data-liked=false>${
-            model.state.likedDogs.find((el) => el.id === dog.id) ? '❤️' : '🤍'
+            model.state.likedDogs.find((el) => el.id === dog.id) ? '💖' : '🤍'
           }</span>
         </div>
       </li>`;
@@ -64,7 +64,7 @@ export function generateDogCard(dog) {
       <div class='dog__caption'>
         <span class='dog__name'>${dog.name}</span>
         <span class='dog__heart' data-liked=false>${
-          model.state.likedDogs.find((el) => el.id === dog.id) ? '❤️' : '🤍'
+          model.state.likedDogs.find((el) => el.id === dog.id) ? '💖' : '🤍'
         }</span>
       </div>
 
@@ -219,7 +219,7 @@ export function handleHeart(e) {
     setTimeout(() => {
       document.querySelector('.btn--hamburger').classList.remove('heart-beat');
     }, 1000);
-    heart.textContent = '❤️';
+    heart.textContent = '💖';
   }
 
   const editedHeart = Array.from(DOGS_LIST.children).find(
