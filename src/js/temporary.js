@@ -1,3 +1,6 @@
+import * as model from './model.js';
+import { DOGS_LIST, TOP__DOGS } from './config.js';
+
 export async function fetchDataCategories(value) {
   try {
     if (!process.env.DOGS_API_KEY) {
@@ -22,20 +25,32 @@ export async function fetchDataCategories(value) {
 
     // ? method to get breed temperaments
 
-    const breedtemperamentsLists = result.map((element) => element.bred_for);
-
+    const inputDogsData = result.map((element) => element.temperament);
     // console.log(breedtemperamentsLists);
 
-    const breedTemperaments = breedtemperamentsLists
-      .join(', ')
-      .replace(/ /g, '')
-      .split(',');
+    const rawCharsArray = inputDogsData.join(', ').replace(/ /g, '').split(',');
 
-    console.log(breedTemperaments);
+    console.log(rawCharsArray);
 
-    const set = new Set(breedTemperaments);
+    const charsSet = new Set(rawCharsArray);
 
-    console.log(set);
+    const cleanedCharsArray = Array.from(charsSet).sort().slice(1);
+    console.log(charsSet);
+    console.log(cleanedCharsArray);
+
+    await model.fetchAllBreedsData();
+    const fetchedData = await model.state.dogs;
+
+    const filteredData = await fetchedData.filter(
+      (dog) =>
+        dog.temperament ===
+        'Friendly, Spirited, Alert, Loyal, Playful, Intelligent'
+    );
+
+    // .filter((dog) => dog.temperament.search('Active'))
+    // .slice(0, 12);
+
+    console.log(filteredData);
   } catch (err) {
     console.log(err);
   }

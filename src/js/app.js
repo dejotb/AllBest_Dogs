@@ -10,6 +10,7 @@ import { closeModal } from './views/modalView.js';
 import { handleHamburger,  handleBasket} from './views/basketView.js';
 import { showSelectedTopDogs, showPopularDogs} from './views/selectView.js';
 import { generateMarkup, getImgUrl} from './views/view.js';
+import { fetchDataCategories} from './temporary.js';
 
 require('dotenv').config();
 
@@ -61,10 +62,10 @@ BASKET.addEventListener('click', handleBasket);
 
 
 //////////////////////////////
-//?
 
 
-
+//???????
+// fetchDataCategories()
 
 TOP__DOGS.addEventListener('change', showSelectedTopDogs)
 
