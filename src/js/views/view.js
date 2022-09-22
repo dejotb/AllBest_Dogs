@@ -56,9 +56,10 @@ export async function addImageUrlToMarkup(dogListItems, dogId, dogImgUrl) {
 /* <img src='${dog.imgUrl}' alt='${dog.name}' loading="lazy"> */
 export function generateDogCard(dog) {
   const markup = `
-  <button class='modal__button'>❎</button>
-  <li class='modal__card' data-id="${dog.id}" data-tilt  >
+
+  <li class='modal__card' data-id="${dog.id}" data-tilt >
       <div class="dog__image" style='background-image: url(${dog.imgUrl})'>
+        <button class="modal__button">❎</button>
         <span class="loader hidden"></span>
       </div>
       <div class='dog__caption'>
@@ -106,7 +107,7 @@ export function generateDogCard(dog) {
   });
 
   VanillaTilt.init(document.querySelector('.modal__card'), {
-    max: 8,
+    max: 1,
     speed: 300,
   });
 }
