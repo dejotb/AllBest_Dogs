@@ -16,15 +16,21 @@ export const state = {
   likedDogs: [],
   popular: POPULAR,
   temporary: [],
-  // fact: '',
 };
+
+// ==========================================================================
+// Local Storage State
+// ==========================================================================
 
 const retrievedLikedDogs = localStorage.getItem('likedDogs');
 
-// console.log(JSON.parse(retrievedLikedDogs));
 state.likedDogs = JSON.parse(retrievedLikedDogs)
   ? JSON.parse(retrievedLikedDogs)
   : [];
+
+// ==========================================================================
+//
+// ==========================================================================
 
 export function createDogsObjects(dogs) {
   return dogs.map((dog) => ({
@@ -41,7 +47,7 @@ export function createDogsObjects(dogs) {
   }));
 }
 
-// used in searchView and selectView
+// used in searchView, selectView, filterView
 export async function fetchAllBreeds() {
   try {
     if (!process.env.DOGS_API_KEY) {
@@ -64,26 +70,26 @@ export async function fetchAllBreeds() {
 }
 
 // used in temporary
-export async function fetchAllBreedsData() {
-  try {
-    if (!process.env.DOGS_API_KEY) {
-      throw new Error('You forgot to set DOGS_API_KEY ');
-    }
-    LOADER.querySelector('.loader').classList.remove('hidden');
-    const data = await fetch(`${API_URL_BREEDS}`, {
-      headers: {
-        'X-Api-Key': process.env.DOGS_API_KEY,
-      },
-    });
-    const result = await data.json();
-    LOADER.querySelector('.loader').classList.add('hidden');
-    createDogsObjects(result);
-  } catch (err) {
-    const markup = err;
-    alert(markup);
-    console.log(err);
-  }
-}
+// export async function fetchAllBreedsData() {
+//   try {
+//     if (!process.env.DOGS_API_KEY) {
+//       throw new Error('You forgot to set DOGS_API_KEY ');
+//     }
+//     LOADER.querySelector('.loader').classList.remove('hidden');
+//     const data = await fetch(`${API_URL_BREEDS}`, {
+//       headers: {
+//         'X-Api-Key': process.env.DOGS_API_KEY,
+//       },
+//     });
+//     const result = await data.json();
+//     LOADER.querySelector('.loader').classList.add('hidden');
+//     createDogsObjects(result);
+//   } catch (err) {
+//     const markup = err;
+//     alert(markup);
+//     console.log(err);
+//   }
+// }
 
 // used in controller
 export async function fetchDogsData(value) {

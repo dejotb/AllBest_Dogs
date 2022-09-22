@@ -10,7 +10,7 @@ import { closeModal } from './views/modalView.js';
 import { handleHamburger,  handleBasket} from './views/basketView.js';
 import { showSelectedTopDogs, showPopularDogs} from './views/selectView.js';
 import { generateMarkup, getImgUrl} from './views/view.js';
-import { fetchDataCategories} from './temporary.js';
+import { fetchDataCategories} from './views/filterView.js';
 
 require('dotenv').config();
 

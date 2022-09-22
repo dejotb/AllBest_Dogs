@@ -1,5 +1,11 @@
-import * as model from './model.js';
-import { DOGS_LIST, TOP__DOGS } from './config.js';
+import * as model from '../model.js';
+import { DOGS_LIST, TOP__DOGS } from '../config.js';
+import {
+  generateMarkup,
+  getImgUrl,
+  createGridMarkup,
+  fetchImgUrl,
+} from './view.js';
 
 export async function fetchDataCategories(value) {
   // try {
@@ -30,17 +36,30 @@ export async function fetchDataCategories(value) {
 
   const rawCharsArray = inputDogsData.join(', ').replace(/ /g, '').split(',');
 
+  console.log(rawCharsArray);
   // console.log(rawCharsArray);
 
   const charsSet = new Set(rawCharsArray);
+  console.log(charsSet);
 
   const cleanedCharsArray = Array.from(charsSet).sort().slice(1);
   // console.log(charsSet);
+
+  function getOccurrence(array, el) {
+    let count = 0;
+    array.forEach((val) => val === el && count++);
+    return count;
+  }
+
+  const charOccurrence = cleanedCharsArray.map(
+    (el) => `${el}: (${getOccurrence(rawCharsArray, el)})`
+  );
+
+  console.log(charOccurrence);
+
+  const substring = ['Agile'];
+
   // console.log(cleanedCharsArray);
-
-  const substring = ['Active', 'Alert', 'Intelligent', 'Devoted'];
-
-  // console.log(fetchedData);
 
   const filteredData = await fetchedData
     .filter((dog) => dog.temperament !== undefined)
@@ -50,28 +69,18 @@ export async function fetchDataCategories(value) {
   // .slice(0, 12);
 
   console.log(filteredData);
+
+  model.state.dogs = filteredData;
+
+  // model.state.dogs = [];
+  DOGS_LIST.textContent = '';
+  generateMarkup(model.state.dogs);
+  getImgUrl(model.state.dogs);
+
+  // console.log(model.state.dogs.length < 1);
+  if (model.state.dogs.length <= 1) return;
+  DOGS_LIST.classList.remove('centered--one');
 }
 
 // ?
 // ? categories to be used: breed_group, temperament
-
-// document
-//   .querySelector('.autocomplete__input')
-//   .forEach((el) => el.addEventListener('click', scrollToView));
-
-//! facts
-
-// export async function showDogFact() {
-//   const dogFact = document.querySelector('.fact__text');
-//   await model.fetchDogsFacts();
-//   dogFact.textContent = `Dog fact: ${model.state.fact}`;
-// }
-
-// BTN_FACTS.addEventListener('click', (e) => {
-//   e.preventDefault();
-//   showDogFact();
-// });
-
-// showDogFact();
-
-//!

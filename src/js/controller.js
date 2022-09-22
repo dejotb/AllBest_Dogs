@@ -12,10 +12,10 @@ import alert from './views/alertView.js';
 
 export async function showDog(breed) {
   await model.fetchDogsData(breed);
+
   await generateMarkup(model.state.dogs);
 
   await getImgUrl(model.state.dogs);
-  console.log(model.state.dogs);
 }
 
 export function fetchDog(e) {
