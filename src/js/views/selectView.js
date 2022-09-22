@@ -1,5 +1,5 @@
 import * as model from '../model.js';
-import { DOGS_LIST, TOP__DOGS } from '../config.js';
+import { DOGS_LIST, TOP__DOGS, LOADER } from '../config.js';
 
 import { showDog } from '../controller.js';
 import {
@@ -10,8 +10,6 @@ import {
 } from './view.js';
 
 export async function showPopularDogs() {
-  //   DOGS_LIST.textContent = '';
-
   model.state.dogs.push(...model.state.popular);
   await generateMarkup(model.state.dogs);
   await getImgUrl(model.state.dogs);
@@ -19,9 +17,9 @@ export async function showPopularDogs() {
 }
 
 async function showTopDogs() {
-  await model.fetchAllBreedsData();
-  const fetchedData = await model.state.dogs;
+  const fetchedData = await model.state.temporary;
 
+  console.log(fetchedData);
   let filteredData;
 
   if (TOP__DOGS.value === 'largest') {
@@ -46,7 +44,6 @@ async function showTopDogs() {
 
   model.state.dogs = filteredData;
 
-  console.log(model.state.dogs);
   generateMarkup(model.state.dogs);
   getImgUrl(model.state.dogs);
   DOGS_LIST.classList.remove('centered--one');

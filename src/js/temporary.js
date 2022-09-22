@@ -22,8 +22,8 @@ export async function fetchDataCategories(value) {
   // console.log(breedGroups);
 
   // ? method to get breed temperaments
-  await model.fetchAllBreedsData();
-  const fetchedData = await model.state.dogs;
+  // await model.fetchAllBreedsData();
+  const fetchedData = await model.state.temporary;
 
   const inputDogsData = fetchedData.map((element) => element.temperament);
   // console.log(breedtemperamentsLists);

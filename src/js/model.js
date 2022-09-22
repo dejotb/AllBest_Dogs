@@ -1,12 +1,13 @@
-import IMAGE from 'url:../imgs/dog-unknown.svg';
-import { API_URL_BREED, API_URL_BREEDS, LOADER, POPULAR } from './config.js';
-import alert from './views/alertView.js';
+import IMAGE__UNKNOWN from 'url:../imgs/dog-unknown.svg';
 import {
-  generateMarkup,
-  getImgUrl,
-  fetchImgUrl,
-  createGridMarkup,
-} from './views/view.js';
+  API_URL_BREED,
+  API_URL_BREEDS,
+  API_URL_IMAGES,
+  LOADER,
+  POPULAR,
+} from './config.js';
+import alert from './views/alertView.js';
+import { generateMarkup, getImgUrl, createGridMarkup } from './views/view.js';
 
 export const state = {
   dogs: [],
@@ -26,8 +27,7 @@ state.likedDogs = JSON.parse(retrievedLikedDogs)
   : [];
 
 export function createDogsObjects(dogs) {
-  // console.log(dogs);
-  state.dogs = dogs.map((dog) => ({
+  return dogs.map((dog) => ({
     name: dog.name,
     bred_for: dog.bred_for,
     breed_group: dog.breed_group,
@@ -38,10 +38,10 @@ export function createDogsObjects(dogs) {
     weight: dog.weight.metric,
     id: dog.id,
     origin: dog.origin,
-    // imgUrl: IMAGE,
   }));
 }
 
+// used in searchView and selectView
 export async function fetchAllBreeds() {
   try {
     if (!process.env.DOGS_API_KEY) {
@@ -55,6 +55,7 @@ export async function fetchAllBreeds() {
     const result = await data.json();
 
     state.breedSuggestions = result.map((item) => item.name);
+    state.temporary = await createDogsObjects(result);
   } catch (err) {
     const markup = err;
     alert(markup);
@@ -62,6 +63,7 @@ export async function fetchAllBreeds() {
   }
 }
 
+// used in temporary
 export async function fetchAllBreedsData() {
   try {
     if (!process.env.DOGS_API_KEY) {
@@ -83,6 +85,7 @@ export async function fetchAllBreedsData() {
   }
 }
 
+// used in controller
 export async function fetchDogsData(value) {
   try {
     if (!process.env.DOGS_API_KEY) {
@@ -101,7 +104,7 @@ export async function fetchDogsData(value) {
     const result = await data.json();
 
     LOADER.querySelector('.loader').classList.add('hidden');
-    createDogsObjects(result);
+    state.dogs = await createDogsObjects(result);
   } catch (err) {
     const markup = err;
     alert(markup);
@@ -109,52 +112,44 @@ export async function fetchDogsData(value) {
   }
 }
 
-export async function fetchTopDogsData(value) {
+// used in view
+export async function fetchImgUrl(dog) {
+  const { id } = dog;
+
   try {
-    if (!process.env.DOGS_API_KEY) {
-      throw new Error('You forgot to set DOGS_API_KEY ');
-    }
-    if (value === '' || value === undefined)
-      console.log(`search for dog's breed`);
-
-    LOADER.querySelector('.loader').classList.remove('hidden');
-
-    const data = await fetch(`${API_URL_BREED}${value}`, {
-      headers: {
-        'X-Api-Key': process.env.DOGS_API_KEY,
-      },
-    });
-    const result = await data.json();
-
-    LOADER.querySelector('.loader').classList.add('hidden');
-
-    return result;
-  } catch (err) {
-    const markup = err;
-    alert(markup);
-    console.log(err);
-  }
-}
-
-export async function fetchDogsFacts() {
-  const options = {
-    method: 'GET',
-    headers: {
-      'X-RapidAPI-Key': process.env.FACTS_API_KEY,
-      'X-RapidAPI-Host': 'dog-facts2.p.rapidapi.com',
-    },
-  };
-  try {
-    const data = await fetch(
-      'https://dog-facts2.p.rapidapi.com/facts',
-      options
+    const dogListItems = [...document.querySelectorAll('.dog__item')];
+    const listItem = dogListItems.find(
+      (item) => +item.getAttribute('data-id') === id
     );
 
-    const result = await data.json();
-    [state.fact] = result.facts;
+    if (dog.imgId.length === 0) {
+      dog.imgUrl = IMAGE__UNKNOWN;
+    } else {
+      if (!process.env.DOGS_API_KEY) {
+        throw new Error('You forgot to set DOGS_API_KEY ');
+      }
+
+      listItem.querySelector('.loader').classList.remove('hidden');
+
+      const data = await fetch(`${API_URL_IMAGES}${dog.imgId}`, {
+        headers: {
+          'X-Api-Key': process.env.DOGS_API_KEY,
+        },
+      });
+      const result = await data.json();
+      dog.imgUrl = result.url;
+    }
+
+    const addImage = dogListItems.find(
+      (dogItem) => +dogItem.getAttribute('data-id') === dog.id
+    );
+
+    addImage.querySelector(
+      '.dog__image'
+    ).style.backgroundImage = `url('${dog.imgUrl}')`;
+
+    listItem.querySelector('.loader').classList.add('hidden');
   } catch (err) {
-    const markup = err;
-    alert(markup);
     console.log(err);
   }
 }

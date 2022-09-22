@@ -43,16 +43,6 @@ export async function createGridMarkup(dog) {
 
 //
 
-export async function addImageUrlToMarkup(dogListItems, dogId, dogImgUrl) {
-  const addImage = dogListItems.find(
-    (listItem) => +listItem.getAttribute('data-id') === dogId
-  );
-
-  // addImage.querySelector('img').src = dogImgUrl;
-  addImage.querySelector(
-    '.dog__image'
-  ).style.backgroundImage = `url('${dogImgUrl}')`;
-}
 /* <img src='${dog.imgUrl}' alt='${dog.name}' loading="lazy"> */
 export function generateDogCard(dog) {
   const markup = `
@@ -138,39 +128,6 @@ export function centerDogsListGrid() {
   }
 }
 
-export async function fetchImgUrl(dog) {
-  const { id } = dog;
-
-  try {
-    const dogListItems = [...document.querySelectorAll('.dog__item')];
-    const listItem = dogListItems.find(
-      (item) => +item.getAttribute('data-id') === id
-    );
-
-    if (dog.imgId.length === 0) {
-      dog.imgUrl = IMAGE__UNKNOWN;
-    } else {
-      if (!process.env.DOGS_API_KEY) {
-        throw new Error('You forgot to set DOGS_API_KEY ');
-      }
-
-      listItem.querySelector('.loader').classList.remove('hidden');
-
-      const data = await fetch(`${API_URL_IMAGES}${dog.imgId}`, {
-        headers: {
-          'X-Api-Key': process.env.DOGS_API_KEY,
-        },
-      });
-      const result = await data.json();
-      dog.imgUrl = result.url;
-    }
-    await addImageUrlToMarkup(dogListItems, dog.id, dog.imgUrl);
-    listItem.querySelector('.loader').classList.add('hidden');
-  } catch (err) {
-    console.log(err);
-  }
-}
-
 export async function generateMarkup(dogs) {
   // console.log(dogs);
   dogs.map((dog) => createGridMarkup(dog));
@@ -183,7 +140,7 @@ export async function generateMarkup(dogs) {
 }
 
 export async function getImgUrl(dogs) {
-  await dogs.map((dog) => fetchImgUrl(dog));
+  await dogs.map((dog) => model.fetchImgUrl(dog));
 }
 
 export function handleHeart(e) {
