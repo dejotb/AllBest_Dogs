@@ -26,7 +26,7 @@ state.likedDogs = JSON.parse(retrievedLikedDogs)
   : [];
 
 export function createDogsObjects(dogs) {
-  console.log(dogs);
+  // console.log(dogs);
   state.dogs = dogs.map((dog) => ({
     name: dog.name,
     bred_for: dog.bred_for,

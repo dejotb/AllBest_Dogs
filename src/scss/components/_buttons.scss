@@ -66,6 +66,12 @@
   animation: beat 1s 1 alternate;
 }
 
+.button__filters {
+  background-color: var(--color-yellow);
+  padding: 0 0.5rem;
+  border-radius: 5px;
+}
+
 .btn--cta {
   font-family: var(--ff-display);
   background-color: var(--color-pink);

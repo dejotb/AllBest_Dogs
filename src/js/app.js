@@ -65,7 +65,7 @@ BASKET.addEventListener('click', handleBasket);
 
 
 //???????
-// fetchDataCategories()
+document.querySelector('.button__filters').addEventListener('click', fetchDataCategories)
 
 TOP__DOGS.addEventListener('change', showSelectedTopDogs)
 
