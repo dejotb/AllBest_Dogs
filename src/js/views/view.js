@@ -26,10 +26,11 @@ export async function createGridMarkup(dog) {
         <div class='dog__caption'>
           <button class='dog__details' title="view details">🔎</button>
           <span class='dog__name'>${dog.name}</span>
-          <span class='dog__heart' data-liked=false>${
+          <span class='dog__heart' >${
             model.state.likedDogs.find((el) => el.id === dog.id) ? '💖' : '🤍'
           }</span>
         </div>
+        <span class='dog__heart--info alert__text hidden'>Breed added to favourites! 💕</span>
       </li>`;
   dogList.insertAdjacentHTML('afterbegin', markup);
 }
@@ -52,11 +53,13 @@ export function generateDogCard(dog) {
         <button class="modal__button">❎</button>
         <span class="loader hidden"></span>
       </div>
+      <span class='dog__heart--info alert__text hidden'>Breed added to favourites! 💕</span>
       <div class='dog__caption'>
         <span class='dog__name'>${dog.name}</span>
-        <span class='dog__heart' data-liked=false>${
+        <span class='dog__heart'>${
           model.state.likedDogs.find((el) => el.id === dog.id) ? '💖' : '🤍'
         }</span>
+
       </div>
 
       <ul class='modal__text'>
@@ -174,9 +177,18 @@ export function handleHeart(e) {
     model.state.likedDogs.push(likedDog);
 
     document.querySelector('.btn--hamburger').classList.add('heart-beat');
+    e.target
+      .closest('[data-id]')
+      .querySelector('.dog__heart--info')
+      .classList.remove('hidden');
+
     setTimeout(() => {
       document.querySelector('.btn--hamburger').classList.remove('heart-beat');
-    }, 1000);
+      e.target
+        .closest('[data-id]')
+        .querySelector('.dog__heart--info')
+        .classList.add('hidden');
+    }, 2000);
     heart.textContent = '💖';
   }
 

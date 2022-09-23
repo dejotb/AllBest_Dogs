@@ -115,6 +115,7 @@
     width: 100%;
     // width: 340px;
     height: 250px;
+    position: relative;
     // height: 250px;
 
     & > img {
@@ -146,7 +147,6 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    position: relative;
   }
 
   &__name {
@@ -157,6 +157,7 @@
     // justify-self: center;
     // justify-self: center;
     // margin-left: auto;
+
     font-size: 1.7rem;
     font-size: var(--fs-100);
     font-family: var(--ff-display);
@@ -179,9 +180,18 @@
     // justify-self: end;
 
     // padding: 1rem;
+    &--info {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation: notify 2s ease-in-out forwards;
+      min-width: max-content;
+      // transform: scale(1);
+    }
 
     &:hover {
-      animation: beat 1s 2 alternate;
+      animation: beat 1s 1 alternate;
     }
   }
 
