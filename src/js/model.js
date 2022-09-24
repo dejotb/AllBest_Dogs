@@ -3,6 +3,7 @@ import {
   API_URL_BREED,
   API_URL_BREEDS,
   API_URL_IMAGES,
+  RES_PER_PAGE,
   LOADER,
   POPULAR,
 } from './config.js';
@@ -16,6 +17,8 @@ export const state = {
   likedDogs: [],
   popular: POPULAR,
   temporary: [],
+  resultsPerPage: RES_PER_PAGE,
+  page: 1,
 };
 
 // ==========================================================================
@@ -69,27 +72,11 @@ export async function fetchAllBreeds() {
   }
 }
 
-// used in temporary
-// export async function fetchAllBreedsData() {
-//   try {
-//     if (!process.env.DOGS_API_KEY) {
-//       throw new Error('You forgot to set DOGS_API_KEY ');
-//     }
-//     LOADER.querySelector('.loader').classList.remove('hidden');
-//     const data = await fetch(`${API_URL_BREEDS}`, {
-//       headers: {
-//         'X-Api-Key': process.env.DOGS_API_KEY,
-//       },
-//     });
-//     const result = await data.json();
-//     LOADER.querySelector('.loader').classList.add('hidden');
-//     createDogsObjects(result);
-//   } catch (err) {
-//     const markup = err;
-//     alert(markup);
-//     console.log(err);
-//   }
-// }
+export function getSearchResultsPage(filteredData, page = state.page) {
+  const start = (page - 1) * state.resultsPerPage;
+  const end = page * state.resultsPerPage;
+  return filteredData.slice(start, end);
+}
 
 // used in controller
 export async function fetchDogsData(value) {

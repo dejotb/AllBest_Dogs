@@ -10,7 +10,14 @@ import {
 } from './view.js';
 
 export async function showPopularDogs() {
-  model.state.dogs.push(...model.state.popular);
+  const searchResultsPage = await model.getSearchResultsPage(
+    model.state.popular
+  );
+  // model.state.dogs.push(...model.state.popular);
+
+  // console.log(searchResultsPage);
+
+  model.state.dogs = searchResultsPage;
   await generateMarkup(model.state.dogs);
   await getImgUrl(model.state.dogs);
   DOGS_LIST.classList.remove('centered--one');
@@ -18,31 +25,86 @@ export async function showPopularDogs() {
 
 async function showTopDogs() {
   const fetchedData = await model.state.temporary;
+  const { value = 'alpa' } = TOP__DOGS;
 
-  console.log(fetchedData);
+  // console.log(fetchedData);
   let filteredData;
 
-  if (TOP__DOGS.value === 'largest') {
-    filteredData = await fetchedData
-      .filter((dog) => +dog.height.slice(-2) >= 74)
-      .slice(0, 12);
+  if (value === 'alphabetically-a-z') {
+    // filteredData = await fetchedData.filter(
+    //   (dog) => +dog.height.slice(-2) >= 70
+    // );
+    // .slice(0, 30);
+
+    filteredData = await fetchedData.sort((a, b) => a.name - b.name);
+  }
+  if (value === 'alphabetically-z-a') {
+    // filteredData = await fetchedData.filter(
+    //   (dog) => +dog.height.slice(-2) >= 70
+    // );
+    // .slice(0, 30);
+    // filteredData = await fetchedData.reverse((a, b) => a.name - b.name);
+  }
+  if (value === 'largest') {
+    // filteredData = await fetchedData.filter(
+    //   (dog) => +dog.height.slice(-2) >= 70
+    // );
+    // .slice(0, 30);
+
+    filteredData = await fetchedData.sort(
+      (a, b) => +b.height.slice(-2) - +a.height.slice(-2)
+    );
   }
 
-  if (TOP__DOGS.value === 'smallest') {
-    filteredData = await fetchedData
-      .filter((dog) => +dog.height.slice(-2) < 29)
-      .slice(0, 12);
+  if (value === 'smallest') {
+    // filteredData = await fetchedData
+    //   .filter((dog) => +dog.height.slice(-2) < 29)
+    //   .slice(0, 30);
+
+    filteredData = await fetchedData.sort(
+      (a, b) => +a.height.slice(-2) - +b.height.slice(-2)
+    );
   }
 
-  if (TOP__DOGS.value === 'longest-living') {
-    filteredData = await fetchedData
-      .filter(
-        (dog) => dog.life_span.split(' years').join(' ').trim().slice(-2) > 15
-      )
-      .slice(0, 12);
+  if (value === 'longest-living') {
+    // filteredData = await fetchedData.filter((dog) =>
+    //   console.log(+dog.life_span.split(' years').join(' ').trim().slice(-2))
+    // );
+    // .slice(0, 30);
+
+    filteredData = await fetchedData.sort((a, b) =>
+      +a.life_span.split(' years').join(' ').trim().slice(-2) <
+      +b.life_span.split(' years').join(' ').trim().slice(-2)
+        ? 1
+        : -1
+    );
   }
 
-  model.state.dogs = filteredData;
+  if (value === 'shortest-living') {
+    filteredData = await fetchedData.sort((a, b) =>
+      +a.life_span.split(' years').join(' ').trim().slice(-2) <
+      +b.life_span.split(' years').join(' ').trim().slice(-2)
+        ? -1
+        : 1
+    );
+
+    // filteredData = await fetchedData.sort((a, b) =>
+    //   +a.life_span.split(' years').join(' ').trim().slice(-2) <
+    //   +b.life_span.split(' years').join(' ').trim().slice(-2)
+    //     ? 1
+    //     : -1
+    // );
+    console.log(filteredData);
+  }
+
+  console.log(filteredData);
+  const searchResultsPage = await model.getSearchResultsPage(filteredData);
+
+  // console.log(searchResultsPage);
+
+  model.state.dogs = searchResultsPage;
+
+  console.log(model.state.dogs);
 
   generateMarkup(model.state.dogs);
   getImgUrl(model.state.dogs);

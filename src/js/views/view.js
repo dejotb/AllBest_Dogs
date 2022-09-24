@@ -32,7 +32,7 @@ export async function createGridMarkup(dog) {
         </div>
         <span class='dog__heart--info alert__text hidden'>Breed added to favourites! 💕</span>
       </li>`;
-  dogList.insertAdjacentHTML('afterbegin', markup);
+  dogList.insertAdjacentHTML('beforeend', markup);
 }
 
 // ? text blueprint

@@ -8,7 +8,7 @@ import { isElementFocused, scrollToView, setLocalStorage} from './helpers.js';
 import { createSearchList, handleUserSearchData } from './views/searchView.js';
 import { closeModal } from './views/modalView.js';
 import { handleHamburger,  handleBasket} from './views/basketView.js';
-import { showSelectedTopDogs, showPopularDogs} from './views/selectView.js';
+import { showSelectedTopDogs, showPopularDogs, showTopDogs} from './views/selectView.js';
 import { generateMarkup, getImgUrl} from './views/view.js';
 import { fetchDataCategories} from './views/filterView.js';
 
