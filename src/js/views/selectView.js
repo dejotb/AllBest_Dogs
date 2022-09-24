@@ -36,14 +36,18 @@ async function showTopDogs() {
     // );
     // .slice(0, 30);
 
-    filteredData = await fetchedData.sort((a, b) => a.name - b.name);
+    filteredData = await fetchedData
+      .sort((a, b) => a.name - b.name)
+      .slice(0, 60);
   }
   if (value === 'alphabetically-z-a') {
     // filteredData = await fetchedData.filter(
     //   (dog) => +dog.height.slice(-2) >= 70
     // );
     // .slice(0, 30);
-    // filteredData = await fetchedData.reverse((a, b) => a.name - b.name);
+    filteredData = await fetchedData
+      .reverse((a, b) => a.name - b.name)
+      .slice(0, 60);
   }
   if (value === 'largest') {
     // filteredData = await fetchedData.filter(
@@ -51,9 +55,9 @@ async function showTopDogs() {
     // );
     // .slice(0, 30);
 
-    filteredData = await fetchedData.sort(
-      (a, b) => +b.height.slice(-2) - +a.height.slice(-2)
-    );
+    filteredData = await fetchedData
+      .sort((a, b) => +b.height.slice(-2) - +a.height.slice(-2))
+      .slice(0, 60);
   }
 
   if (value === 'smallest') {
@@ -61,9 +65,9 @@ async function showTopDogs() {
     //   .filter((dog) => +dog.height.slice(-2) < 29)
     //   .slice(0, 30);
 
-    filteredData = await fetchedData.sort(
-      (a, b) => +a.height.slice(-2) - +b.height.slice(-2)
-    );
+    filteredData = await fetchedData
+      .sort((a, b) => +a.height.slice(-2) - +b.height.slice(-2))
+      .slice(0, 60);
   }
 
   if (value === 'longest-living') {
@@ -72,21 +76,25 @@ async function showTopDogs() {
     // );
     // .slice(0, 30);
 
-    filteredData = await fetchedData.sort((a, b) =>
-      +a.life_span.split(' years').join(' ').trim().slice(-2) <
-      +b.life_span.split(' years').join(' ').trim().slice(-2)
-        ? 1
-        : -1
-    );
+    filteredData = await fetchedData
+      .sort((a, b) =>
+        +a.life_span.split(' years').join(' ').trim().slice(-2) <
+        +b.life_span.split(' years').join(' ').trim().slice(-2)
+          ? 1
+          : -1
+      )
+      .slice(0, 60);
   }
 
   if (value === 'shortest-living') {
-    filteredData = await fetchedData.sort((a, b) =>
-      +a.life_span.split(' years').join(' ').trim().slice(-2) <
-      +b.life_span.split(' years').join(' ').trim().slice(-2)
-        ? -1
-        : 1
-    );
+    filteredData = await fetchedData
+      .sort((a, b) =>
+        +a.life_span.split(' years').join(' ').trim().slice(-2) <
+        +b.life_span.split(' years').join(' ').trim().slice(-2)
+          ? -1
+          : 1
+      )
+      .slice(0, 60);
 
     // filteredData = await fetchedData.sort((a, b) =>
     //   +a.life_span.split(' years').join(' ').trim().slice(-2) <
