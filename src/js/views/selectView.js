@@ -30,25 +30,6 @@ async function showTopDogs() {
   // console.log(fetchedData);
   let filteredData;
 
-  if (value === 'alphabetically-a-z') {
-    // filteredData = await fetchedData.filter(
-    //   (dog) => +dog.height.slice(-2) >= 70
-    // );
-    // .slice(0, 30);
-
-    filteredData = await fetchedData
-      .sort((a, b) => a.name - b.name)
-      .slice(0, 60);
-  }
-  if (value === 'alphabetically-z-a') {
-    // filteredData = await fetchedData.filter(
-    //   (dog) => +dog.height.slice(-2) >= 70
-    // );
-    // .slice(0, 30);
-    filteredData = await fetchedData
-      .reverse((a, b) => a.name - b.name)
-      .slice(0, 60);
-  }
   if (value === 'largest') {
     // filteredData = await fetchedData.filter(
     //   (dog) => +dog.height.slice(-2) >= 70
