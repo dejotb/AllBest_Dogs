@@ -47,7 +47,7 @@ export const BASKET_ITEMS = document.querySelector('.basket__items');
 // ==========================================================================
 
 export const TIMEOUT_SEC = 0.5;
-export const RES_PER_PAGE = 12;
+export const RES_PER_PAGE = 9;
 
 // ==========================================================================
 // LINK URL
