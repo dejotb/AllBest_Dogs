@@ -1,10 +1,28 @@
 @use "../base/abstracts" as *;
 
 .pagination {
-  width: 25rem;
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 2rem;
-  //   background-color: pink;
-  //   justify-content: space-between;
+  &__container {
+    position: relative;
+    width: 25rem;
+    min-height: 1rem;
+    // display: flex;
+    // justify-content: space-between;
+    margin-bottom: 2rem;
+    // background-color: pink;
+    //   justify-content: space-between;
+  }
+
+  &__btn--prev,
+  &__btn--next {
+    position: absolute;
+    top: 0;
+  }
+
+  &__btn--prev {
+    left: 0;
+  }
+
+  &__btn--next {
+    right: 0;
+  }
 }

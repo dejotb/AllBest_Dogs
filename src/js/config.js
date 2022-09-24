@@ -42,12 +42,16 @@ export const BASKET = document.querySelector('.basket');
 export const BASKET_WRAPPER = document.querySelector('.basket__list--wrapper');
 export const BASKET_ITEMS = document.querySelector('.basket__items');
 
+export const PAGINATION_CONTAINER = document.querySelector(
+  '.pagination__container'
+);
+
 // ==========================================================================
 // TIMEOUT time is sec
 // ==========================================================================
 
 export const TIMEOUT_SEC = 0.5;
-export const RES_PER_PAGE = 9;
+export const RES_PER_PAGE = 12;
 
 // ==========================================================================
 // LINK URL

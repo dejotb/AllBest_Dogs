@@ -5,17 +5,44 @@ import {
   AUTOCOMPLETE_INPUT,
   BTN_HAMBURGER,
   BASKET_WRAPPER,
+  PAGINATION_CONTAINER,
 } from './config.js';
 import { tempDisableEvents } from './helpers.js';
 // import { showAlertText } from './views/alertView.js';
 import alert from './views/alertView.js';
+import { showPaginationMarkup } from './views/paginationView.js';
 
 export async function showDog(breed) {
   await model.fetchDogsData(breed);
 
-  await generateMarkup(model.state.dogs);
+  // const allFoundBreeds = model.state.dogs;
+  // console.log(allFoundBreeds);
 
-  await getImgUrl(model.state.dogs);
+  const { dogs } = model.state;
+
+  await generateMarkup(dogs);
+
+  await getImgUrl(dogs);
+
+  model.state.dogs = [];
+  DOGS_LIST.textContent = '';
+  PAGINATION_CONTAINER.textContent = '';
+
+  showPaginationMarkup(model.state.filteredData);
+
+  const searchResultsPage = await model.getSearchResultsPage(
+    model.state.filteredData
+  );
+
+  // console.log(searchResultsPage);
+
+  model.state.dogs = searchResultsPage;
+
+  // console.log(model.state.dogs);
+
+  generateMarkup(model.state.dogs);
+  getImgUrl(model.state.dogs);
+  // DOGS_LIST.classList.remove('centered--one');
 }
 
 export function fetchDog(e) {
@@ -57,4 +84,31 @@ export function handleBasketVisibility(e) {
     BASKET_WRAPPER.classList.remove('visible');
     BTN_HAMBURGER.classList.remove('transparent');
   }
+}
+
+export function controlPagination(goToPage) {
+  // render new results
+  // model.state.dogs = [];
+  DOGS_LIST.textContent = '';
+  // render new pagination buttons
+
+  // console.log(model.state.filteredData);
+
+  const searchResultsPage = model.getSearchResultsPage(
+    model.state.filteredData,
+    goToPage
+  );
+
+  model.state.dogs = searchResultsPage; // dotąd jest git
+
+  PAGINATION_CONTAINER.textContent = '';
+  showPaginationMarkup(model.state.filteredData, goToPage);
+
+  // console.log(searchResultsPage);
+
+  // console.log(model.state.dogs);
+
+  generateMarkup(model.state.dogs);
+  getImgUrl(model.state.dogs);
+  DOGS_LIST.classList.remove('centered--one');
 }
