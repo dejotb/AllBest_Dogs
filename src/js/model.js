@@ -72,6 +72,8 @@ export async function fetchAllBreeds() {
   }
 }
 
+//
+
 export function getSearchResultsPage(filteredData, page = state.page) {
   const start = (page - 1) * state.resultsPerPage;
   const end = page * state.resultsPerPage;
