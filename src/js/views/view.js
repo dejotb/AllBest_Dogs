@@ -88,10 +88,6 @@ export function generateDogCard(dog) {
     </li>
   `;
 
-  // <a href="${BREED_WIKI_URL}/${editText(
-  //   dog.name
-  // )}" target="_blank">more info..</a>
-
   MODAL_LIST.insertAdjacentHTML('afterbegin', markup);
   MODAL.classList.remove('hidden');
   document.body.classList.add('sticky__body');

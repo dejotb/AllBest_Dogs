@@ -1,25 +1,9 @@
 @use "../base/abstracts" as *;
 
-// .dogs__container {
-//   // min-height: 40vh;
-//   display: grid;
-//   // max-width: 1200px;
-//   justify-items: center;
-//   // padding: 2rem 0;
-//   align-content: start;
-//   // min-width: 1400px;
-//   // background-color: silver;
-//   grid-gap: 2rem;
-// }
-
 .loader__container {
   position: relative;
-  // top: 50%;
-  // left: 50%;
-  // translate: transform(-50%, -80%);
+
   width: 30rem;
-  // height: 20rem;
-  // background-color: pink;
 
   & .loader {
     top: 40%;
@@ -35,19 +19,12 @@
     grid-gap: 2.5rem;
     padding: 4rem 1rem 1rem;
     min-height: 100vh;
-
-    @media screen and (min-width: 1200px) {
-      // display: flex;
-      // justify-self: start;
-    }
   }
 
   &__dashboard {
     display: grid;
     grid-gap: 2rem;
-    // background-color: var(--color-primary--light);
-    // border: 1px solid var(--color-primary);
-    // padding: 1rem 0.5rem;
+
     border-radius: 5px;
   }
 
@@ -55,7 +32,6 @@
     display: grid;
     justify-content: center;
     justify-items: center;
-    // padding: 1rem;
     grid-row-gap: 2rem;
     grid-template-columns: repeat(1, minmax(250px, 350px));
 
@@ -73,8 +49,6 @@
   &__title {
     font-size: var(--fs-400);
     font-family: var(--ff-display);
-    // border-bottom: solid var(--color-yellow) 1px;
-    // margin-bottom: 1rem;
   }
 }
 
@@ -83,16 +57,13 @@
     display: grid;
     padding: 0.5rem 0.5rem 0;
     justify-items: center;
-    // background-color: pink;
     background-color: var(--color-yellow);
     background-color: #c89666;
     background-color: #ffe8b3;
     background-color: var(--color-primary--light);
-    // color: black;
     border-radius: 5px;
     box-shadow: 0px 1px 5px 3px rgba(0, 0, 0, 0.2);
     width: 100%;
-    // grid-gap: 1rem;
     cursor: pointer;
     scale: 1;
     transition: all 0.2s ease-in;
@@ -106,17 +77,12 @@
 
   &__image {
     display: grid;
-    // justify-content: center;
-    // align-content: center;
+
     background-position: center;
     background-size: cover;
-    // width: 340px;
-    // height: 100%;
     width: 100%;
-    // width: 340px;
     height: 250px;
     position: relative;
-    // height: 250px;
 
     & > img {
       display: flex;
@@ -127,18 +93,8 @@
       object-position: center;
       width: 100%;
       height: 100%;
-      // aspect-ratio: 2 / 1;
-      //   aspect-ratio: 1/1;
-      // height: 270px;
-      // width: 100%;
-      // height: 100%;
-      // object-fit: cover;
-      // object-position: center;
-      background-color: var(--color-primary);
 
-      @media screen and (min-width: 720px) {
-        // height: 300px;
-      }
+      background-color: var(--color-primary);
     }
   }
 
@@ -150,18 +106,9 @@
   }
 
   &__name {
-    // flex: 1;
-    // display: flex;
-    // justify-content: center;
-    // margin-left: 3rem;
-    // justify-self: center;
-    // justify-self: center;
-    // margin-left: auto;
-
     font-size: 1.7rem;
     font-size: var(--fs-100);
     font-family: var(--ff-display);
-    // color: pink;
   }
 
   &__heart,
@@ -172,14 +119,7 @@
 
   &__heart {
     font-size: var(--fs-500);
-    // margin-left: auto;
-    // position: absolute;
-    // bottom: -0.5rem;
-    // right: 0;
-    // display: none;
-    // justify-self: end;
 
-    // padding: 1rem;
     &--info {
       position: absolute;
       top: 50%;
@@ -187,7 +127,6 @@
       transform: translate(-50%, -50%);
       animation: notify 2s ease-in-out forwards;
       min-width: max-content;
-      // transform: scale(1);
     }
 
     &:hover {
@@ -196,11 +135,6 @@
   }
 
   &__details {
-    // margin-right: auto;
-    // position: absolute;
-    // bottom: 0;
-    // left: 0;
-    // justify-self: start;
     font-size: 2.5rem;
 
     &:hover {

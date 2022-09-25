@@ -7,12 +7,6 @@ import {
 } from '../config.js';
 import { getLocalStorage } from '../helpers.js';
 
-// export const BTN_HAMBURGER = document.querySelector('.btn--hamburger');
-
-// export const BASKET = document.querySelector('.basket');
-// export const BASKET_WRAPPER = document.querySelector('.basket__list--wrapper');
-// export const BASKET_ITEMS = document.querySelector('.basket__items');
-
 export function createBasketMarkup(dog) {
   const markup = `
   <li class="basket__item" data-id="${dog.id}">

@@ -78,7 +78,6 @@ export async function fetchAllBreeds() {
 export function getSearchResultsPage(filteredData, page = state.page) {
   const start = (page - 1) * state.resultsPerPage;
   const end = page * state.resultsPerPage;
-  // console.log(filteredData.slice(start, end));
   return filteredData.slice(start, end);
 }
 
@@ -102,7 +101,7 @@ export async function fetchDogsData(value) {
 
     LOADER.querySelector('.loader').classList.add('hidden');
     state.dogs = await createDogsObjects(result);
-    state.filteredData = state.dogs; // jak coś wywalić
+    state.filteredData = state.dogs; // to check
   } catch (err) {
     const markup = err;
     alert(markup);

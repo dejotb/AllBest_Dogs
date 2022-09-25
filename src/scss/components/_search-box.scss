@@ -5,7 +5,6 @@
 
 .form {
   &__wrapper {
-    // display: flex;
     height: 4rem;
     z-index: var(--z-index-box);
     position: relative;
@@ -13,11 +12,9 @@
 
   &__search {
     height: 100%;
-    // width: clamp(30rem, 2vw, 50rem);
 
     width: min(90vw, 38rem);
-    // border: gold 3px solid;
-    // background-color: pink;
+
     padding: 0 12px;
     box-shadow: 0px 1px 5px 3px rgba(0, 0, 0, 0.12);
     border-radius: 5px;
@@ -32,8 +29,7 @@
     display: grid;
     align-content: center;
     color: var(--color-white);
-    // transform: translateY();
-    // width: 2rem;
+
     border-radius: 5px;
     border-radius: 0 5px 5px 0;
     height: 100%;
@@ -43,11 +39,9 @@
 .autocomplete__input li {
   padding: 0 1.2rem;
   cursor: default;
-  // display: none;
 
   &:hover,
-    // &:active,
-    &:focus {
+  &:focus {
     background-color: var(--color-primary);
   }
 }

@@ -1,27 +1,20 @@
 .overview {
-  // clip-path: polygon(100% 0, 0 0, 0 85%, 27% 89%, 100% 100%, 100% 86%);
   border: 1px solid var(--color-primary);
   position: relative;
-  // bottom: 10vh;
   justify-self: center;
   align-self: center;
   display: grid;
-  // align-self: end;
   grid-gap: 3rem;
-  // align-content: center;
 
   justify-items: center;
   padding: 2rem 1rem;
   background-color: var(--color-primary--light);
 
   position: relative;
-  //   z-index: var(--z-index-popup);
   @media screen and (min-width: 1200px) {
     justify-items: start;
-    // grid-gap: 2rem;
-    // position: absolute;
+
     border-radius: 15px;
-    // bottom: 10vh;
     margin-top: -6rem;
 
     padding: 3rem 5rem 6rem;
@@ -34,7 +27,6 @@
 
     @media screen and (min-width: 1200px) {
       flex-direction: row;
-      // height: 300px;
     }
   }
 

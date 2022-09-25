@@ -8,15 +8,11 @@ import {
   PAGINATION_CONTAINER,
 } from './config.js';
 import { tempDisableEvents } from './helpers.js';
-// import { showAlertText } from './views/alertView.js';
 import alert from './views/alertView.js';
 import { showPaginationMarkup } from './views/paginationView.js';
 
 export async function showDog(breed) {
   await model.fetchDogsData(breed);
-
-  // const allFoundBreeds = model.state.dogs;
-  // console.log(allFoundBreeds);
 
   const { dogs } = model.state;
 
@@ -34,15 +30,10 @@ export async function showDog(breed) {
     model.state.filteredData
   );
 
-  // console.log(searchResultsPage);
-
   model.state.dogs = searchResultsPage;
-
-  // console.log(model.state.dogs);
 
   generateMarkup(model.state.dogs);
   getImgUrl(model.state.dogs);
-  // DOGS_LIST.classList.remove('centered--one');
 }
 
 export function fetchDog(e) {
@@ -103,10 +94,6 @@ export function controlPagination(goToPage) {
 
   PAGINATION_CONTAINER.textContent = '';
   showPaginationMarkup(model.state.filteredData, goToPage);
-
-  // console.log(searchResultsPage);
-
-  // console.log(model.state.dogs);
 
   generateMarkup(model.state.dogs);
   getImgUrl(model.state.dogs);

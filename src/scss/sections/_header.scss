@@ -2,17 +2,9 @@
   display: grid;
   justify-items: center;
   align-items: center;
-  // margin-bottom: 2rem;
   min-height: 50vh;
   width: 100vw;
-  // position: relative;
-  // margin: -5px;
-  // overflow: hidden;
   position: relative;
-  // background-color: pink;
-  // background-image: url("./imgs/background.jpg");
-  // background-position: center;
-  // background-size: cover;
   @media screen and (min-width: 1200px) {
     min-height: 70vh;
   }
@@ -20,16 +12,9 @@
   &__title {
     display: grid;
     grid-gap: 2rem;
-    // justify-self: end;
-    // align-self: start;
-    // margin-right: 35rem;
-    // margin-bottom: 10rem;
   }
 
   &__video {
-    clip-path: polygon(100% 0, 0 0, 0 85%, 27% 89%, 75% 91%, 100% 86%);
-    clip-path: polygon(100% 0, 0 0, 0 100%, 34% 97%, 87% 97%, 100% 94%);
-    clip-path: polygon(100% 0, 0 0, 0 99%, 36% 96%, 77% 97%, 100% 94%);
     clip-path: polygon(100% 0, 0 0, 0 96%, 34% 98%, 77% 97%, 100% 94%);
 
     align-self: start;
@@ -37,17 +22,8 @@
     height: 100%;
     object-fit: cover;
     position: absolute;
-    // inset: 0;
-    // left: 0;
-    // right: 0;
-    // top: 0;
-    // bottom: 0;
     z-index: -1;
-    // filter: blur(2px);
-    // transform: scale(1.1);
-    // margin: -5px -10px -5px -10px;
     @media screen and (min-width: 1200px) {
-      // height: 70%;
       clip-path: polygon(100% 0, 0 0, 0 85%, 27% 89%, 75% 100%, 100% 86%);
       clip-path: polygon(100% 0, 0 0, 0 85%, 32% 94%, 86% 99%, 100% 86%);
       clip-path: polygon(100% 0, 0 0, 0 85%, 32% 94%, 85% 95%, 100% 86%);

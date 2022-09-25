@@ -13,8 +13,6 @@ ul {
 }
 
 * {
-  // scroll-margin-top: 6rem;
-
   &:focus {
     outline-color: var(--color-pink);
   }
@@ -43,10 +41,7 @@ html {
 
 body {
   display: grid;
-  // grid-gap: 6rem;
   margin: 0 auto;
-  // min-height: 100vh;
-  // color: var(--color-white);
   color: var(--color-font);
   width: 100vw;
   align-content: start;
@@ -55,26 +50,17 @@ body {
   font-family: var(--ff-primary);
   overflow-x: hidden;
   background-color: var(--color-primary);
-  // background-color: #079992;
   background: linear-gradient(
     0deg,
     rgba(255, 245, 215, 0.30574236530549714) 0%,
     var(--color-primary) 18%
   );
-  // background-image: linear-gradient(
-  //   to right bottom,
-  //   rgba(255, 245, 215, 0.30574236530549714),
-  //   var(--color-primary)
-  // );
+
   font-weight: 400;
   line-height: 1.6;
   text-rendering: optimizeSpeed;
 
-  // background-image: url("./imgs/background.jpg");
-  // background-size: 2rem;
-  // background-position: start;
   @media screen and (min-width: 720px) {
-    // padding: 0 4rem;
   }
 }
 
@@ -146,5 +132,4 @@ footer {
   display: flex;
   justify-content: center;
   font-size: 1.4rem;
-  // font-size: var(--fs-100);
 }

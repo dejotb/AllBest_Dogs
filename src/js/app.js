@@ -35,7 +35,6 @@ document.addEventListener('keyup', closeModal);
 BASKET_ITEMS.addEventListener('click', handleBasketItem);
 
 
-// console.log(model.state.likedDogs);
 
 window.addEventListener('beforeunload', () => {
   localStorage.setItem('likedDogs', JSON.stringify(model.state.likedDogs))
@@ -47,21 +46,7 @@ BTN_HAMBURGER.addEventListener('click', handleHamburger);
 
 BASKET.addEventListener('click', handleBasket);
 
-// export async function showDogFact() {
-//   const dogFact = document.querySelector('.fact__text');
-//   await model.fetchDogsFacts();
-//   dogFact.textContent = `Dog fact: ${model.state.fact}`;
-// }
 
-// BTN_FACTS.addEventListener('click', (e) => {
-//   e.preventDefault();
-//   showDogFact();
-// });
-
-// showDogFact();
-
-
-//////////////////////////////
 
 
 //???????
