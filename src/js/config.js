@@ -51,7 +51,7 @@ export const PAGINATION_CONTAINER = document.querySelector(
 // ==========================================================================
 
 export const TIMEOUT_SEC = 0.5;
-export const RES_PER_PAGE = 3;
+export const RES_PER_PAGE = 9;
 
 // ==========================================================================
 // LINK URL
