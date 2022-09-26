@@ -3,7 +3,8 @@
 .select {
   &__wrapper {
     display: flex;
-    grid-gap: 0.5rem;
+    // justify-content: space-evenly;
+    grid-gap: 1rem;
   }
 
   &__list {
@@ -17,8 +18,35 @@
     line-height: 1.1;
   }
 
+  &__list,
+  &__button {
+    max-width: 23ch;
+    font-size: var(--fs-200);
+    background-color: var(--color-primary--light);
+
+    border: 1px solid var(--color-font);
+    border-radius: 5px;
+    line-height: 1.1;
+  }
+
   &__label {
     font-size: var(--fs-300);
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-gap: 0.5rem;
+    padding-right: 0.5rem;
+    // padding: 0.5rem;
+    // padding: 0 0.5rem;
+    // border-radius: 5px;
+    // border: 1px solid var(--color-font);
+
+    & svg {
+      height: 2rem;
+    }
   }
 }
 
