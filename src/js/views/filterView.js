@@ -7,6 +7,32 @@ import {
   fetchImgUrl,
 } from './view.js';
 
+const getCharList = async function (char) {
+  const fetchedData = await model.state.temporary;
+
+  console.log(fetchedData);
+
+  const inputDogsData = fetchedData.map((element) =>
+    char === 'temperament' ? element.temperament : element.breed_group
+  );
+
+  const rawCharsArray = inputDogsData.join(', ').replace(/ /g, '').split(',');
+
+  const charsSet = new Set(rawCharsArray);
+
+  const cleanedCharsArray = Array.from(charsSet).sort().slice(1);
+
+  function getOccurrence(array, el) {
+    let count = 0;
+    array.forEach((val) => val === el && count++);
+    return count;
+  }
+
+  return cleanedCharsArray.map(
+    (el) => `${el} (${getOccurrence(rawCharsArray, el)})`
+  );
+};
+
 SELECT_BUTTON.addEventListener('click', () => {
   MODAL.classList.remove('hidden');
   document.body.classList.add('sticky__body');
@@ -67,31 +93,6 @@ export async function showFilterModal() {
     addFilterOption(el, '.fieldset__list--breed-group')
   );
 }
-
-const getCharList = async function (char) {
-  console.log(char);
-  const fetchedData = await model.state.temporary;
-
-  const inputDogsData = fetchedData.map((element) =>
-    char === 'temperament' ? element.temperament : element.breed_group
-  );
-
-  const rawCharsArray = inputDogsData.join(', ').replace(/ /g, '').split(',');
-
-  const charsSet = new Set(rawCharsArray);
-
-  const cleanedCharsArray = Array.from(charsSet).sort().slice(1);
-
-  function getOccurrence(array, el) {
-    let count = 0;
-    array.forEach((val) => val === el && count++);
-    return count;
-  }
-
-  return cleanedCharsArray.map(
-    (el) => `${el} (${getOccurrence(rawCharsArray, el)})`
-  );
-};
 
 async function fetchDataCategories(value) {
   // try {
