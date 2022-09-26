@@ -1,3 +1,4 @@
+import { el } from 'date-fns/locale';
 import * as model from '../model.js';
 import { DOGS_LIST, TOP__DOGS, SELECT_BUTTON, MODAL } from '../config.js';
 import {
@@ -10,16 +11,12 @@ import {
 const getCharList = async function (char) {
   const fetchedData = await model.state.temporary;
 
-  console.log(fetchedData);
-
   const inputDogsData = fetchedData.map((element) =>
     char === 'temperament' ? element.temperament : element.breed_group
   );
 
   const rawCharsArray = inputDogsData.join(', ').replace(/ /g, '').split(',');
-
   const charsSet = new Set(rawCharsArray);
-
   const cleanedCharsArray = Array.from(charsSet).sort().slice(1);
 
   function getOccurrence(array, el) {
@@ -33,17 +30,12 @@ const getCharList = async function (char) {
   );
 };
 
-SELECT_BUTTON.addEventListener('click', () => {
-  MODAL.classList.remove('hidden');
-  document.body.classList.add('sticky__body');
-});
-
-function addFilterOption(element, DOMElement) {
+function addFilterOption(element, DOMElement, nameValue) {
   const markup = `
   <div class='fieldset__input'>
     <input type="checkbox" id="${element
       .split(':')[0]
-      .toLowerCase()}" name="${element.split(':')[0].toLowerCase()}">
+      .toLowerCase()}" name="${nameValue}" value="${element.split(':')[0]}">
     <label for="${element.split(':')[0].toLowerCase()}">${element}</label>
   </div>
 `;
@@ -84,14 +76,42 @@ export async function showFilterModal() {
   const charsListTemperament = await getCharList('temperament');
 
   charsListTemperament.forEach((el) =>
-    addFilterOption(el, '.fieldset__list--temperament')
+    addFilterOption(el, '.fieldset__list--temperament', 'temperament')
   );
 
   const charsListBreedGroup = await getCharList();
 
   charsListBreedGroup.forEach((el) =>
-    addFilterOption(el, '.fieldset__list--breed-group')
+    addFilterOption(el, '.fieldset__list--breed-group', 'breed-group')
   );
+
+  document
+    .querySelector('.filter__options--search-btn')
+    .addEventListener('click', selectFilteredBreeds);
+}
+
+function checkSelectedFilter() {
+  const selectedTemperamentChars = [
+    ...document
+      .querySelector('.fieldset__list--temperament')
+      .querySelectorAll('input[name=temperament]:checked'),
+  ].map((char) => char.value.split(' ')[0]);
+  const selectedBreedGroupChars = [
+    ...document
+      .querySelector('.fieldset__list--breed-group')
+      .querySelectorAll('input[name=breed-group]:checked'),
+  ].map((char) => char.value.split(' ')[0]);
+
+  return {
+    temperament: selectedTemperamentChars,
+    breedGroup: selectedBreedGroupChars,
+  };
+}
+
+function selectFilteredBreeds() {
+  const { breedGroup, temperament } = checkSelectedFilter();
+
+  console.log(breedGroup, temperament);
 }
 
 async function fetchDataCategories(value) {
@@ -171,3 +191,8 @@ async function fetchDataCategories(value) {
 
 // ?
 // ? categories to be used: breed_group, temperament
+
+SELECT_BUTTON.addEventListener('click', () => {
+  MODAL.classList.remove('hidden');
+  document.body.classList.add('sticky__body');
+});
