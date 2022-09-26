@@ -1,0 +1,70 @@
+@use "../base/abstracts" as *;
+
+// ==========================================================================
+// MODAL FILTER
+// ==========================================================================
+
+.modal {
+  &__filter {
+    width: 98%;
+    max-width: 42rem;
+    height: 100%;
+    display: grid;
+    padding: 0 0 1rem 0;
+    justify-items: center;
+    align-content: start;
+    grid-gap: 1rem;
+    background-color: var(--color-primary--light);
+    border-radius: 5px;
+    // z-index: var(--z-index-popup);
+
+    @media screen and (min-width: 1200px) {
+      max-width: 48rem;
+    }
+  }
+}
+
+.fieldset {
+  &__wrapper {
+    width: 90%;
+    max-height: 32vh;
+    padding: 1rem;
+    background-color: var(--color-primary);
+    border-radius: 5px;
+  }
+
+  &__list {
+    border: none;
+    height: 100%;
+    overflow-y: auto;
+
+    & legend {
+      font-family: var(--ff-display);
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+  }
+}
+
+.filter {
+  &__options {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+
+    &--search-btn,
+    &--close-btn {
+      padding: 0.25rem 0.75rem;
+      border-radius: 5px;
+      font-size: var(--fs-200);
+    }
+    &--search-btn {
+      background-color: var(--color-pink);
+      color: var(--color-white);
+    }
+
+    &--close-btn {
+      background-color: var(--color-pink--light);
+    }
+  }
+}

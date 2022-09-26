@@ -9,11 +9,10 @@ import { createSearchList, handleUserSearchData } from './views/searchView.js';
 import { closeModal } from './views/modalView.js';
 import { handleHamburger,  handleBasket} from './views/basketView.js';
 import { showSelectedTopDogs, showPopularDogs, showTopDogs} from './views/selectView.js';
-import { fetchDataCategories} from './views/filterView.js';
+import { fetchDataCategories, showFilterModal} from './views/filterView.js';
 import { addHandlerClick} from './views/paginationView.js';
 
 require('dotenv').config();
-
 
 createSearchList();
 showPopularDogs();
@@ -50,7 +49,7 @@ BASKET.addEventListener('click', handleBasket);
 
 
 //???????
-// document.querySelector('.select__button').addEventListener('click', fetchDataCategories)
+document.querySelector('.select__button').addEventListener('click', showFilterModal)
 
 TOP__DOGS.addEventListener('change', showSelectedTopDogs)
 

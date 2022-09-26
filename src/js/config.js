@@ -46,6 +46,8 @@ export const PAGINATION_CONTAINER = document.querySelector(
   '.pagination__container'
 );
 
+export const SELECT_BUTTON = document.querySelector('.select__button');
+
 // ==========================================================================
 // TIMEOUT time is sec
 // ==========================================================================

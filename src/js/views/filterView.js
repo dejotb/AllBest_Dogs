@@ -1,5 +1,5 @@
 import * as model from '../model.js';
-import { DOGS_LIST, TOP__DOGS } from '../config.js';
+import { DOGS_LIST, TOP__DOGS, SELECT_BUTTON, MODAL } from '../config.js';
 import {
   generateMarkup,
   getImgUrl,
@@ -7,7 +7,93 @@ import {
   fetchImgUrl,
 } from './view.js';
 
-export async function fetchDataCategories(value) {
+SELECT_BUTTON.addEventListener('click', () => {
+  MODAL.classList.remove('hidden');
+  document.body.classList.add('sticky__body');
+});
+
+function addFilterOption(element, DOMElement) {
+  const markup = `
+  <div class='fieldset__input'>
+    <input type="checkbox" id="${element
+      .split(':')[0]
+      .toLowerCase()}" name="${element.split(':')[0].toLowerCase()}">
+    <label for="${element.split(':')[0].toLowerCase()}">${element}</label>
+  </div>
+`;
+
+  document
+    .querySelector(`${DOMElement}`)
+    .insertAdjacentHTML('beforeend', markup);
+}
+
+/* <p>Filter breeds</p> */
+
+export async function showFilterModal() {
+  const filterBox = document.createElement('div');
+  filterBox.classList.add('modal__filter');
+  filterBox.innerHTML = `
+  <button class="modal__button">❎</button>
+  <div class="fieldset__wrapper">
+    <fieldset class='fieldset__list fieldset__list--temperament'>
+      <legend>Choose temperament:</legend>
+    </fieldset>
+  </div>
+  <div class="fieldset__wrapper">
+    <fieldset class='fieldset__list fieldset__list--breed-group'>
+      <legend>Choose breed group:</legend>
+    </fieldset>
+  </div>
+
+  <div class='filter__options'>
+    <button class='filter__options--search-btn'>Submit</button>
+    <button class='filter__options--close-btn'>Clear all</button>
+  </div>
+
+
+  `;
+
+  MODAL.insertAdjacentElement('afterbegin', filterBox);
+  // await getCharList();
+  const charsListTemperament = await getCharList('temperament');
+
+  charsListTemperament.forEach((el) =>
+    addFilterOption(el, '.fieldset__list--temperament')
+  );
+
+  const charsListBreedGroup = await getCharList();
+
+  charsListBreedGroup.forEach((el) =>
+    addFilterOption(el, '.fieldset__list--breed-group')
+  );
+}
+
+const getCharList = async function (char) {
+  console.log(char);
+  const fetchedData = await model.state.temporary;
+
+  const inputDogsData = fetchedData.map((element) =>
+    char === 'temperament' ? element.temperament : element.breed_group
+  );
+
+  const rawCharsArray = inputDogsData.join(', ').replace(/ /g, '').split(',');
+
+  const charsSet = new Set(rawCharsArray);
+
+  const cleanedCharsArray = Array.from(charsSet).sort().slice(1);
+
+  function getOccurrence(array, el) {
+    let count = 0;
+    array.forEach((val) => val === el && count++);
+    return count;
+  }
+
+  return cleanedCharsArray.map(
+    (el) => `${el} (${getOccurrence(rawCharsArray, el)})`
+  );
+};
+
+async function fetchDataCategories(value) {
   // try {
   //   if (!process.env.DOGS_API_KEY) {
   //     throw new Error('You forgot to set DOGS_API_KEY ');
