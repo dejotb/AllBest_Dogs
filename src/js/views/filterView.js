@@ -9,6 +9,7 @@ import {
 import { generateMarkup, getImgUrl, centerDogsListGrid } from './view.js';
 import { closeModal } from './modalView.js';
 import { showPaginationMarkup } from './paginationView.js';
+import { getOccurrence } from '../helpers.js';
 
 const getCharList = async function (char) {
   const fetchedData = await model.state.temporary;
@@ -20,12 +21,6 @@ const getCharList = async function (char) {
   const rawCharsArray = inputDogsData.join(', ').replace(/ /g, '').split(',');
   const charsSet = new Set(rawCharsArray);
   const cleanedCharsArray = Array.from(charsSet).sort().slice(1);
-
-  function getOccurrence(array, el) {
-    let count = 0;
-    array.forEach((val) => val === el && count++);
-    return count;
-  }
 
   return cleanedCharsArray.map(
     (el) => `${el} (${getOccurrence(rawCharsArray, el)})`
@@ -45,49 +40,6 @@ function addFilterOption(element, DOMElement, nameValue) {
   document
     .querySelector(`${DOMElement}`)
     .insertAdjacentHTML('beforeend', markup);
-}
-
-export async function showFilterModal() {
-  const filterBox = document.createElement('div');
-  filterBox.classList.add('modal__filter');
-  filterBox.innerHTML = `
-  <button class="modal__button">❎</button>
-  <div class="fieldset__wrapper">
-    <fieldset class='fieldset__list fieldset__list--temperament'>
-      <legend>Choose temperament:</legend>
-    </fieldset>
-  </div>
-  <div class="fieldset__wrapper">
-    <fieldset class='fieldset__list fieldset__list--breed-group'>
-      <legend>Choose breed group:</legend>
-    </fieldset>
-  </div>
-
-  <div class='filter__options'>
-    <button class='filter__options--search-btn'>Show dogs</button>
-    <button class='filter__options--close-btn'>Clear all</button>
-  </div>
-
-
-  `;
-
-  MODAL.insertAdjacentElement('afterbegin', filterBox);
-  // await getCharList();
-  const charsListTemperament = await getCharList('temperament');
-
-  charsListTemperament.forEach((el) =>
-    addFilterOption(el, '.fieldset__list--temperament', 'temperament')
-  );
-
-  const charsListBreedGroup = await getCharList();
-
-  charsListBreedGroup.forEach((el) =>
-    addFilterOption(el, '.fieldset__list--breed-group', 'breed-group')
-  );
-
-  document
-    .querySelector('.filter__options--search-btn')
-    .addEventListener('click', selectFilteredBreeds);
 }
 
 function checkSelectedFilteredValues() {
@@ -130,7 +82,6 @@ function selectFilteredBreeds() {
 
   DOGS_LIST.textContent = '';
 
-  //
   showPaginationMarkup(model.state.filteredData);
 
   const searchResultsPage = model.getSearchResultsPage(
@@ -143,7 +94,6 @@ function selectFilteredBreeds() {
   getImgUrl(model.state.dogs);
   DOGS_LIST.classList.remove('centered--one');
 
-  //
   document.querySelector('.modal__filter').remove();
 
   MODAL.classList.add('hidden');
@@ -155,6 +105,48 @@ function selectFilteredBreeds() {
   console.log(model.state.filteredData);
 }
 
+export async function showFilterModal() {
+  const filterBox = document.createElement('div');
+  filterBox.classList.add('modal__filter');
+  filterBox.innerHTML = `
+  <button class="modal__button">❎</button>
+  <div class="fieldset__wrapper">
+    <fieldset class='fieldset__list fieldset__list--temperament'>
+      <legend>Choose temperament:</legend>
+    </fieldset>
+  </div>
+  <div class="fieldset__wrapper">
+    <fieldset class='fieldset__list fieldset__list--breed-group'>
+      <legend>Choose breed group:</legend>
+    </fieldset>
+  </div>
+
+  <div class='filter__options'>
+    <button class='filter__options--search-btn'>Show dogs</button>
+    <button class='filter__options--close-btn'>Clear all</button>
+  </div>
+
+
+  `;
+
+  MODAL.insertAdjacentElement('afterbegin', filterBox);
+  const charsListTemperament = await getCharList('temperament');
+
+  charsListTemperament.forEach((el) =>
+    addFilterOption(el, '.fieldset__list--temperament', 'temperament')
+  );
+
+  const charsListBreedGroup = await getCharList();
+
+  charsListBreedGroup.forEach((el) =>
+    addFilterOption(el, '.fieldset__list--breed-group', 'breed-group')
+  );
+
+  document
+    .querySelector('.filter__options--search-btn')
+    .addEventListener('click', selectFilteredBreeds);
+}
+
 // ?
 // ? categories to be used: breed_group, temperament
 
@@ -163,3 +155,9 @@ SELECT_BUTTON.addEventListener('click', () => {
   document.body.classList.add('sticky__body');
   PAGINATION_CONTAINER.textContent = '';
 });
+
+function updateFilterOptions() {
+  document
+    .querySelectorAll('.fieldset__wrapper')
+    .forEach((list) => list.addEventListener('change', selectFilteredBreeds));
+}

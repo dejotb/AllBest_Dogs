@@ -27,7 +27,6 @@ export function isElementFocused(element) {
 export function scrollToView(e) {
   setTimeout(
     () => {
-      // DOGS_CONTAINER.style.minHeight = '100vh';
       DOGS_CONTAINER.scrollIntoView();
     },
 
@@ -41,4 +40,10 @@ export function setLocalStorage(key, value) {
 
 export function getLocalStorage(key) {
   localStorage.getItem(key);
+}
+
+export function getOccurrence(array, el) {
+  let count = 0;
+  array.forEach((val) => val === el && count++);
+  return count;
 }
