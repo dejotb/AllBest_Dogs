@@ -1,4 +1,3 @@
-import { el } from 'date-fns/locale';
 import * as model from '../model.js';
 import { DOGS_LIST, TOP__DOGS, SELECT_BUTTON, MODAL } from '../config.js';
 import {
