@@ -118,12 +118,17 @@ DOGS_LIST.addEventListener('keyup', (e) => {
 });
 
 export function centerDogsListGrid() {
-  if (model.state.dogs.length >= 3) return;
-  if (model.state.dogs.length === 1) {
+  if (model.state.dogs.length >= 3) {
+    DOGS_LIST.classList.remove('centered--two');
+    DOGS_LIST.classList.remove('centered--one');
+  }
+  if (model.state.dogs.length <= 1) {
     DOGS_LIST.classList.add('centered--one');
+    DOGS_LIST.classList.remove('centered--two');
   }
   if (model.state.dogs.length === 2) {
     DOGS_LIST.classList.add('centered--two');
+    DOGS_LIST.classList.remove('centered--one');
   }
 }
 

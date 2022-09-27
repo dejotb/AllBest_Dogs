@@ -1,7 +1,14 @@
 import * as model from '../model.js';
-import { DOGS_LIST, SELECT_BUTTON, MODAL, MODAL_LIST } from '../config.js';
+import {
+  DOGS_LIST,
+  SELECT_BUTTON,
+  MODAL,
+  MODAL_LIST,
+  PAGINATION_CONTAINER,
+} from '../config.js';
 import { generateMarkup, getImgUrl, centerDogsListGrid } from './view.js';
 import { closeModal } from './modalView.js';
+import { showPaginationMarkup } from './paginationView.js';
 
 const getCharList = async function (char) {
   const fetchedData = await model.state.temporary;
@@ -119,12 +126,24 @@ function selectFilteredBreeds() {
 
   console.log(filteredData);
 
-  model.state.dogs = filteredData;
+  model.state.filteredData = filteredData;
 
   DOGS_LIST.textContent = '';
+
+  //
+  showPaginationMarkup(model.state.filteredData);
+
+  const searchResultsPage = model.getSearchResultsPage(
+    model.state.filteredData
+  );
+
+  model.state.dogs = searchResultsPage;
+
   generateMarkup(model.state.dogs);
   getImgUrl(model.state.dogs);
+  DOGS_LIST.classList.remove('centered--one');
 
+  //
   document.querySelector('.modal__filter').remove();
 
   MODAL.classList.add('hidden');
@@ -132,12 +151,7 @@ function selectFilteredBreeds() {
   Array.from(DOGS_LIST.children).forEach((element) => {
     element.tabIndex = 0;
   });
-
-  if (model.state.dogs.length === 2) return;
-  DOGS_LIST.classList.remove('centered--two');
-  if (model.state.dogs.length <= 1) return;
-  DOGS_LIST.classList.remove('centered--one');
-
+  centerDogsListGrid();
   console.log(model.state.filteredData);
 }
 
@@ -147,4 +161,5 @@ function selectFilteredBreeds() {
 SELECT_BUTTON.addEventListener('click', () => {
   MODAL.classList.remove('hidden');
   document.body.classList.add('sticky__body');
+  PAGINATION_CONTAINER.textContent = '';
 });
