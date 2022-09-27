@@ -1,11 +1,7 @@
 import * as model from '../model.js';
-import { DOGS_LIST, TOP__DOGS, SELECT_BUTTON, MODAL } from '../config.js';
-import {
-  generateMarkup,
-  getImgUrl,
-  createGridMarkup,
-  fetchImgUrl,
-} from './view.js';
+import { DOGS_LIST, SELECT_BUTTON, MODAL, MODAL_LIST } from '../config.js';
+import { generateMarkup, getImgUrl, centerDogsListGrid } from './view.js';
+import { closeModal } from './modalView.js';
 
 const getCharList = async function (char) {
   const fetchedData = await model.state.temporary;
@@ -33,8 +29,8 @@ function addFilterOption(element, DOMElement, nameValue) {
   const markup = `
   <div class='fieldset__input'>
     <input type="checkbox" id="${element
-      .split(':')[0]
-      .toLowerCase()}" name="${nameValue}" value="${element.split(':')[0]}">
+      .split(' ')[0]
+      .toLowerCase()}" name="${nameValue}" value="${element.split(' ')[0]}">
     <label for="${element.split(':')[0].toLowerCase()}">${element}</label>
   </div>
 `;
@@ -43,8 +39,6 @@ function addFilterOption(element, DOMElement, nameValue) {
     .querySelector(`${DOMElement}`)
     .insertAdjacentHTML('beforeend', markup);
 }
-
-/* <p>Filter breeds</p> */
 
 export async function showFilterModal() {
   const filterBox = document.createElement('div');
@@ -89,18 +83,19 @@ export async function showFilterModal() {
     .addEventListener('click', selectFilteredBreeds);
 }
 
-function checkSelectedFilter() {
+function checkSelectedFilteredValues() {
   const selectedTemperamentChars = [
     ...document
       .querySelector('.fieldset__list--temperament')
       .querySelectorAll('input[name=temperament]:checked'),
-  ].map((char) => char.value.split(' ')[0]);
+  ].map((char) => char.value);
   const selectedBreedGroupChars = [
     ...document
       .querySelector('.fieldset__list--breed-group')
       .querySelectorAll('input[name=breed-group]:checked'),
-  ].map((char) => char.value.split(' ')[0]);
+  ].map((char) => char.value);
 
+  console.log('this', selectedTemperamentChars);
   return {
     temperament: selectedTemperamentChars,
     breedGroup: selectedBreedGroupChars,
@@ -108,84 +103,42 @@ function checkSelectedFilter() {
 }
 
 function selectFilteredBreeds() {
-  const { breedGroup, temperament } = checkSelectedFilter();
+  const { breedGroup, temperament } = checkSelectedFilteredValues();
+
+  const fetchedData = model.state.temporary;
+
+  console.log(fetchedData);
 
   console.log(breedGroup, temperament);
-}
 
-async function fetchDataCategories(value) {
-  // try {
-  //   if (!process.env.DOGS_API_KEY) {
-  //     throw new Error('You forgot to set DOGS_API_KEY ');
-  //   }
-
-  //   const data = await fetch(`https://api.thedogapi.com/v1/breeds`, {
-  //     headers: {
-  //       'X-Api-Key': process.env.DOGS_API_KEY,
-  //     },
-  //   });
-  //   const result = await data.json();
-
-  //   console.log(result);
-
-  // ? method to get breed groups
-  // const breedGroups = result.map((element) => element.breed_group);
-  // const set = new Set(breedGroups);
-  // console.log(breedGroups);
-
-  // ? method to get breed temperaments
-  // await model.fetchAllBreedsData();
-  const fetchedData = await model.state.temporary;
-
-  const inputDogsData = fetchedData.map((element) => element.temperament);
-  // console.log(breedtemperamentsLists);
-
-  const rawCharsArray = inputDogsData.join(', ').replace(/ /g, '').split(',');
-
-  console.log(rawCharsArray);
-  // console.log(rawCharsArray);
-
-  const charsSet = new Set(rawCharsArray);
-  console.log(charsSet);
-
-  const cleanedCharsArray = Array.from(charsSet).sort().slice(1);
-  // console.log(charsSet);
-
-  function getOccurrence(array, el) {
-    let count = 0;
-    array.forEach((val) => val === el && count++);
-    return count;
-  }
-
-  const charOccurrence = cleanedCharsArray.map(
-    (el) => `${el}: (${getOccurrence(rawCharsArray, el)})`
-  );
-
-  console.log(charOccurrence);
-
-  const substring = ['Agile'];
-
-  // console.log(cleanedCharsArray);
-
-  const filteredData = await fetchedData
+  const filteredData = fetchedData
     .filter((dog) => dog.temperament !== undefined)
-    .filter((dog) => substring.every((el) => dog.temperament.includes(el)));
-
-  // .filter((dog) => dog.temperament.search('Active'))
-  // .slice(0, 12);
+    .filter((dog) => temperament.every((el) => dog.temperament.includes(el)))
+    .filter((dog) => dog.breed_group !== undefined)
+    .filter((dog) => breedGroup.every((el) => dog.breed_group.includes(el)));
 
   console.log(filteredData);
 
   model.state.dogs = filteredData;
 
-  // model.state.dogs = [];
   DOGS_LIST.textContent = '';
   generateMarkup(model.state.dogs);
   getImgUrl(model.state.dogs);
 
-  // console.log(model.state.dogs.length < 1);
+  document.querySelector('.modal__filter').remove();
+
+  MODAL.classList.add('hidden');
+  document.body.classList.remove('sticky__body');
+  Array.from(DOGS_LIST.children).forEach((element) => {
+    element.tabIndex = 0;
+  });
+
+  if (model.state.dogs.length === 2) return;
+  DOGS_LIST.classList.remove('centered--two');
   if (model.state.dogs.length <= 1) return;
   DOGS_LIST.classList.remove('centered--one');
+
+  console.log(model.state.filteredData);
 }
 
 // ?

@@ -32,8 +32,6 @@ export const LOADER = document.querySelector('.loader__container');
 export const MODAL = document.querySelector('.modal__container');
 export const MODAL_LIST = document.querySelector('.modal__list');
 
-export const BTN_FACTS = document.querySelector('.fact__button');
-
 export const BTN_SEARCH = document.querySelector('#search__button');
 
 export const BTN_HAMBURGER = document.querySelector('.btn--hamburger');
