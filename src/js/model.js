@@ -112,41 +112,56 @@ export async function fetchDogsData(value) {
 // used in view
 export async function fetchImgUrl(dog) {
   const { id } = dog;
+  const dogListItems = [...document.querySelectorAll('.dog__item')];
+  const listItem = dogListItems.find(
+    (item) => +item.getAttribute('data-id') === id
+  );
+  const addImage = dogListItems.find(
+    (dogItem) => +dogItem.getAttribute('data-id') === dog.id
+  );
 
-  try {
-    const dogListItems = [...document.querySelectorAll('.dog__item')];
-    const listItem = dogListItems.find(
-      (item) => +item.getAttribute('data-id') === id
-    );
+  let currentTry = 0;
+  while (true) {
+    try {
+      if (dog.imgId.length === 0) {
+        dog.imgUrl = IMAGE__UNKNOWN;
+      } else {
+        if (!process.env.DOGS_API_KEY) {
+          throw new Error('You forgot to set DOGS_API_KEY ');
+        }
 
-    if (dog.imgId.length === 0) {
-      dog.imgUrl = IMAGE__UNKNOWN;
-    } else {
-      if (!process.env.DOGS_API_KEY) {
-        throw new Error('You forgot to set DOGS_API_KEY ');
+        listItem.querySelector('.loader').classList.remove('hidden');
+
+        const data = await fetch(`${API_URL_IMAGES}${dog.imgId}`, {
+          headers: {
+            'X-Api-Key': process.env.DOGS_API_KEY,
+          },
+        });
+        const result = await data.json();
+        dog.imgUrl = result.url;
+        if (!data.ok) {
+          throw new Error(`Error! status: ${data.status}`);
+        }
       }
 
-      listItem.querySelector('.loader').classList.remove('hidden');
+      addImage.querySelector(
+        '.dog__image'
+      ).style.backgroundImage = `url('${dog.imgUrl}')`;
 
-      const data = await fetch(`${API_URL_IMAGES}${dog.imgId}`, {
-        headers: {
-          'X-Api-Key': process.env.DOGS_API_KEY,
-        },
-      });
-      const result = await data.json();
-      dog.imgUrl = result.url;
+      listItem.querySelector('.loader').classList.add('hidden');
+      break;
+    } catch (err) {
+      currentTry++;
+      console.log(err, `failed attempt ${currentTry}`);
+
+      if (currentTry >= 3) {
+        addImage.querySelector(
+          '.dog__image'
+        ).style.backgroundImage = `url('${IMAGE__UNKNOWN}')`;
+
+        listItem.querySelector('.loader').classList.add('hidden');
+        break;
+      }
     }
-
-    const addImage = dogListItems.find(
-      (dogItem) => +dogItem.getAttribute('data-id') === dog.id
-    );
-
-    addImage.querySelector(
-      '.dog__image'
-    ).style.backgroundImage = `url('${dog.imgUrl}')`;
-
-    listItem.querySelector('.loader').classList.add('hidden');
-  } catch (err) {
-    console.log(err);
   }
 }
