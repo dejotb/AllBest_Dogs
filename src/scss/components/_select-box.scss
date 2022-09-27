@@ -3,23 +3,16 @@
 .select {
   &__wrapper {
     display: flex;
-    // justify-content: space-evenly;
+    align-items: end;
     grid-gap: 1rem;
   }
 
   &__list {
-    display: grid;
-    align-items: center;
-    max-width: 23ch;
-    font-size: var(--fs-200);
-    border: 1px solid var(--color-font);
-    border-radius: 5px;
-    padding: 0.25em;
-    line-height: 1.1;
   }
 
   &__list,
   &__button {
+    padding: 0.15rem;
     max-width: 23ch;
     font-size: var(--fs-200);
     background-color: var(--color-primary--light);
@@ -39,14 +32,11 @@
     align-items: center;
     justify-content: center;
     grid-gap: 0.5rem;
+    padding: 0.25rem;
     padding-right: 0.5rem;
-    // padding: 0.5rem;
-    // padding: 0 0.5rem;
-    // border-radius: 5px;
-    // border: 1px solid var(--color-font);
 
     & svg {
-      height: 2rem;
+      height: var(--fs-300);
     }
   }
 }

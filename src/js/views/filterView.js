@@ -64,7 +64,7 @@ export async function showFilterModal() {
   </div>
 
   <div class='filter__options'>
-    <button class='filter__options--search-btn'>Submit</button>
+    <button class='filter__options--search-btn'>Show dogs</button>
     <button class='filter__options--close-btn'>Clear all</button>
   </div>
 

@@ -60,6 +60,7 @@
       height: 27rem;
       background-position: center;
       background-size: cover;
+      // position: inherit;
 
       @media screen and (min-width: 720px) {
         height: 35rem;
@@ -110,9 +111,13 @@
   }
 
   &__button {
-    justify-self: end;
+    position: absolute;
+    top: 0.25rem;
+    right: 0.5rem;
+
+    // justify-self: end;
     padding: 0.2rem;
-    align-self: start;
+    // align-self: start;
     font-size: var(--fs-500);
   }
 }
