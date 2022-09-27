@@ -70,11 +70,19 @@ function selectFilteredBreeds() {
 
   console.log(breedGroup, temperament);
 
-  const filteredData = fetchedData
-    .filter((dog) => dog.temperament !== undefined)
-    .filter((dog) => temperament.every((el) => dog.temperament.includes(el)))
-    .filter((dog) => dog.breed_group !== undefined)
-    .filter((dog) => breedGroup.every((el) => dog.breed_group.includes(el)));
+  let filteredData = '';
+
+  if (!breedGroup.length) {
+    filteredData = fetchedData
+      .filter((dog) => dog.temperament !== undefined)
+      .filter((dog) => temperament.every((el) => dog.temperament.includes(el)));
+  } else {
+    filteredData = fetchedData
+      .filter((dog) => dog.temperament !== undefined)
+      .filter((dog) => temperament.every((el) => dog.temperament.includes(el)))
+      .filter((dog) => dog.breed_group !== undefined)
+      .filter((dog) => breedGroup.includes(dog.breed_group));
+  }
 
   console.log(filteredData);
 
