@@ -137,11 +137,11 @@ export async function fetchImgUrl(dog) {
             'X-Api-Key': process.env.DOGS_API_KEY,
           },
         });
+        if (data.status === 429) {
+          throw new Error(`Too many Request! 💩 Try again later!`);
+        }
         const result = await data.json();
         dog.imgUrl = result.url;
-        if (!data.ok) {
-          throw new Error(`Error! status: ${data.status}`);
-        }
       }
 
       addImage.querySelector(
@@ -152,7 +152,8 @@ export async function fetchImgUrl(dog) {
       break;
     } catch (err) {
       currentTry++;
-      console.log(err, `failed attempt ${currentTry}`);
+
+      // console.log(err);
 
       if (currentTry >= 3) {
         addImage.querySelector(
@@ -160,6 +161,10 @@ export async function fetchImgUrl(dog) {
         ).style.backgroundImage = `url('${IMAGE__UNKNOWN}')`;
 
         listItem.querySelector('.loader').classList.add('hidden');
+
+        alert(err.message);
+        // const error = new Error(`Too many Requests! 💩 Try again later!`);
+        // alert(error);
         break;
       }
     }
