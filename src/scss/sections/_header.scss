@@ -1,3 +1,23 @@
+.logo {
+  width: 10rem;
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+
+  z-index: var(--z-index-popup);
+  @media screen and (min-width: 1200px) {
+    width: 15rem;
+    top: 1rem;
+    left: 1rem;
+  }
+
+  &__link {
+    & img {
+      width: 100%;
+    }
+  }
+}
+
 .header {
   display: grid;
   justify-items: center;
@@ -24,9 +44,9 @@
     position: absolute;
     z-index: -1;
     @media screen and (min-width: 1200px) {
-      clip-path: polygon(100% 0, 0 0, 0 85%, 27% 89%, 75% 100%, 100% 86%);
-      clip-path: polygon(100% 0, 0 0, 0 85%, 32% 94%, 86% 99%, 100% 86%);
-      clip-path: polygon(100% 0, 0 0, 0 85%, 32% 94%, 85% 95%, 100% 86%);
+      // clip-path: polygon(100% 0, 0 0, 0 85%, 27% 89%, 75% 100%, 100% 86%);
+      // clip-path: polygon(100% 0, 0 0, 0 85%, 32% 94%, 86% 99%, 100% 86%);
+      // clip-path: polygon(100% 0, 0 0, 0 85%, 32% 94%, 85% 95%, 100% 86%);
     }
   }
 }

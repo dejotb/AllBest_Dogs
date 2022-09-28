@@ -5,7 +5,7 @@ import {
   API_URL_IMAGES,
   RES_PER_PAGE,
   LOADER,
-  POPULAR,
+  DOGS_POPULAR,
 } from './config.js';
 import alert from './views/alertView.js';
 
@@ -14,7 +14,7 @@ export const state = {
   breedSuggestions: [],
   breedList: [],
   likedDogs: [],
-  popular: POPULAR,
+  popular: DOGS_POPULAR,
   temporary: [],
   filteredData: [],
   resultsPerPage: RES_PER_PAGE,
@@ -46,7 +46,6 @@ export function createDogsObjects(dogs) {
     height: dog.height.metric,
     weight: dog.weight.metric,
     id: dog.id,
-    origin: dog.origin,
   }));
 }
 

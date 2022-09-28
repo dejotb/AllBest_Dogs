@@ -63,7 +63,7 @@ export const BREED_WIKI_URL = 'https://en.wikipedia.org/wiki';
 // Most popular breeds Array
 // ==========================================================================
 
-export const POPULAR = [
+export const DOGS_POPULAR = [
   {
     bred_for: 'Herding, Guard dog',
     breed_group: 'Herding',
@@ -73,7 +73,6 @@ export const POPULAR = [
     imgUrl: 'https://cdn2.thedogapi.com/images/SJyBfg5NX_1280.jpg',
     life_span: '10 - 13 years',
     name: 'German Shepherd Dog',
-    origin: undefined,
     temperament:
       'Alert, Loyal, Obedient, Curious, Confident, Intelligent, Watchful, Courageous',
     weight: '23 - 41',
@@ -87,7 +86,6 @@ export const POPULAR = [
     imgUrl: 'https://cdn2.thedogapi.com/images/B1uW7l5VX_1280.jpg',
     life_span: '10 - 13 years',
     name: 'Labrador Retriever',
-    origin: undefined,
     temperament:
       'Kind, Outgoing, Agile, Gentle, Intelligent, Trusting, Even Tempered',
     weight: '25 - 36',
@@ -101,7 +99,6 @@ export const POPULAR = [
     imgUrl: 'https://cdn2.thedogapi.com/images/B12BnxcVQ_1280.jpg',
     life_span: '12 - 16 years',
     name: 'Yorkshire Terrier',
-    origin: undefined,
     temperament: 'Bold, Independent, Confident, Intelligent, Courageous',
     weight: '2 - 3',
   },
@@ -114,7 +111,6 @@ export const POPULAR = [
     imgUrl: 'https://cdn2.thedogapi.com/images/S1fFlx5Em_1280.jpg',
     life_span: '7 - 10 years',
     name: 'Bernese Mountain Dog',
-    origin: undefined,
     temperament: 'Affectionate, Loyal, Intelligent, Faithful',
     weight: '29 - 54',
   },
@@ -127,7 +123,6 @@ export const POPULAR = [
     imgUrl: 'https://cdn2.thedogapi.com/images/Bkdx2g5Em_1280.jpg',
     life_span: '15 - 20 years',
     name: 'West Highland White Terrier',
-    origin: undefined,
     temperament: 'Hardy, Friendly, Alert, Independent, Gay, Active, Courageous',
     weight: '7 - 10',
   },
@@ -140,7 +135,6 @@ export const POPULAR = [
     imgUrl: 'https://cdn2.thedogapi.com/images/rJIakgc4m_1280.jpg',
     life_span: '12 - 15 years',
     name: 'American Staffordshire Terrier',
-    origin: undefined,
     temperament: 'Tenacious, Friendly, Devoted, Loyal, Attentive, Courageous',
     weight: '23 - 27',
   },
@@ -155,7 +149,6 @@ export const POPULAR = [
     life_span: '12 years',
 
     name: 'Siberian Husky',
-    origin: undefined,
     temperament: 'Outgoing, Friendly, Alert, Gentle, Intelligent',
 
     weight: '16 - 27',
@@ -169,7 +162,6 @@ export const POPULAR = [
     imgUrl: 'https://cdn2.thedogapi.com/images/SJIUQl9NX_1280.jpg',
     life_span: '12 - 14 years',
     name: 'Miniature Schnauzer',
-    origin: undefined,
     temperament: 'Fearless, Friendly, Spirited, Alert, Obedient, Intelligent',
     weight: '5 - 9',
   },
@@ -183,7 +175,6 @@ export const POPULAR = [
     imgUrl: 'https://cdn2.thedogapi.com/images/HyWNfxc47_1280.jpg',
     life_span: '9 - 11 years',
     name: 'French Bulldog',
-    origin: undefined,
     temperament:
       'Playful, Affectionate, Keen, Sociable, Lively, Alert, Easygoing, Patient, Athletic, Bright',
 
@@ -198,7 +189,6 @@ export const POPULAR = [
     imgUrl: 'https://cdn2.thedogapi.com/images/HJ7Pzg5EQ_1280.jpg',
     life_span: '10 - 12 years',
     name: 'Golden Retriever',
-    origin: undefined,
     temperament:
       'Intelligent, Kind, Reliable, Friendly, Trustworthy, Confident',
     weight: '25 - 34',
@@ -212,7 +202,6 @@ export const POPULAR = [
     imgUrl: 'https://cdn2.thedogapi.com/images/HyJvcl9N7_1280.jpg',
     life_span: '12 - 14 years',
     name: 'Pug',
-    origin: undefined,
     temperament:
       'Docile, Clever, Charming, Stubborn, Sociable, Playful, Quiet, Attentive',
     weight: '6 - 8',
@@ -226,7 +215,6 @@ export const POPULAR = [
     imgUrl: 'https://cdn2.thedogapi.com/images/Syd4xxqEm_1280.jpg',
     life_span: '13 - 16 years',
     name: 'Beagle',
-    origin: undefined,
     temperament:
       'Amiable, Even Tempered, Excitable, Determined, Gentle, Intelligent',
     weight: '9 - 16',
@@ -240,7 +228,6 @@ export const POPULAR = [
     imgUrl: 'https://cdn2.thedogapi.com/images/r1xXEgcNX_1280.jpg',
     life_span: '8 - 10 years',
     name: 'Rottweiler',
-    origin: undefined,
     temperament:
       'Steady, Good-natured, Fearless, Devoted, Alert, Obedient, Confident, Self-assured, Calm, Courageous',
     weight: '34 - 50',
@@ -254,7 +241,6 @@ export const POPULAR = [
     imgUrl: 'https://cdn2.thedogapi.com/images/sGQvQUpsp.jpg',
     life_span: '12 - 16 years',
     name: 'Border Collie',
-    origin: undefined,
     temperament: 'Tenacious, Keen, Energetic, Responsive, Alert, Intelligent',
     weight: '14 - 20',
   },
@@ -267,7 +253,6 @@ export const POPULAR = [
     imgUrl: 'https://cdn2.thedogapi.com/images/HJRBbe94Q_1280.jpg',
     life_span: '10 - 14 years',
     name: 'Cavalier King Charles Spaniel',
-    origin: undefined,
     temperament:
       'Fearless, Affectionate, Sociable, Patient, Playful, Adaptable',
     weight: '6 - 8',
