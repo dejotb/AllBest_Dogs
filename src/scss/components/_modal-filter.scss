@@ -10,10 +10,11 @@
     max-width: 42rem;
     height: 100%;
     display: grid;
+    grid-gap: 1rem;
     padding: 0 0 1rem;
     justify-items: center;
     align-content: start;
-    grid-gap: 1rem;
+
     background-color: var(--color-primary--light);
     border-radius: 5px;
     position: relative;
@@ -21,6 +22,22 @@
 
     @media screen and (min-width: 1200px) {
       max-width: 48rem;
+    }
+
+    &--control {
+      font-size: 1.75rem;
+      display: grid;
+      grid-template-columns: 1em auto;
+      gap: 0.5em;
+    }
+
+    &--search-btn {
+      padding: 0.25rem 0.75rem;
+      border-radius: 5px;
+      font-size: var(--fs-300);
+      // border: 1px solid var(--color-font);
+      background-color: var(--color-pink);
+      color: var(--color-white);
     }
   }
 }
@@ -43,30 +60,6 @@
       font-family: var(--ff-display);
       font-weight: 600;
       margin-bottom: 1rem;
-    }
-  }
-}
-
-.filter {
-  &__options {
-    width: 80%;
-    display: flex;
-    justify-content: space-between;
-
-    &--search-btn,
-    &--close-btn {
-      padding: 0.25rem 0.75rem;
-      border-radius: 5px;
-      font-size: var(--fs-200);
-      border: 1px solid var(--color-font);
-    }
-    &--search-btn {
-      background-color: var(--color-pink);
-      color: var(--color-white);
-    }
-
-    &--close-btn {
-      background-color: var(--color-primary);
     }
   }
 }

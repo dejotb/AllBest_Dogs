@@ -111,14 +111,10 @@
   }
 
   &__button {
-    // position: absolute;
-    // top: 0.25rem;
-    // right: 0.5rem;
-
-    justify-self: end;
-    padding: 0.2rem;
-    align-self: start;
     font-size: var(--fs-500);
-    // z-index: var(--z-index-modal);
+    justify-self: end;
+    align-self: start;
+    padding: 0.25rem;
+    margin-bottom: -1rem;
   }
 }

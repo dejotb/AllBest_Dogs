@@ -30,10 +30,11 @@ const getCharList = async function (char) {
 function addFilterOption(element, DOMElement, nameValue) {
   const markup = `
   <div class='fieldset__input'>
-    <input type="checkbox" id="${element
-      .split(' ')[0]
-      .toLowerCase()}" name="${nameValue}" value="${element.split(' ')[0]}">
-    <label for="${element.split(':')[0].toLowerCase()}">${element}</label>
+    <label class="modal__filter--control">
+      <input type="checkbox" id="${element
+        .split(' ')[0]
+        .toLowerCase()}" name="${nameValue}" value="${element.split(' ')[0]}">
+    ${element}</label>
   </div>
 `;
 
@@ -128,14 +129,9 @@ export async function showFilterModal() {
       <legend>Choose breed group:</legend>
     </fieldset>
   </div>
-
-  <div class='filter__options'>
-    <button class='filter__options--search-btn'>Show dogs</button>
-    <button class='filter__options--close-btn'>Clear all</button>
-  </div>
-
-
-  `;
+  <button class='modal__filter--search-btn'>Show dogs</button>
+    `;
+  // <button class='filter__options--close-btn'>Clear all</button>
 
   MODAL.insertAdjacentElement('afterbegin', filterBox);
   const charsListTemperament = await getCharList('temperament');
@@ -151,7 +147,7 @@ export async function showFilterModal() {
   );
 
   document
-    .querySelector('.filter__options--search-btn')
+    .querySelector('.modal__filter--search-btn')
     .addEventListener('click', selectFilteredBreeds);
 }
 
