@@ -47,3 +47,34 @@ export function getOccurrence(array, el) {
   array.forEach((val) => val === el && count++);
   return count;
 }
+
+// Button UP intersection observe
+
+const target = document.querySelector('footer');
+
+const scrollToTopBtn = document.querySelector('.btn--up');
+const rootElement = document.documentElement;
+
+function callback(entries, observer) {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      // Show button
+      scrollToTopBtn.classList.remove('hidden');
+    } else {
+      // Hide button
+      scrollToTopBtn.classList.add('hidden');
+    }
+  });
+}
+
+function scrollToTop() {
+  rootElement.scrollTo({
+    bottom: 0,
+    behavior: 'smooth',
+  });
+}
+scrollToTopBtn.addEventListener('click', scrollToTop);
+
+const observer = new IntersectionObserver(callback);
+
+observer.observe(target);

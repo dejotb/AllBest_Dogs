@@ -22,7 +22,7 @@
         class="btn btn--hamburger"
         aria-label="basket"
         aria-expanded="false"
-        title="basket"
+        title="favourites"
       >
         <span class="hamburger__text" data-title="💕"></span>
       </button>
@@ -35,6 +35,9 @@
         <ul class="basket__items"></ul>
       </div>
     </nav>
+    <a href="#dogs" class="btn btn--up" title="go up" role="button">
+      <span data-title="🔼"></span>
+    </a>
 
     <header id="header" class="header">
       <div class="header__title">
@@ -108,14 +111,7 @@
         </div>
         <ul class="dogs__list"></ul>
       </section>
-      <div class="pagination__container">
-        <!-- <button class="btn--inline pagination__btn--prev">
-          <span>◀️ Page 1</span>
-        </button>
-        <button class="btn--inline pagination__btn--next">
-          <span>Page 3 ▶️</span>
-        </button> -->
-      </div>
+      <div class="pagination__container"></div>
       <div class="modal__container hidden">
         <div class="modal__list"></div>
       </div>
