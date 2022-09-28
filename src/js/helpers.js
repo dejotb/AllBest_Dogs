@@ -24,7 +24,7 @@ export function isElementFocused(element) {
     AUTOCOMPLETE_INPUT.classList.remove('active');
 }
 
-export function scrollToView(e) {
+export function scrollToView() {
   setTimeout(
     () => {
       DOGS_CONTAINER.scrollIntoView();

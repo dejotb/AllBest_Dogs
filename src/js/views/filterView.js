@@ -3,11 +3,9 @@ import {
   DOGS_LIST,
   SELECT_BUTTON,
   MODAL,
-  MODAL_LIST,
   PAGINATION_CONTAINER,
 } from '../config.js';
 import { generateMarkup, getImgUrl, centerDogsListGrid } from './view.js';
-import { closeModal } from './modalView.js';
 import { showPaginationMarkup } from './paginationView.js';
 import { getOccurrence } from '../helpers.js';
 
@@ -134,7 +132,6 @@ export async function showFilterModal() {
   </div>
   <button class='filter__search-btn'>Show dogs</button>
     `;
-  // <button class='filter__options--close-btn'>Clear all</button>
 
   MODAL.insertAdjacentElement('afterbegin', filterBox);
   const charsListTemperament = await getCharList('temperament');
@@ -154,17 +151,8 @@ export async function showFilterModal() {
     .addEventListener('click', selectFilteredBreeds);
 }
 
-// ?
-// ? categories to be used: breed_group, temperament
-
 SELECT_BUTTON.addEventListener('click', () => {
   MODAL.classList.remove('hidden');
   document.body.classList.add('sticky__body');
   PAGINATION_CONTAINER.textContent = '';
 });
-
-function updateFilterOptions() {
-  document
-    .querySelectorAll('.fieldset__wrapper')
-    .forEach((list) => list.addEventListener('change', selectFilteredBreeds));
-}

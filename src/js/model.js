@@ -8,7 +8,6 @@ import {
   POPULAR,
 } from './config.js';
 import alert from './views/alertView.js';
-import { generateMarkup, getImgUrl, createGridMarkup } from './views/view.js';
 
 export const state = {
   dogs: [],
@@ -101,7 +100,7 @@ export async function fetchDogsData(value) {
 
     LOADER.querySelector('.loader').classList.add('hidden');
     state.dogs = await createDogsObjects(result);
-    state.filteredData = state.dogs; // to check
+    state.filteredData = state.dogs;
   } catch (err) {
     const markup = err;
     alert(markup);
@@ -138,7 +137,7 @@ export async function fetchImgUrl(dog) {
           },
         });
         if (data.status === 429) {
-          throw new Error(`Too many Request! 💩 Try again later!`);
+          throw new Error(`Too many Requests! 💩 Try again later!`);
         }
         const result = await data.json();
         dog.imgUrl = result.url;
@@ -153,8 +152,6 @@ export async function fetchImgUrl(dog) {
     } catch (err) {
       currentTry++;
 
-      // console.log(err);
-
       if (currentTry >= 3) {
         addImage.querySelector(
           '.dog__image'
@@ -163,8 +160,6 @@ export async function fetchImgUrl(dog) {
         listItem.querySelector('.loader').classList.add('hidden');
 
         alert(err.message);
-        // const error = new Error(`Too many Requests! 💩 Try again later!`);
-        // alert(error);
         break;
       }
     }

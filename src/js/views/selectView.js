@@ -1,27 +1,13 @@
 import * as model from '../model.js';
-import {
-  DOGS_LIST,
-  TOP__DOGS,
-  LOADER,
-  PAGINATION_CONTAINER,
-} from '../config.js';
+import { DOGS_LIST, TOP__DOGS, PAGINATION_CONTAINER } from '../config.js';
 
-import { showDog } from '../controller.js';
 import { showPaginationMarkup } from './paginationView.js';
-import {
-  generateMarkup,
-  getImgUrl,
-  createGridMarkup,
-  fetchImgUrl,
-} from './view.js';
+import { generateMarkup, getImgUrl } from './view.js';
 
 export async function showPopularDogs() {
   const searchResultsPage = await model.getSearchResultsPage(
     model.state.popular
   );
-  // model.state.dogs.push(...model.state.popular);
-
-  // console.log(searchResultsPage);
 
   model.state.dogs = searchResultsPage;
   await generateMarkup(model.state.dogs);
@@ -32,8 +18,6 @@ export async function showPopularDogs() {
 async function showTopDogs() {
   const fetchedData = await model.state.temporary;
   const { value } = TOP__DOGS;
-
-  // let filteredData;
 
   if (value === 'largest') {
     model.state.filteredData = await fetchedData
@@ -69,21 +53,13 @@ async function showTopDogs() {
       .slice(0, 60);
   }
 
-  // console.log(model.state.filteredData);
-
-  // ??? here insert pagination function
-
   showPaginationMarkup(model.state.filteredData);
 
   const searchResultsPage = await model.getSearchResultsPage(
     model.state.filteredData
   );
 
-  // console.log(searchResultsPage);
-
   model.state.dogs = searchResultsPage;
-
-  // console.log(model.state.dogs);
 
   generateMarkup(model.state.dogs);
   getImgUrl(model.state.dogs);

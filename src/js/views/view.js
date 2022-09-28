@@ -1,21 +1,11 @@
-import IMAGE__UNKNOWN from 'url:../../imgs/dog-unknown.svg';
 import VanillaTilt from 'vanilla-tilt';
 import { updateBasket } from './basketView.js';
 import * as model from '../model.js';
 import { editText } from '../helpers.js';
 import alert from './alertView.js';
-import {
-  BREED_WIKI_URL,
-  DOGS_LIST,
-  MODAL,
-  MODAL_LIST,
-  API_URL_IMAGES,
-} from '../config.js';
+import { BREED_WIKI_URL, DOGS_LIST, MODAL, MODAL_LIST } from '../config.js';
 
 const dogList = document.querySelector('.dogs__list');
-const modalCard = document.querySelector('.modal__card');
-
-/* <img src='${IMAGE__LOADING}' alt='${dog.name}' loading="lazy"> */
 
 export async function createGridMarkup(dog) {
   const markup = `
@@ -35,16 +25,8 @@ export async function createGridMarkup(dog) {
   dogList.insertAdjacentHTML('beforeend', markup);
 }
 
-// ? text blueprint
-// <p>The ${dog.name} is a ${dog.breed_group} dog, bred for ${dog.bred_for}</p>
-
-// ? add to individual card
-// <a href="${BREED_WIKI_URL}/${editText(dog.name)}" target="_blank">link</a>
-// ?
-
-//
-
 /* <img src='${dog.imgUrl}' alt='${dog.name}' loading="lazy"> */
+
 export function generateDogCard(dog) {
   const markup = `
 
@@ -106,7 +88,6 @@ function checkIfHeartClicked(e) {
 
   const activeDogId = e.target.closest('.dog__item').dataset.id;
   const dog = model.state.dogs.find((el) => el.id === +activeDogId);
-  // console.log(dog);
   generateDogCard(dog);
 }
 
@@ -133,7 +114,6 @@ export function centerDogsListGrid() {
 }
 
 export async function generateMarkup(dogs) {
-  // console.log(dogs);
   dogs.map((dog) => createGridMarkup(dog));
   if (!dogs.length) {
     const markup = `We coudn't find such a dog's breed. Please try to find some other 🐶`;

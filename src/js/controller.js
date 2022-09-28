@@ -43,7 +43,7 @@ export function fetchDog(e) {
   const dogsInput = document.querySelector('#dogs__input');
 
   if (dogsInput.value.length < 3) {
-    const markup = `String has to be atleast 3️⃣ characters.`;
+    const markup = `String has to have atleast 3️⃣ characters.`;
     alert(markup);
     return;
   }
@@ -78,19 +78,14 @@ export function handleBasketVisibility(e) {
 }
 
 export function controlPagination(goToPage) {
-  // render new results
-  // model.state.dogs = [];
   DOGS_LIST.textContent = '';
-  // render new pagination buttons
-
-  // console.log(model.state.filteredData);
 
   const searchResultsPage = model.getSearchResultsPage(
     model.state.filteredData,
     goToPage
   );
 
-  model.state.dogs = searchResultsPage; // dotąd jest git
+  model.state.dogs = searchResultsPage;
 
   PAGINATION_CONTAINER.textContent = '';
   showPaginationMarkup(model.state.filteredData, goToPage);

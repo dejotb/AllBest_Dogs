@@ -60,7 +60,6 @@
       height: 27rem;
       background-position: center;
       background-size: cover;
-      // position: inherit;
 
       @media screen and (min-width: 720px) {
         height: 35rem;
@@ -82,7 +81,6 @@
       }
       & .dog__name {
         font-size: var(--fs-300);
-        // font-family: var(--ff-display);
       }
     }
   }

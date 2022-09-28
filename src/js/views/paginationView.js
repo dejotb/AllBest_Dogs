@@ -1,24 +1,7 @@
-import { stat } from 'fs';
 import * as model from '../model.js';
-import {
-  DOGS_LIST,
-  TOP__DOGS,
-  LOADER,
-  PAGINATION_CONTAINER,
-} from '../config.js';
-
-import { showDog } from '../controller.js';
-import {
-  generateMarkup,
-  getImgUrl,
-  createGridMarkup,
-  fetchImgUrl,
-} from './view.js';
+import { PAGINATION_CONTAINER } from '../config.js';
 
 function getPaginationMarkup(filteredData, curPage = model.state.page) {
-  //   const curPage = model.state.page;
-  console.log(curPage);
-
   const numPages = Math.ceil(filteredData.length / model.state.resultsPerPage);
   // Page 1 and other pages
 
@@ -30,7 +13,6 @@ function getPaginationMarkup(filteredData, curPage = model.state.page) {
             <span>Page ${curPage + 1} ▶️</span>
         </button>
         `;
-    // PAGINATION_CONTAINER.insertAdjacentHTML('afterbegin', markup);
   }
   // Last page
 
@@ -42,7 +24,6 @@ function getPaginationMarkup(filteredData, curPage = model.state.page) {
             <span>◀️ Page ${curPage - 1}</span>
         </button>
         `;
-    // return;
   }
   // Other page
   if (curPage < numPages) {
@@ -58,7 +39,6 @@ function getPaginationMarkup(filteredData, curPage = model.state.page) {
             <span>Page ${curPage + 1} ▶️</span>
         </button>
     `;
-    // PAGINATION_CONTAINER.insertAdjacentHTML('afterbegin', markup);
   }
 
   // Page 1 and NO other pages
@@ -68,8 +48,6 @@ function getPaginationMarkup(filteredData, curPage = model.state.page) {
 
 export function showPaginationMarkup(filteredData, goToPage) {
   const markup = getPaginationMarkup(filteredData, goToPage);
-  //   console.log(markup);
-  //   console.log(model.state.page);
 
   PAGINATION_CONTAINER.insertAdjacentHTML('afterbegin', markup);
 }

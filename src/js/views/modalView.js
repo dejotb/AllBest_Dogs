@@ -1,5 +1,4 @@
-import * as model from '../model.js';
-import { DOGS_LIST, MODAL, MODAL_LIST, MODAL_FILTER } from '../config.js';
+import { DOGS_LIST, MODAL, MODAL_LIST } from '../config.js';
 import { handleHeart } from './view.js';
 
 export function closeModal(e) {

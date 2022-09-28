@@ -14,9 +14,6 @@ export async function createSearchList() {
   await model.state.breedSuggestions.forEach((el) => {
     const newListItem = document.createElement('li');
     newListItem.textContent = el;
-
-    // model.state.breedList.push(newListItem);
-    // AUTOCOMPLETE_INPUT.appendChild(newListItem);
   });
 }
 

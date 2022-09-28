@@ -1,11 +1,5 @@
 import * as model from '../model.js';
-import {
-  BASKET,
-  BASKET_WRAPPER,
-  BASKET_ITEMS,
-  BTN_HAMBURGER,
-} from '../config.js';
-import { getLocalStorage } from '../helpers.js';
+import { BASKET_WRAPPER, BASKET_ITEMS, BTN_HAMBURGER } from '../config.js';
 
 export function createBasketMarkup(dog) {
   const markup = `
