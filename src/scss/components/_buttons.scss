@@ -84,12 +84,12 @@
 
 .btn--up {
   position: fixed;
-  bottom: 0.5rem;
-  right: 0.5rem;
+  bottom: 1rem;
+  right: 1rem;
 
-  @media screen and (min-width: $bp-lg) {
-    bottom: 1rem;
-    right: 1rem;
-  }
+  // @media screen and (min-width: $bp-lg) {
+  //   bottom: 1rem;
+  //   right: 1rem;
+  // }
   // box-shadow: 0px 1px 10px 7px rgba(0, 0, 0, 0.2);
 }
