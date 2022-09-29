@@ -26,13 +26,12 @@
     display: none;
     opacity: 0;
 
-    @media screen and (min-width: $bp-md) {
-      width: 35vw;
+    @media screen and (min-width: 720px) {
+      width: 50vw;
       max-height: 70vh;
     }
-    @media screen and (min-width: $bp-lg) {
+    @media screen and (min-width: 1200px) {
       width: 30vw;
-      max-height: 70vh;
     }
   }
 

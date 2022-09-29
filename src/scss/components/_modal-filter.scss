@@ -8,7 +8,6 @@
   &__filter {
     width: 98%;
     max-width: 42rem;
-    // height: 100%;
     display: grid;
     grid-gap: 1rem;
     padding: 0 0 1rem;
@@ -38,13 +37,6 @@
       border-bottom: solid var(--color-yellow) 1px;
       font-family: var(--ff-display);
     }
-  }
-
-  &__control {
-    font-size: 1.75rem;
-    display: grid;
-    grid-template-columns: 1em auto;
-    gap: 0.5em;
   }
 
   &__search-btn {

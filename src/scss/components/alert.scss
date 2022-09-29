@@ -2,8 +2,8 @@
 
 .alert {
   &__text {
-    background-color: var(--color-primary--light);
     padding: 1rem;
+    background-color: var(--color-primary--light);
     border: var(--color-yellow) solid 1px;
     border-radius: 5px;
     z-index: var(--z-index-popup);

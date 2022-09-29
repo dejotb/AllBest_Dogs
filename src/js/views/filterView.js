@@ -117,8 +117,8 @@ export async function showFilterModal() {
   filterBox.classList.add('modal__filter');
   filterBox.innerHTML = `
   <div class='filter__top'>
-  <span>Filter breeds</span>
-  <button class="modal__button">❎</button>
+    <span>Filter breeds</span>
+    <button class="modal__button">❎</button>
   </div>
   <div class="fieldset__wrapper">
     <fieldset class='fieldset__list fieldset__list--temperament'>

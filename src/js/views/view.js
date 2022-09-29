@@ -66,7 +66,7 @@ export function generateDogCard(dog) {
         </ul>
         <a class='text--secondary' href="${BREED_WIKI_URL}/${editText(
     dog.name
-  )}" target="_blank" rel="noopener">📚 more details...</a>
+  )}" target="_blank" rel="noopener noreferrer">📚 more details...</a>
     </li>
   `;
 
@@ -116,7 +116,7 @@ export function centerDogsListGrid() {
 export async function generateMarkup(dogs) {
   dogs.map((dog) => createGridMarkup(dog));
   if (!dogs.length) {
-    const markup = `We coudn't find such a dogs breed. Please try to find some other 🐶`;
+    const markup = `We coudn't find such a dog breed. Please try to find some other 🐶`;
     alert(markup);
   }
 
