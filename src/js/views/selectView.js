@@ -4,10 +4,8 @@ import { DOGS_LIST, TOP__DOGS, PAGINATION_CONTAINER } from '../config.js';
 import { showPaginationMarkup } from './paginationView.js';
 import { generateMarkup, getImgUrl } from './view.js';
 
-export async function showPopularDogs() {
-  const searchResultsPage = await model.getSearchResultsPage(
-    model.state.popular
-  );
+export async function showPopularDogs(array = model.state.popular) {
+  const searchResultsPage = await model.getSearchResultsPage(array);
 
   model.state.dogs = searchResultsPage;
   await generateMarkup(model.state.dogs);
@@ -72,7 +70,9 @@ export function showSelectedTopDogs(e) {
   DOGS_LIST.textContent = '';
   PAGINATION_CONTAINER.textContent = '';
   if (value === 'popularity') {
-    showPopularDogs();
+    showPopularDogs(model.state.popular);
+  } else if (value === 'dangerous') {
+    showPopularDogs(model.state.dangerous);
   } else {
     showTopDogs();
   }

@@ -6,6 +6,7 @@ import {
   RES_PER_PAGE,
   LOADER,
   DOGS_POPULAR,
+  DOGS_DANGEROUS,
 } from './config.js';
 import alert from './views/alertView.js';
 
@@ -15,6 +16,7 @@ export const state = {
   breedList: [],
   likedDogs: [],
   popular: DOGS_POPULAR,
+  dangerous: DOGS_DANGEROUS,
   temporary: [],
   filteredData: [],
   resultsPerPage: RES_PER_PAGE,
