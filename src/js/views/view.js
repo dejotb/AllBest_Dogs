@@ -154,7 +154,6 @@ export function handleHeart(e) {
     );
     model.state.likedDogs = filteredLikedDogs;
     heart.textContent = '🤍';
-    localStorage.setItem('likedDogs', JSON.stringify(model.state.likedDogs));
   } else {
     model.state.likedDogs.push(likedDog);
 
@@ -172,7 +171,6 @@ export function handleHeart(e) {
         .classList.add('hidden');
     }, 2000);
     heart.textContent = '💖';
-    localStorage.setItem('likedDogs', JSON.stringify(model.state.likedDogs));
   }
 
   const editedHeart = Array.from(DOGS_LIST.children).find(
@@ -182,6 +180,7 @@ export function handleHeart(e) {
   editedHeart.querySelector('.dog__heart').textContent = heart.textContent;
 
   updateBasket(likedDog);
+  localStorage.setItem('likedDogs', JSON.stringify(model.state.likedDogs));
 }
 
 dogList.addEventListener('click', handleHeart);
