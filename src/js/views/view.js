@@ -32,7 +32,7 @@ export function generateDogCard(dog) {
 
   <li class='modal__card' data-id="${dog.id}" data-tilt >
       <div class="dog__image" style='background-image: url(${dog.imgUrl})'>
-        <button class="modal__button">⚔️❎</button>
+        <button class="modal__button">❎</button>
         <span class="loader hidden"></span>
       </div>
       <span class='dog__heart--info alert__text hidden'>Breed added to favourites! 💕</span>
@@ -116,7 +116,7 @@ export function centerDogsListGrid() {
 export async function generateMarkup(dogs) {
   dogs.map((dog) => createGridMarkup(dog));
   if (!dogs.length) {
-    const markup = `We coudn't find such a dog's breed. Please try to find some other 🐶`;
+    const markup = `We coudn't find such a dogs breed. Please try to find some other 🐶`;
     alert(markup);
   }
 
