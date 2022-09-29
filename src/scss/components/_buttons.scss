@@ -8,6 +8,12 @@
   background-color: transparent;
   z-index: var(--z-index-popup);
 
+  &:hover {
+    :after {
+      background-color: var(--color-pink);
+    }
+  }
+
   ::before,
   ::after {
     position: absolute;
@@ -18,11 +24,12 @@
     border-radius: 12vh;
     z-index: -1;
     pointer-events: none;
+    background-color: var(--color-pink);
   }
 
   ::before {
     content: "";
-    transform: translate(4px, 4px);
+    transform: translate(3px, 3px);
   }
 
   ::after {
@@ -39,12 +46,6 @@
   &--up {
     transition: all 0.2s ease-in;
     width: 4rem;
-
-    &:hover {
-      :after {
-        background-color: var(--color-pink);
-      }
-    }
   }
 
   &--hamburger,
@@ -73,7 +74,7 @@
   color: var(--color-white);
   border-radius: 5px;
   justify-self: end;
-  box-shadow: 0px 1px 5px 3px rgba(0, 0, 0, 0.12);
+  // box-shadow: 0px 1px 5px 3px rgba(0, 0, 0, 0.12);
   transition: all 0.2s ease-in-out;
 
   &:hover {

@@ -18,8 +18,12 @@
   </head>
   <body>
     <div class="logo">
-      <a class="logo__link" href="index.html" aria-label="homepage">
-        <img src="imgs/logo.png" alt="logo" />
+      <a href="index.html" aria-label="homepage">
+        <picture>
+          <source media="(max-width: 719px)" srcset="imgs/logo-small.png" />
+          <source media="(min-width: 720px)" srcset="imgs/logo.png" />
+          <img class="logo__image" src="imgs/logo.png" alt="logo" />
+        </picture>
       </a>
     </div>
     <nav class="basket">
@@ -116,7 +120,7 @@
         </div>
         <ul class="dogs__list"></ul>
       </section>
-      <div class="pagination__container"></div>
+      <div class="pagination__container hidden"></div>
       <div class="modal__container hidden">
         <div class="modal__list"></div>
       </div>

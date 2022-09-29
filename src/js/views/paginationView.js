@@ -6,6 +6,7 @@ function getPaginationMarkup(filteredData, curPage = model.state.page) {
   // Page 1 and other pages
 
   if (curPage === 1 && numPages > 1) {
+    document.querySelector('.pagination__container').classList.remove('hidden');
     return `
         <button data-goto='${
           curPage + 1
@@ -17,6 +18,7 @@ function getPaginationMarkup(filteredData, curPage = model.state.page) {
   // Last page
 
   if (curPage === numPages && numPages > 1) {
+    document.querySelector('.pagination__container').classList.remove('hidden');
     return `
         <button data-goto='${
           curPage - 1
@@ -27,6 +29,7 @@ function getPaginationMarkup(filteredData, curPage = model.state.page) {
   }
   // Other page
   if (curPage < numPages) {
+    document.querySelector('.pagination__container').classList.remove('hidden');
     return `
         <button data-goto='${
           curPage - 1
@@ -42,6 +45,7 @@ function getPaginationMarkup(filteredData, curPage = model.state.page) {
   }
 
   // Page 1 and NO other pages
+  document.querySelector('.pagination__container').classList.add('hidden');
   return '';
   //
 }
