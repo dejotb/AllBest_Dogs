@@ -35,9 +35,9 @@ BASKET_ITEMS.addEventListener('click', handleBasketItem);
 
 
 
-// window.addEventListener('beforeunload', () =>
-//   localStorage.setItem('likedDogs', JSON.stringify(model.state.likedDogs))
-// );
+window.addEventListener('beforeunload', () =>
+  localStorage.setItem('likedDogs', JSON.stringify(model.state.likedDogs))
+);
 
 
 
