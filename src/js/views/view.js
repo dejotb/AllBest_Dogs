@@ -66,7 +66,7 @@ export function generateDogCard(dog) {
         </ul>
         <a class='text--secondary' href="${BREED_WIKI_URL}/${editText(
     dog.name
-  )}" target="_blank">📚 more details...</a>
+  )}" target="_blank" rel="noopener">📚 more details...</a>
     </li>
   `;
 
