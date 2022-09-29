@@ -32,7 +32,7 @@ export function generateDogCard(dog) {
 
   <li class='modal__card' data-id="${dog.id}" data-tilt >
       <div class="dog__image" style='background-image: url(${dog.imgUrl})'>
-        <button class="modal__button">❎</button>
+        <button class="modal__button">⚔️❎</button>
         <span class="loader hidden"></span>
       </div>
       <span class='dog__heart--info alert__text hidden'>Breed added to favourites! 💕</span>
@@ -154,6 +154,7 @@ export function handleHeart(e) {
     );
     model.state.likedDogs = filteredLikedDogs;
     heart.textContent = '🤍';
+    localStorage.setItem('likedDogs', JSON.stringify(model.state.likedDogs));
   } else {
     model.state.likedDogs.push(likedDog);
 
@@ -171,6 +172,7 @@ export function handleHeart(e) {
         .classList.add('hidden');
     }, 2000);
     heart.textContent = '💖';
+    localStorage.setItem('likedDogs', JSON.stringify(model.state.likedDogs));
   }
 
   const editedHeart = Array.from(DOGS_LIST.children).find(
