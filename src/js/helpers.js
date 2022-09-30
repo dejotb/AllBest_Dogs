@@ -1,4 +1,13 @@
-import { TIMEOUT_SEC, AUTOCOMPLETE_INPUT, DOGS_CONTAINER } from './config.js';
+import {
+  TIMEOUT_SEC,
+  AUTOCOMPLETE_INPUT,
+  DOGS_CONTAINER,
+  DOGS_LIST,
+} from './config.js';
+
+// ==========================================================================
+// HELPERS
+// ==========================================================================
 
 export function editText(string) {
   return string.replace(' ', '_');
@@ -19,13 +28,9 @@ export function isElementFocused(element) {
 }
 
 export function scrollToView() {
-  setTimeout(
-    () => {
-      DOGS_CONTAINER.scrollIntoView();
-    },
-
-    100
-  );
+  setTimeout(() => {
+    DOGS_CONTAINER.scrollIntoView();
+  }, 100);
 }
 
 export function getOccurrence(array, el) {
@@ -35,32 +40,24 @@ export function getOccurrence(array, el) {
 }
 
 // Button UP intersection observer
+const buttonToTop = document.querySelector('.btn--up');
 
-const target = document.querySelector('footer');
-
-const scrollToTopBtn = document.querySelector('.btn--up');
-const rootElement = document.documentElement;
-
-function callback(entries, observer) {
+function callback(entries) {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
       // Show button
-      scrollToTopBtn.classList.remove('hidden');
+      buttonToTop.classList.remove('hidden');
     } else {
       // Hide button
-      scrollToTopBtn.classList.add('hidden');
+      buttonToTop.classList.add('hidden');
     }
   });
 }
 
-function scrollToTop() {
-  rootElement.scrollTo({
-    bottom: 0,
-    behavior: 'smooth',
-  });
-}
-scrollToTopBtn.addEventListener('click', scrollToTop);
+const options = {
+  threshold: 0.18,
+};
 
-const observer = new IntersectionObserver(callback);
+const observer = new IntersectionObserver(callback, options);
 
-observer.observe(target);
+observer.observe(DOGS_LIST);

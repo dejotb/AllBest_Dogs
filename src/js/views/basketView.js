@@ -1,6 +1,10 @@
 import * as model from '../model.js';
 import { BASKET_WRAPPER, BASKET_ITEMS, BTN_HAMBURGER } from '../config.js';
 
+// ==========================================================================
+// BASKET VIEW
+// ==========================================================================
+
 export function createBasketMarkup(dog) {
   const markup = `
   <li class="basket__item" data-id="${dog.id}">
@@ -27,10 +31,6 @@ export function updateBasket() {
     likedDogs.forEach((el) => createBasketMarkup(el));
   }
 }
-
-// ==========================================================================
-// Handle Hamburger
-// ==========================================================================
 
 export const handleHamburger = (e) => {
   const hamburgerState = e.currentTarget.getAttribute('aria-expanded');

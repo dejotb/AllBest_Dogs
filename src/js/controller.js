@@ -1,15 +1,21 @@
 import * as model from './model.js';
-import { generateMarkup, getImgUrl, generateDogCard } from './views/view.js';
 import {
   DOGS_LIST,
   AUTOCOMPLETE_INPUT,
   BTN_HAMBURGER,
   BASKET_WRAPPER,
-  PAGINATION_CONTAINER,
+  PAGINATION_CONTAINER
 } from './config.js';
-import { tempDisableEvents } from './helpers.js';
+import { generateMarkup, getImgUrl, generateDogCard,  } from './views/view.js';
+import { generateDogCard } from './views/modalView.js';
 import alert from './views/alertView.js';
-import { showPaginationMarkup } from './views/paginationView.js';
+import { showPaginationMarkup, getSearchResultsPage, } from './views/paginationView.js';
+
+import { tempDisableEvents } from './helpers.js';
+
+// ==========================================================================
+// CONTROLLER
+// ==========================================================================
 
 export async function showDog(breed) {
   await model.fetchDogsData(breed);
@@ -26,7 +32,7 @@ export async function showDog(breed) {
 
   showPaginationMarkup(model.state.filteredData);
 
-  const searchResultsPage = await model.getSearchResultsPage(
+  const searchResultsPage = await getSearchResultsPage(
     model.state.filteredData
   );
 
@@ -48,21 +54,15 @@ export function fetchDog(e) {
     return;
   }
   DOGS_LIST.textContent = '';
-
   AUTOCOMPLETE_INPUT.classList.remove('active');
   showDog(dogsInput.value);
   tempDisableEvents(e);
-
   dogsInput.value = '';
 }
 
 export function handleBasketItem(e) {
   const selectedDog = e.target.closest('.basket__item').dataset.id;
-  console.log(selectedDog);
-
   const likedDog = model.state.likedDogs.find((dog) => dog.id === +selectedDog);
-
-  console.log(likedDog);
   generateDogCard(likedDog);
 }
 
@@ -79,18 +79,23 @@ export function handleBasketVisibility(e) {
 
 export function controlPagination(goToPage) {
   DOGS_LIST.textContent = '';
-
-  const searchResultsPage = model.getSearchResultsPage(
+  const searchResultsPage = getSearchResultsPage(
     model.state.filteredData,
     goToPage
   );
 
   model.state.dogs = searchResultsPage;
-
   PAGINATION_CONTAINER.textContent = '';
   showPaginationMarkup(model.state.filteredData, goToPage);
-
   generateMarkup(model.state.dogs);
   getImgUrl(model.state.dogs);
   DOGS_LIST.classList.remove('centered--one');
 }
+
+
+
+
+
+
+
+

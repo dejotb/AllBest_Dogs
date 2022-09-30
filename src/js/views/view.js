@@ -1,9 +1,12 @@
-import VanillaTilt from 'vanilla-tilt';
 import { updateBasket } from './basketView.js';
+import { generateDogCard } from './modalView.js';
 import * as model from '../model.js';
-import { editText } from '../helpers.js';
 import alert from './alertView.js';
-import { BREED_WIKI_URL, DOGS_LIST, MODAL, MODAL_LIST } from '../config.js';
+import { DOGS_LIST, MODAL, MODAL_LIST } from '../config.js';
+
+// ==========================================================================
+// VIEW
+// ==========================================================================
 
 const dogList = document.querySelector('.dogs__list');
 
@@ -23,62 +26,6 @@ export async function createGridMarkup(dog) {
         <span class='dog__heart--info alert__text hidden'>Breed added to favourites! 💕</span>
       </li>`;
   dogList.insertAdjacentHTML('beforeend', markup);
-}
-
-export function generateDogCard(dog) {
-  const markup = `
-
-  <li class='modal__card' data-id="${dog.id}" data-tilt >
-      <div class="dog__image" style='background-image: url(${dog.imgUrl})'>
-        <button class="modal__button">❎</button>
-        <span class="loader hidden"></span>
-      </div>
-      <span class='dog__heart--info alert__text hidden'>Breed added to favourites! 💕</span>
-      <div class='dog__caption'>
-        <span class='dog__name'>${dog.name}</span>
-        <span class='dog__heart'>${
-          model.state.likedDogs.find((el) => el.id === dog.id) ? '💖' : '🤍'
-        }</span>
-
-      </div>
-
-      <ul class='modal__text'>
-        <li><span class="text--secondary">breed group:</span> ${
-          dog.breed_group ? dog.breed_group.toLowerCase() : undefined
-        }</li>
-        <li><span class="text--secondary">bred for:</span> ${
-          dog.bred_for ? dog.bred_for.toLowerCase() : undefined
-        }</li>
-        <li ><span class="text--secondary">temperament:</span> ${
-          dog.temperament ? dog.temperament.toLowerCase() : undefined
-        }</li>
-        </ul>
-        <ul class='modal__chars'>
-        <li ><span class="text--secondary">life span (yrs)</span> ${
-          dog.life_span.split(' years')[0]
-        }</li>
-        <li ><span class="text--secondary">height (cm)</span> ${dog.height}</li>
-        <li ><span class="text--secondary">weight (kg)</span> ${
-          dog.weight === 'NaN' ? undefined : dog.weight.toLowerCase()
-        }</li>
-        </ul>
-        <a class='text--secondary' href="${BREED_WIKI_URL}/${editText(
-    dog.name
-  )}" target="_blank" rel="noopener noreferrer">📚 more details...</a>
-    </li>
-  `;
-
-  MODAL_LIST.insertAdjacentHTML('afterbegin', markup);
-  MODAL.classList.remove('hidden');
-  document.body.classList.add('sticky__body');
-  Array.from(DOGS_LIST.children).forEach((element) => {
-    element.tabIndex = -1;
-  });
-
-  VanillaTilt.init(document.querySelector('.modal__card'), {
-    max: 1,
-    speed: 300,
-  });
 }
 
 function checkIfHeartClicked(e) {
@@ -182,3 +129,26 @@ export function handleHeart(e) {
 }
 
 dogList.addEventListener('click', handleHeart);
+
+MODAL_LIST.addEventListener('click', (e) => {
+  handleHeart(e);
+});
+
+export function closeModal(e) {
+  if (
+    e.target.querySelector('.modal__card') ||
+    e.keyCode === 27 ||
+    e.target.classList.contains('modal__button') ||
+    e.target.classList.contains('modal__container')
+  ) {
+    MODAL_LIST.textContent = '';
+
+    MODAL.classList.add('hidden');
+    document.body.classList.remove('sticky__body');
+    Array.from(DOGS_LIST.children).forEach((element) => {
+      element.tabIndex = 0;
+    });
+    if (!MODAL.querySelector('.modal__filter')) return;
+    MODAL.querySelector('.modal__filter').remove();
+  }
+}

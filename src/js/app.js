@@ -6,13 +6,17 @@ import {
 import { DOGS_FORM, INPUT_BOX,DOGS_CONTAINER, TOP__DOGS, BTN_SEARCH, MODAL, BASKET_ITEMS, BTN_HAMBURGER, BODY, BASKET, SELECT_BUTTON } from './config.js';
 import { isElementFocused, scrollToView } from './helpers.js';
 import { createSearchList, handleUserSearchData } from './views/searchView.js';
-import { closeModal } from './views/modalView.js';
+import { closeModal } from './views/view.js';
 import { handleHamburger,  handleBasket} from './views/basketView.js';
 import { showSelectedTopDogs, showPopularDogs} from './views/selectView.js';
 import {  showFilterModal} from './views/filterView.js';
 import { addHandlerClick} from './views/paginationView.js';
 
 require('dotenv').config();
+
+// ==========================================================================
+// APP
+// ==========================================================================
 
 createSearchList();
 showPopularDogs();

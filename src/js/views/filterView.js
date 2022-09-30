@@ -6,8 +6,15 @@ import {
   PAGINATION_CONTAINER,
 } from '../config.js';
 import { generateMarkup, getImgUrl, centerDogsListGrid } from './view.js';
-import { showPaginationMarkup } from './paginationView.js';
+import {
+  showPaginationMarkup,
+  getSearchResultsPage,
+} from './paginationView.js';
 import { getOccurrence } from '../helpers.js';
+
+// ==========================================================================
+// FILTER VIEW
+// ==========================================================================
 
 const getCharList = async function (char) {
   const fetchedData = await model.state.temporary;
@@ -91,9 +98,7 @@ function selectFilteredBreeds() {
 
   showPaginationMarkup(model.state.filteredData);
 
-  const searchResultsPage = model.getSearchResultsPage(
-    model.state.filteredData
-  );
+  const searchResultsPage = getSearchResultsPage(model.state.filteredData);
 
   model.state.dogs = searchResultsPage;
 

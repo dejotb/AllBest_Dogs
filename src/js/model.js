@@ -13,7 +13,7 @@ import alert from './views/alertView.js';
 export const state = {
   dogs: [],
   breedSuggestions: [],
-  breedList: [],
+  // breedList: [],
   likedDogs: [],
   temporary: [],
   filteredData: [],
@@ -23,21 +23,15 @@ export const state = {
   page: 1,
 };
 
-// ==========================================================================
 // Local Storage State
-// ==========================================================================
-
 const retrievedLikedDogs = localStorage.getItem('likedDogs');
 
 state.likedDogs = JSON.parse(retrievedLikedDogs)
   ? JSON.parse(retrievedLikedDogs)
   : [];
 
-// ==========================================================================
-//
-// ==========================================================================
-
-export function createDogsObjects(dogs) {
+// create object with dog data
+function createDogsObject(dogs) {
   return dogs.map((dog) => ({
     name: dog.name,
     bred_for: dog.bred_for,
@@ -51,6 +45,7 @@ export function createDogsObjects(dogs) {
   }));
 }
 
+// fetch all basic breeds data and push to state arrays
 // used in searchView, selectView, filterView
 export async function fetchAllBreeds() {
   try {
@@ -64,24 +59,18 @@ export async function fetchAllBreeds() {
     });
     const result = await data.json();
 
+    // add all breeds names to array
     state.breedSuggestions = result.map((item) => item.name);
-    state.temporary = await createDogsObjects(result);
+
+    // add all breeds objects to array
+    state.temporary = await createDogsObject(result);
   } catch (err) {
-    const markup = err;
-    alert(markup);
-    console.log(err);
+    alert(err);
   }
 }
 
-//
-
-export function getSearchResultsPage(filteredData, page = state.page) {
-  const start = (page - 1) * state.resultsPerPage;
-  const end = page * state.resultsPerPage;
-  return filteredData.slice(start, end);
-}
-
-// used in controller
+// fetch specific breed based on breed name input
+// used in view
 export async function fetchDogsData(value) {
   try {
     if (!process.env.DOGS_API_KEY) {
@@ -98,17 +87,17 @@ export async function fetchDogsData(value) {
       },
     });
     const result = await data.json();
-
     LOADER.querySelector('.loader').classList.add('hidden');
-    state.dogs = await createDogsObjects(result);
+
+    // add found breeds objects to array
+    state.dogs = await createDogsObject(result);
+
     state.filteredData = state.dogs;
   } catch (err) {
-    const markup = err;
-    alert(markup);
-    console.log(err);
+    alert(err);
   }
 }
-
+// fetch image to every currently visible dog object
 // used in view
 export async function fetchImgUrl(dog) {
   const { id } = dog;
@@ -144,6 +133,7 @@ export async function fetchImgUrl(dog) {
         dog.imgUrl = result.url;
       }
 
+      // set image as a background image of every dog card
       addImage.querySelector(
         '.dog__image'
       ).style.backgroundImage = `url('${dog.imgUrl}')`;

@@ -1,5 +1,9 @@
 import { DOGS_LIST } from '../config.js';
 
+// ==========================================================================
+// ALERT VIEW
+// ==========================================================================
+
 export default function showAlertText(markup) {
   DOGS_LIST.textContent = '';
   const alertText = document.createElement('li');

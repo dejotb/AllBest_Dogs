@@ -1,6 +1,10 @@
 import * as model from '../model.js';
 import { PAGINATION_CONTAINER } from '../config.js';
 
+// ==========================================================================
+// PAGINATION VIEW
+// ==========================================================================
+
 function getPaginationMarkup(filteredData, curPage = model.state.page) {
   const numPages = Math.ceil(filteredData.length / model.state.resultsPerPage);
   // Page 1 and other pages
@@ -65,4 +69,11 @@ export function addHandlerClick(handler) {
 
     handler(goToPage);
   });
+}
+
+// get information on what is a current page on dogs list
+export function getSearchResultsPage(filteredData, page = model.state.page) {
+  const start = (page - 1) * model.state.resultsPerPage;
+  const end = page * model.state.resultsPerPage;
+  return filteredData.slice(start, end);
 }

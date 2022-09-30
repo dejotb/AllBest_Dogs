@@ -1,11 +1,18 @@
 import * as model from '../model.js';
 import { DOGS_LIST, TOP__DOGS, PAGINATION_CONTAINER } from '../config.js';
 
-import { showPaginationMarkup } from './paginationView.js';
+import {
+  showPaginationMarkup,
+  getSearchResultsPage,
+} from './paginationView.js';
 import { generateMarkup, getImgUrl } from './view.js';
 
+// ==========================================================================
+// SELECT VIEW
+// ==========================================================================
+
 export async function showPopularDogs(array = model.state.popular) {
-  const searchResultsPage = await model.getSearchResultsPage(array);
+  const searchResultsPage = await getSearchResultsPage(array);
 
   model.state.dogs = searchResultsPage;
   await generateMarkup(model.state.dogs);
@@ -53,7 +60,7 @@ async function showTopDogs() {
 
   showPaginationMarkup(model.state.filteredData);
 
-  const searchResultsPage = await model.getSearchResultsPage(
+  const searchResultsPage = await getSearchResultsPage(
     model.state.filteredData
   );
 
