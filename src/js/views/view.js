@@ -25,8 +25,6 @@ export async function createGridMarkup(dog) {
   dogList.insertAdjacentHTML('beforeend', markup);
 }
 
-/* <img src='${dog.imgUrl}' alt='${dog.name}' loading="lazy"> */
-
 export function generateDogCard(dog) {
   const markup = `
 
@@ -135,7 +133,7 @@ export function handleHeart(e) {
     (dog) => dog.id === +heart.closest('li').dataset.id
   );
 
-  // check if selected liked dog is visible in DOG__LIST, or if DOG__LIST is empty
+  // check if selected liked dog is visible in DOG__LIST
   if (!likedDog || !DOGS_LIST.querySelector('.dog__item')) {
     const filteredLikedDogs = model.state.likedDogs.filter(
       (el) => el.id !== +e.target.closest('.modal__card').dataset.id

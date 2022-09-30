@@ -15,10 +15,10 @@ export const state = {
   breedSuggestions: [],
   breedList: [],
   likedDogs: [],
-  popular: DOGS_POPULAR,
-  dangerous: DOGS_DANGEROUS,
   temporary: [],
   filteredData: [],
+  popular: DOGS_POPULAR,
+  dangerous: DOGS_DANGEROUS,
   resultsPerPage: RES_PER_PAGE,
   page: 1,
 };

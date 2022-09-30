@@ -1,10 +1,4 @@
-import {
-  TIMEOUT_SEC,
-  AUTOCOMPLETE_INPUT,
-  MAIN,
-  DOGS_CONTAINER,
-  DOGS_LIST,
-} from './config.js';
+import { TIMEOUT_SEC, AUTOCOMPLETE_INPUT, DOGS_CONTAINER } from './config.js';
 
 export function editText(string) {
   return string.replace(' ', '_');
@@ -34,21 +28,13 @@ export function scrollToView() {
   );
 }
 
-export function setLocalStorage(key, value) {
-  localStorage.setItem(key, JSON.stringify(value));
-}
-
-export function getLocalStorage(key) {
-  localStorage.getItem(key);
-}
-
 export function getOccurrence(array, el) {
   let count = 0;
   array.forEach((val) => val === el && count++);
   return count;
 }
 
-// Button UP intersection observe
+// Button UP intersection observer
 
 const target = document.querySelector('footer');
 

@@ -10,14 +10,12 @@
     display: grid;
     justify-items: center;
     align-items: center;
-    // align-content: center;
     padding: 0.5rem;
     top: 0;
     left: 0;
     bottom: 0;
     right: 0;
     overflow-y: auto;
-
     background-color: rgba(0, 0, 0, 0.4);
     backdrop-filter: blur(5px);
     z-index: var(--z-index-popup);

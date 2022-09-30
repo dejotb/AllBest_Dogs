@@ -1,5 +1,9 @@
 @use "../base/abstracts" as *;
 
+// ==========================================================================
+// BASKET
+// ==========================================================================
+
 .basket {
   position: fixed;
   top: 0;
@@ -36,12 +40,12 @@
   }
 
   &__title {
+    width: 95%;
     font-size: var(--fs-300);
+    font-family: var(--ff-display);
     text-align: center;
     border-bottom: solid var(--color-yellow) 1px;
     padding-bottom: 0.9rem;
-    width: 95%;
-    font-family: var(--ff-display);
   }
 
   &__name {
