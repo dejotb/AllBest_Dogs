@@ -2,22 +2,24 @@ import * as model from './model.js';
 import {
   DOGS_LIST,
   AUTOCOMPLETE_INPUT,
-  BTN_HAMBURGER,
-  BASKET_WRAPPER,
-  PAGINATION_CONTAINER
+  MODAL_LIST,
+  MODAL,
+  PAGINATION_CONTAINER,
 } from './config.js';
-import { generateMarkup, getImgUrl, generateDogCard,  } from './views/view.js';
-import { generateDogCard } from './views/modalView.js';
+import { generateMarkup, getImgUrl } from './views/view.js';
 import alert from './views/alertView.js';
-import { showPaginationMarkup, getSearchResultsPage, } from './views/paginationView.js';
-
+import {
+  showPaginationMarkup,
+  getSearchResultsPage,
+} from './views/paginationView.js';
 import { tempDisableEvents } from './helpers.js';
 
 // ==========================================================================
 // CONTROLLER
 // ==========================================================================
 
-export async function showDog(breed) {
+// show dog item
+export async function showDogItem(breed) {
   await model.fetchDogsData(breed);
 
   const { dogs } = model.state;
@@ -42,10 +44,9 @@ export async function showDog(breed) {
   getImgUrl(model.state.dogs);
 }
 
-export function fetchDog(e) {
+// control search input
+export function controlSearchInput(e) {
   e.preventDefault();
-  DOGS_LIST.classList.remove('centered--one');
-  DOGS_LIST.classList.remove('centered--two');
   const dogsInput = document.querySelector('#dogs__input');
 
   if (dogsInput.value.length < 3) {
@@ -55,17 +56,10 @@ export function fetchDog(e) {
   }
   DOGS_LIST.textContent = '';
   AUTOCOMPLETE_INPUT.classList.remove('active');
-  showDog(dogsInput.value);
+  showDogItem(dogsInput.value);
   tempDisableEvents(e);
   dogsInput.value = '';
 }
-
-export function handleBasketItem(e) {
-  const selectedDog = e.target.closest('.basket__item').dataset.id;
-  const likedDog = model.state.likedDogs.find((dog) => dog.id === +selectedDog);
-  generateDogCard(likedDog);
-}
-
 
 export function controlPagination(goToPage) {
   DOGS_LIST.textContent = '';
@@ -82,10 +76,21 @@ export function controlPagination(goToPage) {
   DOGS_LIST.classList.remove('centered--one');
 }
 
-
-
-
-
-
-
-
+// handle modal closing
+export function controlModalClose(e) {
+  if (
+    e.target.querySelector('.modal__card') ||
+    e.keyCode === 27 ||
+    e.target.classList.contains('modal__button') ||
+    e.target.classList.contains('modal__container')
+  ) {
+    MODAL_LIST.textContent = '';
+    MODAL.classList.add('hidden');
+    document.body.classList.remove('sticky__body');
+    Array.from(DOGS_LIST.children).forEach((element) => {
+      element.tabIndex = 0;
+    });
+    if (!MODAL.querySelector('.modal__filter')) return;
+    MODAL.querySelector('.modal__filter').remove();
+  }
+}

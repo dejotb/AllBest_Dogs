@@ -1,17 +1,17 @@
 import * as model from '../model.js';
 import { DOGS_LIST, TOP__DOGS, PAGINATION_CONTAINER } from '../config.js';
-
+import { generateMarkup, getImgUrl } from './view.js';
 import {
   showPaginationMarkup,
   getSearchResultsPage,
 } from './paginationView.js';
-import { generateMarkup, getImgUrl } from './view.js';
 
 // ==========================================================================
 // SELECT VIEW
 // ==========================================================================
 
-export async function showPopularDogs(array = model.state.popular) {
+// show popular or dangerous breeds
+export async function showTopDogs(array = model.state.popular) {
   const searchResultsPage = await getSearchResultsPage(array);
 
   model.state.dogs = searchResultsPage;
@@ -20,7 +20,8 @@ export async function showPopularDogs(array = model.state.popular) {
   DOGS_LIST.classList.remove('centered--one');
 }
 
-async function showTopDogs() {
+// show sorted dogs
+async function showSortedDogs() {
   const fetchedData = await model.state.temporary;
   const { value } = TOP__DOGS;
 
@@ -68,19 +69,19 @@ async function showTopDogs() {
 
   generateMarkup(model.state.dogs);
   getImgUrl(model.state.dogs);
-  DOGS_LIST.classList.remove('centered--one');
 }
 
-export function showSelectedTopDogs(e) {
+// check selected sort option
+export function showSelectedSortOption(e) {
   const { value } = e.target;
   model.state.dogs = [];
   DOGS_LIST.textContent = '';
   PAGINATION_CONTAINER.textContent = '';
   if (value === 'popularity') {
-    showPopularDogs(model.state.popular);
+    showTopDogs(model.state.popular);
   } else if (value === 'dangerous') {
-    showPopularDogs(model.state.dangerous);
+    showTopDogs(model.state.dangerous);
   } else {
-    showTopDogs();
+    showSortedDogs();
   }
 }

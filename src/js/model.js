@@ -1,4 +1,4 @@
-import IMAGE__UNKNOWN from 'url:../imgs/dog-unknown.svg';
+import IMAGE__UNKNOWN from 'url:../imgs/dog-unknown.svg'; // image visible when dog breed image is not available
 import {
   API_URL_BREED,
   API_URL_BREEDS,
@@ -9,6 +9,10 @@ import {
   DOGS_DANGEROUS,
 } from './config.js';
 import alert from './views/alertView.js';
+
+// ==========================================================================
+// MODEL
+// ==========================================================================
 
 export const state = {
   dogs: [],

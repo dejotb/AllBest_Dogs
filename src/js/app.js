@@ -1,16 +1,16 @@
 import * as model from './model.js';
+import { DOGS_FORM, INPUT_BOX,DOGS_CONTAINER, MODAL_LIST, TOP__DOGS, BTN_SEARCH, MODAL, BASKET_ITEMS, BTN_HAMBURGER, BODY, BASKET, SELECT_BUTTON } from './config.js';
 import {
-  fetchDog,
-  createSearchList, handleBasketItem, handleBasketVisibility, controlPagination
+  controlSearchInput,
+  createSearchList, controlModalClose, controlPagination
 } from './controller.js';
-import { DOGS_FORM, INPUT_BOX,DOGS_CONTAINER, TOP__DOGS, BTN_SEARCH, MODAL, BASKET_ITEMS, BTN_HAMBURGER, BODY, BASKET, SELECT_BUTTON } from './config.js';
-import { isElementFocused, scrollToView } from './helpers.js';
 import { createSearchList, handleUserSearchData } from './views/searchView.js';
-import { closeModal } from './views/view.js';
-import { handleBasketButton,  handleBasketButtonCLose} from './views/basketView.js';
-import { showSelectedTopDogs, showPopularDogs} from './views/selectView.js';
+import { handleBasketButton,  handleBasketButtonCLose, handleBasketItem} from './views/basketView.js';
+import { showSelectedSortOption, showTopDogs} from './views/selectView.js';
 import {  showFilterModal} from './views/filterView.js';
 import { addHandlerClick} from './views/paginationView.js';
+import { handleHeart} from './views/heartView.js';
+import { isElementFocused, scrollToView } from './helpers.js';
 
 require('dotenv').config();
 
@@ -19,8 +19,8 @@ require('dotenv').config();
 // ==========================================================================
 
 
-// search dog breed based on search input
-DOGS_FORM.addEventListener('submit', fetchDog);
+// check input data in search panel
+DOGS_FORM.addEventListener('submit', controlSearchInput);
 
 
 
@@ -30,11 +30,12 @@ BODY.addEventListener('click', (e) => {
     isElementFocused.bind(INPUT_BOX)
     handleBasketButtonCLose(e)
 });
+BASKET.addEventListener('click', handleBasketButtonCLose);
 
 BTN_SEARCH.addEventListener('click', scrollToView.bind(DOGS_CONTAINER));
 
-MODAL.addEventListener('click', closeModal);
-document.addEventListener('keyup', closeModal);
+MODAL.addEventListener('click', controlModalClose);
+document.addEventListener('keyup', controlModalClose);
 
 BASKET_ITEMS.addEventListener('click', handleBasketItem);
 
@@ -48,19 +49,22 @@ window.addEventListener('beforeunload', () =>
 
 BTN_HAMBURGER.addEventListener('click', handleBasketButton);
 
-BASKET.addEventListener('click', handleBasketButtonCLose);
 
 
 
 
 SELECT_BUTTON.addEventListener('click', showFilterModal)
 
-TOP__DOGS.addEventListener('change', showSelectedTopDogs)
+TOP__DOGS.addEventListener('change', showSelectedSortOption)
 
 
 addHandlerClick(controlPagination)
 
 
 
+MODAL_LIST.addEventListener('click', (e) => {
+  handleHeart(e);
+});
+
 createSearchList();
-showPopularDogs();
+showTopDogs();

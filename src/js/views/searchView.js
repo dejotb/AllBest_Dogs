@@ -1,14 +1,13 @@
 import * as model from '../model.js';
-
 import { DOGS_LIST, AUTOCOMPLETE_INPUT, INPUT_BOX } from '../config.js';
 import { scrollToView } from '../helpers.js';
-
-import { showDog } from '../controller.js';
+import { showDogItem } from '../controller.js';
 
 // ==========================================================================
 // SEARCH VIEW
 // ==========================================================================
 
+// get all breed nawes and add to search list
 export async function createSearchList() {
   await model.fetchAllBreeds();
   await model.state.breedSuggestions.forEach((el) => {
@@ -17,16 +16,14 @@ export async function createSearchList() {
   });
 }
 
-export function select(e) {
+function selectBreed(e) {
   const selectUserData = e.target.textContent;
   INPUT_BOX.value = selectUserData;
-  DOGS_LIST.classList.remove('centered--one');
-  DOGS_LIST.classList.remove('centered--two');
   const dogsInput = document.querySelector('#dogs__input');
 
   DOGS_LIST.textContent = '';
   AUTOCOMPLETE_INPUT.classList.remove('active');
-  showDog(dogsInput.value);
+  showDogItem(dogsInput.value);
 
   dogsInput.value = '';
   scrollToView();
@@ -34,12 +31,13 @@ export function select(e) {
 
 function checkSearchKeyPressed(e) {
   if (e.keyCode !== 13) return;
-  select(e);
+  selectBreed(e);
   const listItems = Array.from(AUTOCOMPLETE_INPUT.querySelectorAll('li'));
   listItems.forEach((item) => (item.tabIndex = -1));
 }
 
-export function showBreedSuggestions(list) {
+// show breed suggestions on letter input
+function showBreedSuggestions(list) {
   let listData;
   if (!list.length) {
     const userValue = INPUT_BOX.value;
@@ -50,12 +48,12 @@ export function showBreedSuggestions(list) {
   AUTOCOMPLETE_INPUT.innerHTML = listData;
 }
 
+// handle search data
 export function handleUserSearchData(e) {
   const userData = e.target.value;
   let emptyArray = [];
   if (userData) {
     emptyArray = model.state.breedSuggestions.filter((data) =>
-      // filtering array value and user input to lowercase and return only results that start with inputed char
       data.toLocaleLowerCase().startsWith(userData.toLocaleLowerCase())
     );
     emptyArray = emptyArray.map(
@@ -65,7 +63,7 @@ export function handleUserSearchData(e) {
     showBreedSuggestions(emptyArray);
     const allList = AUTOCOMPLETE_INPUT.querySelectorAll('li');
 
-    allList.forEach((el) => el.addEventListener('click', select));
+    allList.forEach((el) => el.addEventListener('click', selectBreed));
 
     allList.forEach((el) =>
       el.addEventListener('keyup', checkSearchKeyPressed)

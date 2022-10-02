@@ -1,5 +1,6 @@
 import * as model from '../model.js';
 import { BASKET_WRAPPER, BASKET_ITEMS, BTN_HAMBURGER } from '../config.js';
+import { generateDogCard } from './modalView.js';
 
 // ==========================================================================
 // BASKET VIEW - FAVOURITE DOGS
@@ -59,3 +60,9 @@ export const handleBasketButtonCLose = (e) => {
     BTN_HAMBURGER.classList.remove('transparent');
   }
 };
+
+export function handleBasketItem(e) {
+  const selectedDog = e.target.closest('.basket__item').dataset.id;
+  const likedDog = model.state.likedDogs.find((dog) => dog.id === +selectedDog);
+  generateDogCard(likedDog);
+}
