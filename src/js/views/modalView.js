@@ -56,7 +56,7 @@ export function generateDogCard(dog) {
   });
 
   VanillaTilt.init(document.querySelector('.modal__card'), {
-    max: 1,
+    max: 3,
     speed: 300,
   });
 }
