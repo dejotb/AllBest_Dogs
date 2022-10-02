@@ -12,12 +12,6 @@
   background-color: transparent;
   z-index: var(--z-index-popup);
 
-  &:hover {
-    :after {
-      background-color: var(--color-pink);
-    }
-  }
-
   ::before,
   ::after {
     position: absolute;

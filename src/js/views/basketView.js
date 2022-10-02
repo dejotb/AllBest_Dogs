@@ -2,10 +2,10 @@ import * as model from '../model.js';
 import { BASKET_WRAPPER, BASKET_ITEMS, BTN_HAMBURGER } from '../config.js';
 
 // ==========================================================================
-// BASKET VIEW
+// BASKET VIEW - FAVOURITE DOGS
 // ==========================================================================
 
-export function createBasketMarkup(dog) {
+function createBasketMarkup(dog) {
   const markup = `
   <li class="basket__item" data-id="${dog.id}">
     <div class="basket__image">
@@ -18,6 +18,7 @@ export function createBasketMarkup(dog) {
   BASKET_ITEMS.insertAdjacentHTML('afterbegin', markup);
 }
 
+// handle basket input
 export function updateBasket() {
   BASKET_ITEMS.textContent = '';
   const { likedDogs } = model.state;
@@ -27,12 +28,12 @@ export function updateBasket() {
     BASKET_ITEMS.appendChild(info);
   } else {
     BASKET_ITEMS.textContent = '';
-    console.log(likedDogs);
     likedDogs.forEach((el) => createBasketMarkup(el));
   }
 }
 
-export const handleHamburger = (e) => {
+// handle basket visibility - open
+export const handleBasketButton = (e) => {
   const hamburgerState = e.currentTarget.getAttribute('aria-expanded');
   if (hamburgerState === 'false') {
     updateBasket();
@@ -43,12 +44,16 @@ export const handleHamburger = (e) => {
   }
 };
 
-export const handleBasket = (e) => {
+// handle basket visibility - close
+export const handleBasketButtonCLose = (e) => {
   if (e.target.closest('.hamburger')) {
     return;
   }
 
-  if (e.target.closest('.btn--close')) {
+  if (
+    e.target.closest('.btn--close') ||
+    (e.target !== BTN_HAMBURGER && BTN_HAMBURGER.getAttribute('aria-expanded'))
+  ) {
     BTN_HAMBURGER.setAttribute('aria-expanded', 'false');
     BASKET_WRAPPER.classList.remove('visible');
     BTN_HAMBURGER.classList.remove('transparent');

@@ -13,7 +13,6 @@ import alert from './views/alertView.js';
 export const state = {
   dogs: [],
   breedSuggestions: [],
-  // breedList: [],
   likedDogs: [],
   temporary: [],
   filteredData: [],

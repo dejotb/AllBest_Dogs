@@ -66,16 +66,6 @@ export function handleBasketItem(e) {
   generateDogCard(likedDog);
 }
 
-export function handleBasketVisibility(e) {
-  if (
-    e.target !== BTN_HAMBURGER &&
-    BTN_HAMBURGER.getAttribute('aria-expanded')
-  ) {
-    BTN_HAMBURGER.setAttribute('aria-expanded', 'false');
-    BASKET_WRAPPER.classList.remove('visible');
-    BTN_HAMBURGER.classList.remove('transparent');
-  }
-}
 
 export function controlPagination(goToPage) {
   DOGS_LIST.textContent = '';

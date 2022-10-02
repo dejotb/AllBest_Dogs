@@ -7,7 +7,7 @@ import { DOGS_FORM, INPUT_BOX,DOGS_CONTAINER, TOP__DOGS, BTN_SEARCH, MODAL, BASK
 import { isElementFocused, scrollToView } from './helpers.js';
 import { createSearchList, handleUserSearchData } from './views/searchView.js';
 import { closeModal } from './views/view.js';
-import { handleHamburger,  handleBasket} from './views/basketView.js';
+import { handleBasketButton,  handleBasketButtonCLose} from './views/basketView.js';
 import { showSelectedTopDogs, showPopularDogs} from './views/selectView.js';
 import {  showFilterModal} from './views/filterView.js';
 import { addHandlerClick} from './views/paginationView.js';
@@ -18,16 +18,17 @@ require('dotenv').config();
 // APP
 // ==========================================================================
 
-createSearchList();
-showPopularDogs();
 
+// search dog breed based on search input
 DOGS_FORM.addEventListener('submit', fetchDog);
+
+
 
 INPUT_BOX.addEventListener('keyup', handleUserSearchData);
 
 BODY.addEventListener('click', (e) => {
     isElementFocused.bind(INPUT_BOX)
-    handleBasketVisibility(e)
+    handleBasketButtonCLose(e)
 });
 
 BTN_SEARCH.addEventListener('click', scrollToView.bind(DOGS_CONTAINER));
@@ -45,9 +46,9 @@ window.addEventListener('beforeunload', () =>
 
 
 
-BTN_HAMBURGER.addEventListener('click', handleHamburger);
+BTN_HAMBURGER.addEventListener('click', handleBasketButton);
 
-BASKET.addEventListener('click', handleBasket);
+BASKET.addEventListener('click', handleBasketButtonCLose);
 
 
 
@@ -58,3 +59,8 @@ TOP__DOGS.addEventListener('change', showSelectedTopDogs)
 
 
 addHandlerClick(controlPagination)
+
+
+
+createSearchList();
+showPopularDogs();

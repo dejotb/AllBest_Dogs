@@ -29,7 +29,11 @@ export async function createGridMarkup(dog) {
 }
 
 function checkIfHeartClicked(e) {
-  if (e.target.classList.contains('dog__heart')) return;
+  if (
+    e.target.classList.contains('dog__heart') ||
+    !e.target.closest('.dog__item')
+  )
+    return;
 
   const activeDogId = e.target.closest('.dog__item').dataset.id;
   const dog = model.state.dogs.find((el) => el.id === +activeDogId);
