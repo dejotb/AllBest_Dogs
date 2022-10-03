@@ -57,6 +57,10 @@
       right: 1rem;
     }
   }
+
+  &--hamburger {
+    z-index: var(--z-index-modal);
+  }
 }
 
 .heart-beat {
