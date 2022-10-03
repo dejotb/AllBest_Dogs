@@ -62,11 +62,11 @@ Project made to practice work with REST API, organizing code with modules, using
 
 ## Setup
 
-> # install dependencies
+> install dependencies
 
 $ npm install
 
-> # build for production and launch server
+> build for production and launch server
 
 $ npm run build
 $ npm run start
