@@ -14,7 +14,7 @@ App with a lot of dogs 🐶 that allows a user to find and get to know details a
 
 ## General Information
 
-User can search breeds in many ways: type a breed name inside the search bar, sort by predefined categories, or use an advanced filtering tool.
+User can search breeds in several ways: type a breed name inside the search bar, sort by predefined categories, or use an advanced filtering tool.
 
 There is also an option to add breeds to favourites.
 
