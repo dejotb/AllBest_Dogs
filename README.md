@@ -62,5 +62,5 @@ $ npm install
 
 > build for production and launch server
 
-$ npm run build
+$ npm run build <br />
 $ npm run start
