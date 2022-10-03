@@ -45,13 +45,17 @@ Project made to practice work with REST API, organizing code with modules, using
 ## Screenshots
 
 - Filter view
+
   ![Example screenshot](src/imgs/screenshot-1.png)
 
 - Breed card view
+
   ![Example screenshot](src/imgs/screenshot-2.png)
 
 - Favourites basket view
+
   ![Example screenshot](src/imgs/screenshot-3.png)
 
 - Mobile view
+
   ![Example screenshot](src/imgs/screenshot-4.png)
