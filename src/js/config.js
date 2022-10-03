@@ -34,7 +34,7 @@ export const MODAL_LIST = document.querySelector('.modal__list');
 
 export const BTN_SEARCH = document.querySelector('#search__button');
 
-export const BTN_HAMBURGER = document.querySelector('.btn--hamburger');
+export const BTN_BASKET = document.querySelector('.btn--hamburger');
 
 export const BASKET = document.querySelector('.basket');
 export const BASKET_WRAPPER = document.querySelector('.basket__list--wrapper');

@@ -27,6 +27,7 @@ export async function createGridMarkup(dog) {
   dogList.insertAdjacentHTML('beforeend', markup);
 }
 
+// control dog list layout based on number of visible items
 export function centerDogsListGrid() {
   if (model.state.dogs.length >= 3) {
     DOGS_LIST.classList.remove('centered--two');
@@ -51,6 +52,7 @@ export async function generateMarkup(dogs) {
   centerDogsListGrid();
 }
 
+// fetch image to all visible items in dog list
 export async function getImgUrl(dogs) {
   await dogs.map((dog) => model.fetchImgUrl(dog));
 }

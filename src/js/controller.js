@@ -1,18 +1,15 @@
 import * as model from './model.js';
 import {
   DOGS_LIST,
-  AUTOCOMPLETE_INPUT,
   MODAL_LIST,
   MODAL,
   PAGINATION_CONTAINER,
 } from './config.js';
 import { generateMarkup, getImgUrl } from './views/view.js';
-import alert from './views/alertView.js';
 import {
   showPaginationMarkup,
   getSearchResultsPage,
 } from './views/paginationView.js';
-import { tempDisableEvents } from './helpers.js';
 
 // ==========================================================================
 // CONTROLLER
@@ -44,23 +41,7 @@ export async function showDogItem(breed) {
   getImgUrl(model.state.dogs);
 }
 
-// control search input
-export function controlSearchInput(e) {
-  e.preventDefault();
-  const dogsInput = document.querySelector('#dogs__input');
-
-  if (dogsInput.value.length < 3) {
-    const markup = `String has to have atleast 3️⃣ characters.`;
-    alert(markup);
-    return;
-  }
-  DOGS_LIST.textContent = '';
-  AUTOCOMPLETE_INPUT.classList.remove('active');
-  showDogItem(dogsInput.value);
-  tempDisableEvents(e);
-  dogsInput.value = '';
-}
-
+// hadnle pagination
 export function controlPagination(goToPage) {
   DOGS_LIST.textContent = '';
   const searchResultsPage = getSearchResultsPage(

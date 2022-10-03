@@ -49,7 +49,7 @@ function createDogsObject(dogs) {
 }
 
 // fetch all basic breeds data and push to state arrays
-// used in searchView, selectView, filterView
+// used in searchView
 export async function fetchAllBreeds() {
   try {
     if (!process.env.DOGS_API_KEY) {
@@ -73,7 +73,7 @@ export async function fetchAllBreeds() {
 }
 
 // fetch specific breed based on breed name input
-// used in view
+// used in controller
 export async function fetchDogsData(value) {
   try {
     if (!process.env.DOGS_API_KEY) {
@@ -100,7 +100,7 @@ export async function fetchDogsData(value) {
     alert(err);
   }
 }
-// fetch image to every currently visible dog object
+// fetch image to  dog object
 // used in view
 export async function fetchImgUrl(dog) {
   const { id } = dog;

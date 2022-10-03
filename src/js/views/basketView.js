@@ -1,5 +1,10 @@
 import * as model from '../model.js';
-import { BASKET_WRAPPER, BASKET_ITEMS, BTN_HAMBURGER } from '../config.js';
+import {
+  BASKET_WRAPPER,
+  BASKET_ITEMS,
+  BTN_BASKET,
+  AUTOCOMPLETE_INPUT,
+} from '../config.js';
 import { generateDogCard } from './modalView.js';
 
 // ==========================================================================
@@ -40,8 +45,8 @@ export const handleBasketButton = (e) => {
     updateBasket();
 
     BASKET_WRAPPER.classList.add('visible');
-    BTN_HAMBURGER.setAttribute('aria-expanded', 'true');
-    BTN_HAMBURGER.classList.add('transparent');
+    BTN_BASKET.setAttribute('aria-expanded', 'true');
+    BTN_BASKET.classList.add('transparent');
   }
 };
 
@@ -53,11 +58,12 @@ export const handleBasketButtonCLose = (e) => {
 
   if (
     e.target.closest('.btn--close') ||
-    (e.target !== BTN_HAMBURGER && BTN_HAMBURGER.getAttribute('aria-expanded'))
+    (e.target !== BTN_BASKET && BTN_BASKET.getAttribute('aria-expanded'))
   ) {
-    BTN_HAMBURGER.setAttribute('aria-expanded', 'false');
+    BTN_BASKET.setAttribute('aria-expanded', 'false');
     BASKET_WRAPPER.classList.remove('visible');
-    BTN_HAMBURGER.classList.remove('transparent');
+    BTN_BASKET.classList.remove('transparent');
+    AUTOCOMPLETE_INPUT.classList.remove('active');
   }
 };
 

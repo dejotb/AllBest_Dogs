@@ -1,13 +1,14 @@
 import * as model from '../model.js';
 import { DOGS_LIST, AUTOCOMPLETE_INPUT, INPUT_BOX } from '../config.js';
-import { scrollToView } from '../helpers.js';
 import { showDogItem } from '../controller.js';
+import alert from './alertView.js';
+import { scrollToView, tempDisableEvents } from '../helpers.js';
 
 // ==========================================================================
 // SEARCH VIEW
 // ==========================================================================
 
-// get all breed nawes and add to search list
+// get all breed names and add to search list
 export async function createSearchList() {
   await model.fetchAllBreeds();
   await model.state.breedSuggestions.forEach((el) => {
@@ -71,4 +72,21 @@ export function handleUserSearchData(e) {
   } else {
     AUTOCOMPLETE_INPUT.classList.remove('active');
   }
+}
+
+// control search input
+export function controlSearchInput(e) {
+  e.preventDefault();
+  const dogsInput = document.querySelector('#dogs__input');
+
+  if (dogsInput.value.length < 3) {
+    const markup = `String has to have atleast 3️⃣ characters.`;
+    alert(markup);
+    return;
+  }
+  DOGS_LIST.textContent = '';
+  AUTOCOMPLETE_INPUT.classList.remove('active');
+  showDogItem(dogsInput.value);
+  tempDisableEvents(e);
+  dogsInput.value = '';
 }

@@ -6,8 +6,8 @@
 .form {
   &__wrapper {
     height: 4rem;
-    z-index: var(--z-index-box);
     position: relative;
+    z-index: var(--z-index-popup);
   }
 
   &__search {
