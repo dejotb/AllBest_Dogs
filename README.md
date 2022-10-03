@@ -20,7 +20,7 @@ App with a lot of dogs 🐶 that allows a user to find and get to know details a
 
 ## General Information
 
-User can search breeds in a multiple ways: type a breed name inside of a search bar, sort by predefined category, or use an advanced filter.
+User can search breeds in a multiple ways: type a breed name inside of a search bar, sort by predefined categories, or use an advanced filter.
 
 There is also an option to add breeds to favourites.
 
@@ -37,8 +37,8 @@ Project made to practice work with REST API, organizing code with modules, using
 ## Features
 
 - search bar,
-- sorting option,
-- advanced filtering by multiple characteristics from breed temperament and breed group,
+- sorting options,
+- advanced filtering by multiple characteristics of breed temperament and breed group,
 - add breed to favourites,
 - view breed details in the external source
 
@@ -59,3 +59,14 @@ Project made to practice work with REST API, organizing code with modules, using
 - Mobile view
 
   ![Example screenshot](src/imgs/screenshot-4.png)
+
+## Setup
+
+# install dependencies
+
+$ npm install
+
+# build for production and launch server
+
+$ npm run build
+$ npm run start
