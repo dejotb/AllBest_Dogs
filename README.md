@@ -4,20 +4,19 @@ App with a lot of dogs 🐶 that allows a user to find and get to know details a
 
 > Live demo [_here_](https://allbestdogs.netlify.app/).
 
-
 ## Table of Contents
-* [General Info](#general-information)
-* [Technologies Used](#technologies-used)
-* [Features](#features)
-* [Screenshots](#screenshots)
-* [Setup](#setup)
-* [Usage](#usage)
-* [Project Status](#project-status)
-* [Room for Improvement](#room-for-improvement)
-* [Acknowledgements](#acknowledgements)
-* [Contact](#contact)
-<!-- * [License](#license) -->
 
+- [General Info](#general-information)
+- [Technologies Used](#technologies-used)
+- [Features](#features)
+- [Screenshots](#screenshots)
+- [Setup](#setup)
+- [Usage](#usage)
+- [Project Status](#project-status)
+- [Room for Improvement](#room-for-improvement)
+- [Acknowledgements](#acknowledgements)
+- [Contact](#contact)
+<!-- * [License](#license) -->
 
 ## General Information
 
@@ -27,16 +26,16 @@ There is also an option to add breeds to favourites.
 
 Project made to practice work with REST API, organizing code with modules, using parcel and handling errors.
 
-
 ## Technologies Used
+
 - Parcel,
 - ES Modules,
 - REST API,
 - Error handling,
 - Local storage.
 
-
 ## Features
+
 - search bar,
 - sorting option,
 - advanced filtering by multiple characteristics from breed temperament and breed group,
@@ -44,6 +43,15 @@ Project made to practice work with REST API, organizing code with modules, using
 - view breed details in the external source
 
 ## Screenshots
-![Example screenshot](src/imgs/screenshot-1.png)
-![Example screenshot](src/imgs/screenshot-2.png)
-![Example screenshot](src/imgs/screenshot-3.png)
+
+- Filter view
+  ![Example screenshot](src/imgs/screenshot-1.png)
+
+- Breed card view
+  ![Example screenshot](src/imgs/screenshot-2.png)
+
+- Favourites basket view
+  ![Example screenshot](src/imgs/screenshot-3.png)
+
+- Mobile view
+  ![Example screenshot](src/imgs/screenshot-4.png)
