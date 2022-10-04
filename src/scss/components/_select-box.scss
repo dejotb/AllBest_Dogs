@@ -16,7 +16,7 @@
     align-content: center;
     padding: 0.25rem;
     max-width: 23ch;
-    font-size: var(--fs-300);
+    font-size: var(--fs-200);
     background-color: var(--color-primary--light);
 
     border: 1px solid var(--color-font);
@@ -26,7 +26,7 @@
   }
 
   &__label {
-    align-self: end;
+    align-self: center;
     font-size: var(--fs-200);
   }
 

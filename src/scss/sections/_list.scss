@@ -26,7 +26,8 @@
 
   &__dashboard {
     display: grid;
-    grid-gap: 2rem;
+    justify-items: center;
+    grid-gap: 2.5rem;
     border-radius: 5px;
   }
 
@@ -49,8 +50,9 @@
   }
 
   &__title {
-    font-size: var(--fs-400);
+    font-size: var(--fs-600);
     font-family: var(--ff-display);
+    justify-self: center;
   }
 }
 

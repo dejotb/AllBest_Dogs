@@ -85,4 +85,4 @@ MODAL_LIST.addEventListener('click', handleHeart);
 createSearchList();
 
 // show popular breeds
-showTopDogs();
+// showTopDogs();

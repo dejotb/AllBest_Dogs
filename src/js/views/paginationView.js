@@ -10,8 +10,8 @@ function getPaginationMarkup(filteredData, curPage = model.state.page) {
   // Page 1 and other pages
 
   if (curPage === 1 && numPages > 1) {
-    document.querySelector('.pagination__container').classList.remove('hidden');
     return `
+    <a href="#dogs" class="pagination__btn--up" title="go up" role="button">🔼</a>
         <button data-goto='${
           curPage + 1
         }' class="btn--inline pagination__btn--next">
@@ -22,24 +22,25 @@ function getPaginationMarkup(filteredData, curPage = model.state.page) {
   // Last page
 
   if (curPage === numPages && numPages > 1) {
-    document.querySelector('.pagination__container').classList.remove('hidden');
     return `
+
         <button data-goto='${
           curPage - 1
         }' class="btn--inline pagination__btn--prev">
             <span>◀️ Page ${curPage - 1}</span>
         </button>
+        <a href="#dogs" class="pagination__btn--up" title="go up" role="button">🔼</a>
         `;
   }
   // Other page
   if (curPage < numPages) {
-    document.querySelector('.pagination__container').classList.remove('hidden');
     return `
         <button data-goto='${
           curPage - 1
         }' class="btn--inline pagination__btn--prev">
             <span>◀️ Page ${curPage - 1}</span>
         </button>
+        <a href="#dogs" class="pagination__btn--up" title="go up" role="button">🔼</a>
         <button data-goto='${
           curPage + 1
         }' class="btn--inline pagination__btn--next">
@@ -49,7 +50,6 @@ function getPaginationMarkup(filteredData, curPage = model.state.page) {
   }
 
   // Page 1 and NO other pages
-  document.querySelector('.pagination__container').classList.add('hidden');
   return '';
   //
 }

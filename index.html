@@ -43,10 +43,6 @@
         <ul class="basket__items"></ul>
       </div>
     </nav>
-    <a href="#dogs" class="btn btn--up" title="go up" role="button">
-      <span data-title="🔼"></span>
-    </a>
-
     <header id="header" class="header">
       <div class="header__title">
         <h1 class="heading--1">Let's find All Best Dogs!</h1>
@@ -76,14 +72,14 @@
       </section>
       <section id="dogs" class="dogs__container">
         <div class="dogs__dashboard">
-          <span class="dogs__title">Search or filter dog breeds below.</span>
+          <span class="dogs__title">Find your best dogs</span>
           <form id="dogs__form" class="form__wrapper">
             <input
               id="dogs__input"
               class="form__search"
               type="text"
               autocomplete="off"
-              placeholder="Search by breed name (e.g. spaniel)"
+              placeholder="by name (e.g. spaniel)"
             />
             <ul class="autocomplete__input" tabindex="-1"></ul>
             <button class="form__button" id="search__button" title="search">
@@ -91,7 +87,7 @@
             </button>
           </form>
           <div class="select__wrapper">
-            <label class="select__label" for="dogs-select">Sort by:</label>
+            <label class="select__label" for="dogs-select">by sorting:</label>
             <div class="select__list">
               <select id="dogs__select" name="dogs-select" form="dogs-select">
                 <option value="popularity">12 most popular</option>
@@ -110,16 +106,20 @@
                   fill="rgb(63, 56, 68)"
                 />
               </svg>
-              filters
+              by filters
             </button>
           </div>
         </div>
         <div class="loader__container">
           <span class="loader hidden"></span>
         </div>
-        <ul class="dogs__list"></ul>
+        <ul class="dogs__list centered--one">
+          <li class="alert__text">
+            🐶 Start by searching, sorting, or filtering above.
+          </li>
+        </ul>
       </section>
-      <div class="pagination__container hidden"></div>
+      <div class="pagination__container"></div>
       <div class="modal__container hidden">
         <div class="modal__list"></div>
       </div>

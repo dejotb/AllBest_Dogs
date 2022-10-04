@@ -40,24 +40,24 @@ export function getOccurrence(array, el) {
 }
 
 // Button UP intersection observer
-const buttonToTop = document.querySelector('.btn--up');
+// const buttonToTop = document.querySelector('.btn--up');
 
-function callback(entries) {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      // Show button
-      buttonToTop.classList.remove('hidden');
-    } else {
-      // Hide button
-      buttonToTop.classList.add('hidden');
-    }
-  });
-}
+// function callback(entries) {
+//   entries.forEach((entry) => {
+//     if (entry.isIntersecting) {
+//       // Show button
+//       buttonToTop.classList.remove('hidden');
+//     } else {
+//       // Hide button
+//       buttonToTop.classList.add('hidden');
+//     }
+//   });
+// }
 
-const options = {
-  threshold: 0.18,
-};
+// const options = {
+//   threshold: 0.18,
+// };
 
-const observer = new IntersectionObserver(callback, options);
+// const observer = new IntersectionObserver(callback, options);
 
-observer.observe(DOGS_LIST);
+// observer.observe(DOGS_LIST);
