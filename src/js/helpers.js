@@ -38,26 +38,3 @@ export function getOccurrence(array, el) {
   array.forEach((val) => val === el && count++);
   return count;
 }
-
-// Button UP intersection observer
-// const buttonToTop = document.querySelector('.btn--up');
-
-// function callback(entries) {
-//   entries.forEach((entry) => {
-//     if (entry.isIntersecting) {
-//       // Show button
-//       buttonToTop.classList.remove('hidden');
-//     } else {
-//       // Hide button
-//       buttonToTop.classList.add('hidden');
-//     }
-//   });
-// }
-
-// const options = {
-//   threshold: 0.18,
-// };
-
-// const observer = new IntersectionObserver(callback, options);
-
-// observer.observe(DOGS_LIST);

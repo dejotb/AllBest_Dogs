@@ -35,7 +35,6 @@
   }
 
   &__btn--up {
-    // justify-self: center;
     width: fit-content;
     position: absolute;
     margin-left: auto;
@@ -46,7 +45,5 @@
     text-align: center;
     height: 3.5rem;
     z-index: var(--z-index-popup);
-    // bottom: 2rem;
-    // right: 1rem;
   }
 }

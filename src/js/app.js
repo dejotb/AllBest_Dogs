@@ -83,6 +83,3 @@ MODAL_LIST.addEventListener('click', handleHeart);
 
 // get all breed names and add to search list
 createSearchList();
-
-// show popular breeds
-// showTopDogs();
