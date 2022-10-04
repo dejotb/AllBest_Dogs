@@ -18,7 +18,7 @@ export async function createGridMarkup(dog) {
         <div class='dog__caption'>
           <button class='dog__details' title="view details">🔎</button>
           <span class='dog__name'>${dog.name}</span>
-          <span class='dog__heart' >${
+          <span class='dog__heart' title='add to favourites'>${
             model.state.likedDogs.find((el) => el.id === dog.id) ? '💖' : '🤍'
           }</span>
         </div>

@@ -18,7 +18,7 @@ export function generateDogCard(dog) {
       <span class='dog__heart--info alert__text hidden'>Breed added to favourites! 💕</span>
     <div class='dog__caption'>
       <span class='dog__name'>${dog.name}</span>
-      <span class='dog__heart'>${
+      <span class='dog__heart' title='add to favourites'>${
         model.state.likedDogs.find((el) => el.id === dog.id) ? '💖' : '🤍'
       }</span>
     </div>
