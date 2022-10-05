@@ -44,8 +44,6 @@ export function handleHeart(e) {
     return;
   }
 
-  // ?
-
   if (model.state.likedDogs.find((el) => el.id === likedDog.id)) {
     const filteredLikedDogs = model.state.likedDogs.filter(
       (el) => el.id !== likedDog.id

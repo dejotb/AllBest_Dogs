@@ -41,7 +41,7 @@ export async function showDogItem(breed) {
   getImgUrl(model.state.dogs);
 }
 
-// hadnle pagination
+// handle pagination
 export function controlPagination(goToPage) {
   DOGS_LIST.textContent = '';
   const searchResultsPage = getSearchResultsPage(

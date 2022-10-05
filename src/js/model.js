@@ -132,7 +132,9 @@ export async function fetchImgUrl(dog) {
         if (data.status === 429) {
           throw new Error(`Too many Requests! 💩 Try again later!`);
         }
+
         const result = await data.json();
+
         dog.imgUrl = result.url;
       }
 
@@ -142,6 +144,7 @@ export async function fetchImgUrl(dog) {
       ).style.backgroundImage = `url('${dog.imgUrl}')`;
 
       listItem.querySelector('.loader').classList.add('hidden');
+
       break;
     } catch (err) {
       currentTry++;

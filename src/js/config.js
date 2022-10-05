@@ -14,14 +14,15 @@ export const BODY = document.querySelector('body');
 
 export const MAIN = document.querySelector('#main');
 
+export const DOGS_CONTAINER = document.querySelector('.dogs__container');
+
 export const DOGS_FORM = document.querySelector('#dogs__form');
 
-export const DOGS_CONTAINER = document.querySelector('.dogs__container');
 export const DOGS_LIST = document.querySelector('.dogs__list');
 
-export const INPUT_BOX = document.querySelector('input');
-
 export const TOP__DOGS = document.querySelector('#dogs__select');
+
+export const INPUT_BOX = document.querySelector('input');
 
 export const AUTOCOMPLETE_INPUT = document.querySelector(
   '.autocomplete__input'
@@ -30,21 +31,24 @@ export const AUTOCOMPLETE_INPUT = document.querySelector(
 export const LOADER = document.querySelector('.loader__container');
 
 export const MODAL = document.querySelector('.modal__container');
+
 export const MODAL_LIST = document.querySelector('.modal__list');
 
 export const BTN_SEARCH = document.querySelector('#search__button');
 
 export const BTN_BASKET = document.querySelector('.btn--hamburger');
 
+export const SELECT_BUTTON = document.querySelector('.select__button');
+
 export const BASKET = document.querySelector('.basket');
+
 export const BASKET_WRAPPER = document.querySelector('.basket__list--wrapper');
+
 export const BASKET_ITEMS = document.querySelector('.basket__items');
 
 export const PAGINATION_CONTAINER = document.querySelector(
   '.pagination__container'
 );
-
-export const SELECT_BUTTON = document.querySelector('.select__button');
 
 // ==========================================================================
 // TIMEOUT time is sec

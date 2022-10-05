@@ -10,6 +10,7 @@
     grid-auto-flow: column;
     align-items: center;
     width: 25rem;
+    height: 3.5rem;
     background-color: var(--color-primary--light);
     padding: 0.4rem 0.5rem;
     border-radius: 5px;
@@ -41,9 +42,8 @@
     margin-right: auto;
     left: 0;
     right: 0;
-    top: 0.4rem;
     text-align: center;
-    height: 3.5rem;
+    font-size: 2rem;
     z-index: var(--z-index-popup);
   }
 }

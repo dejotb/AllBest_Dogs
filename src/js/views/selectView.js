@@ -18,6 +18,7 @@ export async function showTopDogs(array = model.state.popular) {
   await generateMarkup(model.state.dogs);
   await getImgUrl(model.state.dogs);
   DOGS_LIST.classList.remove('centered--one');
+  showPaginationMarkup(model.state.dogs);
 }
 
 // show sorted dogs

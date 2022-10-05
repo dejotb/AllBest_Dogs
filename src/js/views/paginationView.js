@@ -5,10 +5,11 @@ import { PAGINATION_CONTAINER } from '../config.js';
 // PAGINATION VIEW
 // ==========================================================================
 
+// get current page numbers markup
 function getPaginationMarkup(filteredData, curPage = model.state.page) {
   const numPages = Math.ceil(filteredData.length / model.state.resultsPerPage);
-  // Page 1 and other pages
 
+  // Page 1 and other pages
   if (curPage === 1 && numPages > 1) {
     return `
     <a href="#dogs" class="pagination__btn--up" title="go up" role="button">🔼</a>
@@ -19,8 +20,8 @@ function getPaginationMarkup(filteredData, curPage = model.state.page) {
         </button>
         `;
   }
-  // Last page
 
+  // Last page
   if (curPage === numPages && numPages > 1) {
     return `
 
@@ -32,6 +33,7 @@ function getPaginationMarkup(filteredData, curPage = model.state.page) {
         <a href="#dogs" class="pagination__btn--up" title="go up" role="button">🔼</a>
         `;
   }
+
   // Other page
   if (curPage < numPages) {
     return `
@@ -50,8 +52,9 @@ function getPaginationMarkup(filteredData, curPage = model.state.page) {
   }
 
   // Page 1 and NO other pages
-  return '';
-  //
+  return `
+  <a href="#dogs" class="pagination__btn--up" title="go up" role="button">🔼</a>
+  `;
 }
 
 export function showPaginationMarkup(filteredData, goToPage) {
